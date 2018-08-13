@@ -1,0 +1,118 @@
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+.workflow-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.workflow-menu {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  height: 48px;
+  background-color: #424747;
+  font-weight: 400;
+  font-size: 16px;
+  color: #C9D2D2;
+}
+
+.workflow-menu-item {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.workflow-menu-item-active {
+  position: relative;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.workflow-menu-item-active:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 4px;
+  background-color: #2E96D5;
+  display: flex;
+  border-radius: 4px;
+}
+
+.mytasks-icon {
+  width: 100%;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-image: url(../images/MyTasks.png);
+  background-position: center;
+}
+
+.workflows-icon {
+  width: 100%;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-image: url(../images/Workflows.png);
+  background-position: center;
+}
+
+.config-icon {
+  width: 100%;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-image: url(../images/z-icon.png);
+  background-position: center;
+}
+
+.task-view {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+}
+
+.task-list {
+  display: flex;
+}
+
+.step-wizard {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.refresh-button-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

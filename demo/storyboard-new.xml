@@ -1,0 +1,168 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../workflow/schemas/workflow_v1.xsd">
+
+
+  <workflowInfo>
+    <workflowID>handleStorageShortage</workflowID>
+    <workflowDescription>Handle Storage Shortage</workflowDescription>
+    <workflowVersion>1.0</workflowVersion>
+    <vendor>Rocket Software</vendor>
+    <Configuration>
+      <productID>MVD</productID>
+      <productName>MVD</productName>
+      <productVersion>Version 1</productVersion>
+    </Configuration>
+  </workflowInfo>
+
+
+  <variable name="storageGroup">
+    <label>storage group</label>
+    <abstract>The name of the storage group with the shortage</abstract>
+    <description>The name of the storage group with the shortage
+    </description>
+    <category>Started</category>
+    <string>
+    </string>
+  </variable>
+  <variable name="alertId">
+    <label>alert id</label>
+    <abstract>The ID of the alert from the monitoring tool</abstract>
+    <description>"The first step of the workflow display shows an
+      embedded
+      MVD plugin that shows the details of the 'alert'"
+    </description>
+    <category>Started</category>
+    <string>
+    </string>
+  </variable>
+  <variable name="applyQuickFix">
+    <label>Apply quick fix?</label>
+    <abstract>Apply quick fix?</abstract>
+    <description>Apply quick fix?</description>
+    <category>Started</category>
+    <boolean>
+    </boolean>
+  </variable>
+  <variable name="timeForQuickFix">
+    <label>how much extra time before running out of space is desired (default 1 day).</label>
+    <abstract>how much extra time before running out of space is desired (default 1 day).</abstract>
+    <description>how much extra time before running out of space is desired (default 1 day).</description>
+    <category>Started</category>
+    <integer>
+    </integer>
+  </variable>
+  <variable name="planningPeriod">
+    <label>Planning Period</label>
+    <abstract>Planning Period.</abstract>
+    <description>Planning Period.</description>
+    <category>Started</category>
+    <integer>
+    </integer>
+  </variable>
+  <variable name="quickFixTargetCapacity">
+    <label>Short Term Target Capacity</label>
+    <abstract>Short Term Target Capacity</abstract>
+    <description>Short Term Target Capacity</description>
+    <category>Started</category>
+    <integer>
+    </integer>
+  </variable>
+  <variable name="quickFixAdditionalCapacity">
+    <label>Short Term Additional Capacity</label>
+    <abstract>Short Term Additional Capacity</abstract>
+    <description>Short Term Additional Capacity</description>
+    <category>Started</category>
+    <integer>
+    </integer>
+  </variable>
+  <variable name="longTermTargetCapacity">
+    <label>Long Term Target Capacity</label>
+    <abstract>Long Term Target Capacity</abstract>
+    <description>Long Term Target Capacity</description>
+    <category>Started</category>
+    <integer>
+    </integer>
+  </variable>
+  <variable name="hmigrateStatements">
+    <label>hmigrate statemetns</label>
+    <abstract>List of hmigrate stetements</abstract>
+    <description>List of hmigrate stetements
+    </description>
+    <category>Started</category>
+    <string>
+    </string>
+  </variable>
+
+  <step name="initialAnalysis">
+    <title>Storage Problem Overview</title>
+    <description>Storage Problem Overview</description>
+    <instructions substitution="true">
+  ${{
+  "action": "embedPlugin",
+  "pluginIdentifier": "com.rs.mvd.capacitycalculator",
+  "inputMap": {
+    "storageGroup": "groupName"
+  },            
+  "outputMap": {
+      "quickFixTargetCapacity": "targetCapacity",
+      "quickFixAdditionalCapacity": "addCapacity",
+      "timeForQuickFix": "timeNeeded" 
+  }            
+}}$
+      </instructions>
+      <weight>1</weight>
+    </step>
+
+  <step name="findEmergencySpace">
+    <title>Find Emergency Space</title>
+    <description>See if there are enough datasets old enough to migrate
+    </description>
+<!--    <prereqStep name="initialAnalysis"/>-->
+    <instructions substitution="true">
+  ${{
+  "action": "embedPlugin",
+  "pluginIdentifier": "com.rs.logicalstorage.migration",
+  "inputMap": {
+    "quickFixAdditionalCapacity": "neededSpaceMb",
+    "storageGroup": "storageGroup"
+  },            
+  "outputMap": {
+    "hmigrateStatements": "hmigrateStatementsChange"
+  }            
+}}$
+    </instructions>
+    <weight>1</weight>
+    <template>
+      <inlineTemplate substitution="true">//STEP1       EXEC PGM=IKJEFT1B,DYNAMNBR=175
+//SYSTSPRT DD  SYSOUT=*
+//SYSTSIN  DD  *
+${instance-hmigrateStatements}        
+/*
+      </inlineTemplate>
+      <submitAs>JCL</submitAs>
+    </template>    
+  </step>
+
+</workflow>
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

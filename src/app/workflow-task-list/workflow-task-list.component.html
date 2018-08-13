@@ -1,0 +1,37 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="tasks-header">
+  <div class="filter-toolbar" [hidden]="contentHidden">
+    <div class="filter-button" [ngClass]="{'filter-button-active': pendingTasksShown}" (click)="tooglePendingTasks()">Pending</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': completedTasksShown}" (click)="toogleCompletedTasks()">Completed</div>
+  </div>
+  <div class="collapse-button" [ngClass]="{'collapsed': contentHidden}" (click)="toogle()"></div>
+</div>
+<div class="task-list-container" [hidden]="contentHidden">
+  <workflow-steps
+    *ngFor="let workflow of workflows"
+    [workflow]="workflow"
+    [stateFilter]="stepStateFilter"
+    [userid]="userid"
+    (stepSelected)="startStep($event)"
+    [selectedStep]="selectedStep">
+  </workflow-steps>
+</div>
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

@@ -1,0 +1,52 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="workflow-container">
+  <div class="workflow-menu">
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()">My tasks</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Workflows'}" class="workflow-menu-item" (click)="showWorkflows()">Workflows</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Configuration'}" class="workflow-menu-item" (click)="showConfiguration()">Configuration</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Warnings'}" class="workflow-menu-item" (click)="showWarnings()">Warnings</div>
+    <div class="refresh-button-container"><workflow-refresh-button size="24" title="Refresh" (onClick)="refresh()"></workflow-refresh-button></div>
+  </div>
+  <div class="task-view" [hidden]="activeMenuItem !== 'My Tasks'">
+    <div class="task-list">
+      <workflow-task-list #workflowtasklist [workflows]="workflows" [userid]="userid" (stepSelected)="onStepSelected($event)"></workflow-task-list>
+    </div>
+    <div class="step-wizard" *ngIf="hasSelectedStep()">
+      <workflow-step-wizard #workflowstepwizard [step]="selectedStep" (stepChangeRequested)="onStepChangeRequested($event)"></workflow-step-wizard>
+    </div>
+  </div>
+  <workflow-list
+    #workflowlist
+    [hidden]="activeMenuItem !== 'Workflows'"
+    [workflows]="workflows"
+    (workflowSelected)="onWorkflowSelected($event)"
+    (onShowNewWorkflowDialog)="onShowCreateWorkflowForm(true)"
+  ></workflow-list>
+  <zosmf-server-config #zosmfserverconfig (configured)="onConfigured($event)" [hidden]="activeMenuItem !== 'Configuration'"></zosmf-server-config>
+  <workflow-warnings #warnings [hidden]="activeMenuItem !== 'Warnings'"></workflow-warnings>
+</div>
+<workflow-create (viewCreateWorkflow)="onShowCreateWorkflowForm($event)"
+  (initWorkflowList)="initWorkflowList()"
+  [visible]="viewCreateWorkflow">
+</workflow-create>
+<zosmf-login #zosmflogin on-loggedIn="login()"></zosmf-login>
+<workflow-notification></workflow-notification>
+<zlux-veil [isEnabled]="globalVeilService.isEnabled()" [enableSpinner]="true"></zlux-veil>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

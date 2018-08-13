@@ -1,0 +1,381 @@
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.wizard-header {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  background-color: #1a354d;
+  color: #c0bfc0;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+.wizard-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 52px;
+}
+
+.step-title {
+  font-size: 21px;
+  flex: 1 1 auto;
+}
+
+.view-selector {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+}
+
+.view-selector-title {
+  font-size: 16px;
+  flex: 1 1 auto;
+}
+
+.view-selector-arrow {
+  background-image: url("../images/arrow.png");
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 8px;
+  margin: 0 10px;
+}
+
+.wizard-spacer {
+  height: 1px;
+  background-image: url("../images/spacer.png");
+  background-repeat: repeat-x;
+}
+
+.wizard-scheme {
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  align-items: center;
+}
+
+.wizard-scheme-steps {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.wizard-scheme-step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.wizard-scheme-step-icon {
+  align-items: center;
+  justify-content: center;
+  background-color: #c0bfc0;
+  border-radius: 50%;
+  color: #1a354d;
+  display: flex;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  height: 21px;
+  width: 21px;
+  margin-left: 5px;
+}
+
+.wizard-scheme-step-icon-active {
+  background-image: url("../images/wizard-step-active.png");
+  background-repeat: no-repeat;
+}
+
+.wizard-scheme-step-title {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #c0bfc0;
+}
+
+.wizard-scheme-step-title-active {
+  color: #12a3b4;
+}
+
+.wizard-scheme-step-arrow {
+  background-image: url("../images/wizard-step-arrow.png");
+  background-repeat: no-repeat;
+  transform: rotate(270deg);
+  opacity: 0.3;
+  width: 12px;
+  height: 8px;
+  margin-left: 5px;
+}
+
+.wizard-body {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  background-color: #ffffff;
+}
+
+.wizard-step {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  overflow: auto;
+}
+
+.wizard-step-instruction {
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard-step-embedded-window {
+  flex: 1 1 auto;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.job-status {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.job-status-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-status-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.job-status-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  background-color: #F5F5F5;
+}
+
+.job-status-tab {
+  align-items: center;
+  background-color: #ffffff;
+  color: #464646;
+  border-color: #6D6D6D;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 22px;
+  width: 117px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.job-status-tab:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-left-width: 1px;
+  margin-left: 24px;
+}
+
+.job-status-tab:nth-last-child(2) {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-right: 5px;
+}
+
+.job-status-tab-active {
+  background-color: #157CBD;
+  color: #ffffff;
+}
+
+.spool-files {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.spool-file {
+  color: #464646;
+  display: none;
+  flex: 1 1 auto;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: normal;
+  overflow: scroll;
+  padding: 5px;
+  white-space: pre;
+}
+
+.spool-file-active {
+  display: flex;
+}
+
+.wizard-step-jcl {
+  color: #464646;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.wizard-step-jcl > textarea {
+  color: #464646;
+  flex: 1 1 auto;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: normal;
+  overflow: scroll;
+  padding: 7px;
+  white-space: pre;
+  background-color: #FFFFFF;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.wizard-step-jcl > textarea:disabled {
+  background-color:   #F7F8F8;
+}
+
+.flyover {
+  display: flex;
+  max-width: 427px;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.flyover-step-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flyover-step-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 25px;
+}
+
+.flyover-text {
+  color: #464646;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.flyover-text-small {
+  color: #464646;
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.edit-jcl-buttons-container {
+  display: flex;
+  flex: 0 0 auto;
+  height: 55px;
+  flex-direction: row;
+  background-color: #EFEFF1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.workflow-complete-badge {
+  color: #74CF12;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.workflow-complete-badge > svg {
+  margin-right: 5px;
+}
+
+.array {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow::after {
+  content: "";
+  background-image: url(../images/arrow.png);
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 12px;
+  display: inline-flex;
+  margin-left: 7px;
+  transform: rotate(-90deg);
+}
+
+.notification-container {
+  position: absolute;
+  width: 100%;
+  height: 46px;
+  bottom: 5px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notification {
+  border-radius: 5px;
+  width: 530px;
+  height: 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #323232;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

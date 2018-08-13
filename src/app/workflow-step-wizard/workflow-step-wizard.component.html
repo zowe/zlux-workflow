@@ -1,0 +1,138 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="wizard-header">
+  <div class="wizard-title">
+    <!-- <div class="step-title">{{step.title}}</div> -->
+    <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
+    <div class="view-selector">
+      <div class="view-selector-title">General</div>
+      <div class="view-selector-arrow"></div>
+    </div>
+  </div>
+  <div class="wizard-spacer"></div>
+  <div class="wizard-scheme">
+    <div class="wizard-scheme-steps">
+      <div class="wizard-scheme-step" *ngFor="let wizardStep of step.wizard.wizardSteps; first as $first; last as $last; index as $index">
+        <div class="wizard-scheme-step-icon" *ngIf="!wizardStep.isInProgress()">{{$index+1}}</div>
+        <div class="wizard-scheme-step-icon wizard-scheme-step-icon-active" *ngIf="wizardStep.isInProgress()"></div>
+        <div class="wizard-scheme-step-title" [ngClass]="{'wizard-scheme-step-title-atcive': wizardStep.isInProgress()}">{{wizardStep.text}}</div>
+        <div class="wizard-scheme-step-arrow" *ngIf="!$last"></div>
+      </div>
+    </div>
+    <label *ngIf="step.workflow.isCompleted()">Workflow Completed</label>
+    <label *ngIf="step.wizard.isFinished() && !isNextWorkflowStepReady() && !step.workflow.isCompleted()">Next Step Not Available</label>
+    <zlux-button
+      *ngIf="!step.wizard.isFinished()"
+      (onClick)="next()"
+      [callToAction]="true"
+      [lightSkin]="false"
+    >
+      <ng-template *ngIf="step.wizard.canBeFinished(); then finishButtontemplate else nextButtonTemplate"></ng-template>
+      <ng-template #finishButtontemplate>Finish</ng-template>
+      <ng-template #nextButtonTemplate><div class="arrow">Next</div></ng-template>
+    </zlux-button>
+    <zlux-button
+      *ngIf="step.wizard.isFinished() && isNextWorkflowStepReady()"
+      (onClick)="startNextWorkflowStep()"
+      [callToAction]="true"
+      [lightSkin]="false"
+      title="Next Workflow Step"
+    >
+      <div class="arrow">Next Step</div>
+    </zlux-button>
+  </div>
+</div>
+<div class="wizard-body">
+  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_INPUT_VARIABLES">
+    <div class="panel-body">
+      <h5>Enter the variable values for this input category.</h5>
+      <ul class="list-group" *ngIf="step.variables">
+        <li href="#" class="list-group-item" *ngFor="let v of step.variables;">
+          <p class="list-group-item-text">{{v.name}} - {{v.type}}</p>
+          <p class="list-group-item-text">
+            <input type="text" [(ngModel)]="v.value" />
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_INSTRUCTIONS">
+    <div class="wizard-step-instruction" [innerHTML]="getInstructionsSafely()"></div>
+    <div class="wizard-step-embedded-window">
+      <ng-container #embeddedwindow></ng-container>
+    </div>
+  </div>
+  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_CREATE_JOB_STATEMENT">
+    <div class="card-title">{{step.wizard.currentWizardStep.text}}</div>
+    <div class="card-text">
+      <div class="form-group">
+        <label for="jobcards">JOB statement JCL:</label>
+        <textarea class="form-control" rows="5" id="jobcards" [(ngModel)]="step.wizard.jobCards"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_EXECUTION_OF_JCL">
+    <div class="wizard-step-jcl">
+      <textarea class="jcl-textarea" #jcltextarea [(ngModel)]="step.wizard.fileContentsForEditor" [disabled]="!isJCLEditable" spellcheck="false"></textarea>
+      <div class="edit-jcl-buttons-container">
+        <zlux-button label="Discard" (onClick)="discardJCL()" [callToAction]="false" [hidden]="!isJCLEditable"></zlux-button>
+        <zlux-button [label]="isJCLEditable ? 'Save' : 'Edit JCL'" (onClick)="editOrSaveJCL()" [callToAction]="isJCLEditable"></zlux-button>
+      </div>
+    </div>
+  </div>
+  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_VIEW_OUTPUT">
+    <div class="job-status">
+      <!-- <div class="job-status-summary">
+        <div class="job-status-item" *ngFor="let key of keys(step.wizard.performJobstatus)">
+          <div class="job-status-item-key">{{key}}</div>
+          <div class="job-status-item-value">{{step.wizard.performJobstatus[key]}}</div>
+        </div>
+      </div> -->
+      <div class="job-status-tabs">
+        <div class="job-status-tab" *ngFor="let key of keys(step.wizard.performJobfiles)" [ngClass]="{'job-status-tab-active': key === activeTabKey}" (click)="activeTabKey = key">
+          {{step.wizard.performJobfiles[key].ddname}}
+        </div>
+        <workflow-refresh-button
+          buttonSize="28"
+          iconSize="18"
+          theme="dark"
+          title="Refresh Output"
+          (onClick)="updateJobStatus()"
+          [hidden]="step.state !== 'Submitted'"
+        ></workflow-refresh-button>
+      </div>
+      <div class="spool-files">
+        <div class="spool-file" *ngFor="let key of keys(step.wizard.performJobfiles)" [ngClass]="{'spool-file-active': key === activeTabKey}">{{step.wizard.performJobfiles[key].spoolFile}}</div>
+      </div>
+    </div>
+  </div>
+  <zlux-flyover #workflowFlyover>
+    <div class="flyover">
+      <div class="flyover-step-title">
+        <div class="flyover-text">{{step.title}}</div>
+      </div>
+      <div class="flyover-step-info">
+        <div class="flyover-text-small">Corresponding Workflow</div>
+        <div class="flyover-text">{{step.workflow.workflowName}}</div>
+      </div>
+    </div>
+  </zlux-flyover>
+  <zlux-veil [isEnabled]="isWizardVeilEnabled" [enableSpinner]="true"></zlux-veil>
+</div>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

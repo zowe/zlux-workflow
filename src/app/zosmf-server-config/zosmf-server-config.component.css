@@ -1,0 +1,194 @@
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.config-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #FFFFFF;
+}
+
+.ng-valid[required], .ng-valid.required {
+  border-left: 3px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 3px solid #a94442;
+  /* red */
+}
+
+.row-nav {
+  height: 48px;
+  background-color: #525A5A;
+}
+
+.z-icon {
+  width: 51px;
+  height: 48px;
+  background-image: url('../images/z-icon.png');
+  background-repeat: no-repeat;
+  background-size: 51px 48px;
+}
+
+.col-nav {
+  color: #559AD0;
+  font-size: 17px;
+}
+
+.col-nav:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.default-server {
+  display: flex;
+  flex: 0 0 auto;
+  height: 140px;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #1A354D;
+}
+
+.default-server-label {
+  font-size: 21px;
+  color: #C0BFC0;
+  font-weight: 400;
+  font-style: normal;
+  padding: 10px 25px;
+}
+
+.controls {
+  background-color: #EBEDF0;
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.controls-top {
+  height: 46px;
+}
+
+.controls-bottom {
+  height: 74px;
+}
+
+.server {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-bottom: #D9D9D9 solid thin;
+}
+
+.button {
+  border-radius: 2px;
+  height: 29px;
+  width: 87px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.button:hover {
+  background-color: #0D5D8D;
+  color: #FFF;
+}
+
+.button-light {
+  background-color: transparent;
+  border: 0;
+  padding: 5px;
+  color: #000;
+}
+
+.button-plus {
+  padding: 0 0 1px 1px;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background-color: #2F2F30;
+  color: #FFF;
+  font-weight: 500;
+  font-size: 13px;
+  margin-left: 27px;
+  margin-right: 10px;
+}
+
+.button-light:hover {
+  color: #FFF;
+  cursor: pointer;
+}
+
+.button-spacer {
+  width: 1px;
+  height: 19px;
+  background-color: #D9D9D9;
+  display: inline-block;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.button-bottom {
+  border-radius: 2px;
+  height: 39px;
+  width: 129px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.button-bottom-primary {
+  color: #CDE3F1;
+  background-color: #157CBD;
+  border-color: #157CBD;
+  margin-left: 5px;
+}
+
+.button-bottom-primary:hover {
+  background-color: #0D5D8D;
+}
+
+.button-bottom-secondary {
+  color: #4595C8;
+  background-color: transparent;
+  border-color: #4595C8;
+}
+
+.button-bottom-secondary:hover {
+  background-color: #0D5D8D;
+}
+
+.free-space {
+  flex: 1 1 0;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

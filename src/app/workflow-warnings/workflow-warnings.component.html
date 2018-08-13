@@ -1,0 +1,108 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="warnings-container" (keyup.esc)="cancelSearch()">
+  <div class="header">
+    <div class="title">Warnings</div>
+    <div class="count">{{messages.length}}</div>
+  </div>
+  <div class="filters">
+    <div class="free-space"></div>
+    <input
+      #searchInput
+      type="text"
+      zluxInputText
+      class="search-input"
+      name="search-input"
+      autocomplete="off"
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearchTextChanged($event)"
+      [disabled]="messages.length === 0"
+    />
+  </div>
+  <div class="grid-container">
+    <zlux-grid
+      #grid
+      [autoLayout]="false"
+      [columns]="columnMetaData | zluxTableMetadataToColumns"
+      [customPaginator]="true"
+      [paginator]="false"
+      [customTemplates]="{'code': codeColumnTemplate, 'text': textColumnTemplate, 'date': dateColumnTemplate, 'workflow': workflowColumnTemplate}"
+      [editable]="false"
+      [emptyMessage]="getEmptyMesssage()"
+      (rowsPerPageChange)="onRowsPerPageChange($event)"
+      [resizableColumns]="true"
+      [rows]="messagesToDisplay"
+      [scrollableHorizontal]="true"
+    ></zlux-grid>
+  </div>
+  <div class="paginator">
+    <zlux-paginator
+      #paginator
+      [rows]="messagesPerPage"
+      [totalRecords]="filteredMessages?.length"
+      (onPageChange)="onPageChange($event)"
+      [hasMoreRecords]="false"
+    ></zlux-paginator>
+  </div>
+</div>
+
+<ng-template #codeColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class=" cell message-code" [ngSwitch]="getMessageType(data)">
+      <ng-container *ngSwitchCase="'E'">
+        <div class="code-icon code-icon-e"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'W'">
+        <div class="code-icon code-icon-w"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'I'">
+        <div class="code-icon code-icon-i"></div>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <div class="code-icon code-icon-i"></div>
+      </ng-container>
+      <div class="code">{{data.code}}</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #textColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.text}}">
+      {{data.text}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #dateColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.date}}">
+      {{data.date}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #workflowColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.workflow}}">
+      {{data.workflow}}
+    </div>
+  </div>
+</ng-template>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

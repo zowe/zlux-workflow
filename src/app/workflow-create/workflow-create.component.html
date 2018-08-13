@@ -1,0 +1,128 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<zlux-popup-window [header]="'Create Workflow'"
+  (onCloseWindow)="cancel()"
+  [dark]="true"
+  *ngIf="visible">
+  <div class="content">
+    <div class="top-area">
+      <img src="../images/workflow-create-top.png"
+        alt=""
+        class="top-area-left">
+      <div class="top-area-right">
+        <div class="top-area-right-top">
+          <div class="flex"></div>
+          <div class="noflex">
+            <zlux-checkbox inputId="checkAdvancedMode"
+              [(value)]="advancedMode"
+              [dark]="true"
+              [label]="'Advanced Mode'">
+            </zlux-checkbox>
+          </div>
+        </div>
+        <div class="top-area-right-bottom">
+          <label for="name">Name</label>
+          <input id="name"
+            type="text"
+            [(ngModel)]="actionData.workflowName"
+            zluxInputText
+            [dark]="true">
+        </div>
+      </div>
+    </div>
+    <div class="advanced-mode-area" *ngIf="advancedMode">
+      <label class="area-header">
+        Advanced Settings
+      </label>
+      <div class="label-and-input-area">
+        <label for="wfDefFile"
+          class="label-for-input">
+            Workflow definition file
+        </label>
+        <input type="text"
+          id="wfDefFile"
+          [(ngModel)]="actionData.workflowDefinitionFile"
+          zluxInputText>
+      </div>
+      <div class="label-and-input-area">
+        <label for="wfSystem"
+          class="label-for-input">
+            System
+        </label>
+        <input type="text"
+          id="wfSystem"
+          [(ngModel)]="actionData.system"
+          zluxInputText>
+      </div>
+      <div class="label-and-input-area">
+        <label for="wfOwner"
+          class="label-for-input">
+            Owner
+        </label>
+        <input type="text"
+          id="wfOwner"
+          [(ngModel)]="actionData.owner"
+          zluxInputText
+          [disabled]="actionOptions.setOwnerToCurrentUser">
+        <div class="noflex">
+        <zlux-checkbox inputId="checkSetOwnerToCurUser"
+          [(value)]="actionOptions.setOwnerToCurrentUser"
+          [label]="'Set owner to current user'">
+        </zlux-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="variables-area">
+      <label class="area-header">
+        Variables
+      </label>
+      <zlux-grid [columns]="columnMetaData | zluxTableMetadataToColumns"
+        [rows]="variables"
+        [editable]="true"
+        [paginator]="false"
+        [scrollableVertical]="true"
+        [scrollableHorizontal]="true"
+        [resizableColumns]="true"
+        (onEditCompleted)="updateVariables($event)"
+        [customTemplates]="{ 'delete': deleteColumn }">
+      </zlux-grid>
+    </div>
+  </div>
+  <zlux-popup-window-button-area>
+    <zlux-button (click)="cancel()"
+      label="Cancel">
+    </zlux-button>
+    <zlux-button (click)="createWorkflow()"
+      [disabled]="isIncorrectInputData()"
+      label="ОК"
+      callToAction="true">
+    </zlux-button>
+  </zlux-popup-window-button-area>
+</zlux-popup-window>
+
+<ng-template #deleteColumn
+             let-data="rowData"
+             let-index="rowIndex">
+  <div *ngIf="index != variables.length - 1"
+     (click)="removeRowFromVariables(data)"
+     class="delete-button">
+  </div>
+</ng-template>
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

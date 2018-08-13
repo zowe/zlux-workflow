@@ -1,0 +1,231 @@
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.arrow {
+  margin: 0 10px 0 10px;
+  width: 12px;
+  height: 12px;
+  background-image: url('../images/arrow.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.arrow-closed {
+  transform: rotate(90deg);
+}
+
+.step-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.step-active {
+  background-color: #545454;
+}
+
+.selector {
+  background-color: transparent;
+  width: 5px;
+  align-self: stretch;
+}
+
+.selector-active {
+  background-color: #3fa7e2;
+}
+
+.step-icon, .flyover-step-icon {
+  background-repeat: no-repeat;
+  height: 15px;
+  margin: 0 3px 0 5px;
+  width: 17px;
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  color: #A8A7A8;
+  flex: 1 1 auto;
+  margin: 0 5px;
+}
+
+.step-title-active {
+  color: #ECECEC;
+}
+
+.action-button {
+  background-color: transparent;
+  border-width: 0;
+  color: #5FA8E0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  width: 70px;
+}
+
+.dots-menu {
+  background-image: url('../images/dots.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 100%;
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+}
+
+.task-ready {
+  background-image: url(../images/task-ready.png);
+}
+
+.task-not-ready {
+  background-image: url(../images/task-not-ready.png);
+}
+
+.task-failed {
+  background-image: url(../images/task-failed.png);
+}
+
+.task-assigned {
+  background-image: url(../images/task-assigned.png);
+}
+
+.task-assigned {
+  background-image: url(../images/task-unassigned.png);
+}
+
+.task-complete {
+  background-image: url(../images/task-complete.png);
+}
+
+.task-in-progress {
+  background-image: url(../images/task-in-progress.png);
+}
+
+.task-submitted {
+  background-image: url(../images/task-submitted.png);
+}
+
+.task-skipped {
+  background-image: url(../images/task-skipped.png);
+}
+
+.task-complete-override {
+  background-image: url(../images/task-complete-override.png);
+}
+
+.workflow {
+  align-items: center;
+  border-bottom-color: #5E5E5E;
+  border-bottom-width: 1px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 0 0 auto;
+  height: 60px;
+}
+
+.workflow-title {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  margin: 0 0 0 12px;
+}
+
+.workflow-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  font-style: normal;
+  color: #ECECEC;
+}
+
+.workflow-spacer {
+  flex: 0 0 auto;
+  height: 1px;
+  background-image: url("../images/spacer.png");
+  background-repeat: no-repeat;
+  opacity: 0.2;
+}
+
+.assigned-task-count {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  color: #747C85;
+}
+
+.flyover {
+  display: flex;
+  max-width: 327px;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.flyover-step-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flyover-step-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 25px;
+}
+
+.flyover-text {
+  color: #464646;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.flyover-text-small {
+  color: #464646;
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

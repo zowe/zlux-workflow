@@ -1,0 +1,58 @@
+
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+
+<div class="login-form-containter" [hidden]="!isVisible">
+  <div class="login-form container-fluid">
+    <div class="row row-header">
+      <div class="col align-self-center col-header">
+        Login to <span class="host">{{host}}</span>
+      </div>
+    </div>
+    <form (ngSubmit)="login()" #loginForm="ngForm" on-keydown.escape="cancel()">
+      <div class="form-group row">
+        <div class="col">
+          <input autofocus type="text" class="form-control" name="userid" maxlength="8" required [(ngModel)]="zosmfUserid" #userid="ngModel" placeholder="User ID">
+                 <div [hidden]="userid.valid || userid.pristine" class="alert alert-danger">User ID is required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col">
+          <input type="password" class="form-control" name="password" required [(ngModel)]="zosmfPassword" #password="ngModel" placeholder="Password or pass phrase">
+                 <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Password or pass phrase is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div [hidden]="!authFailed" class="alert alert-danger">{{errorMessage}}</div>
+      </div>
+      <div class="form-group row row-footer align-items-center">
+        <div class="col-sm-6 col-cancel">
+          <button type="button" class="button button-cancel" on-click="cancel()">Cancel</button>
+        </div>
+        <div class="col-sm-6 col-sign-in text-right">
+          <button type="submit" class="button button-sign-in" [disabled]="!loginForm.form.valid">Sign in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+

@@ -1,0 +1,126 @@
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-area {
+  background-color: #1a354d;
+  width: 100%;
+  box-sizing: border-box;
+  color: #C0BFC0;
+  flex: 1 0 auto;
+  height: 112px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-area-left {
+  flex: none;
+  margin: 0 50px;
+}
+
+.top-area-right {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 1rem 0;
+  height: inherit;
+}
+
+.top-area-right-top {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-area-right-top > .flex {
+  flex: 1 1 auto;
+}
+
+.top-area-right-top > .noflex {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.top-area-right-bottom {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.top-area-right-bottom > label {
+  color: #C0BFC0;
+}
+
+.advanced-mode-area {
+  background-color: rgb(239, 239, 241);
+  padding-bottom: 1.5rem;
+}
+
+.label-and-input-area {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 0.5rem 2rem;
+}
+
+.label-for-input {
+  flex: none;
+  width: 175px;
+  text-align: right;
+}
+
+.area-header {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  color: #50595b;
+  width: 100%;
+  height: 52px;
+  border-bottom: 1px solid #bdbabd;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.delete-button {
+  height: 20px;
+  flex: none;
+  background: url(../images/delete_normal.png) center no-repeat;
+}
+
+.delete-button:hover {
+  background-image: url(../images/delete_hover.png);
+}
+
+.delete-button:active {
+  background-image: url(../images/delete_pressed.png);
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/

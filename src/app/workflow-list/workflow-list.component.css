@@ -1,0 +1,208 @@
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+
+.workflow-list-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  max-height: 100%;
+  height: 100%;
+}
+
+.header {
+  height: 51px;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  border-bottom: #D9D9D9 solid thin;
+}
+
+.title {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+  color: #464646;
+  margin-left: 15px;
+}
+
+.count {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #464646;
+  margin-left: 15px;
+}
+
+.filters {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  height: 55px;
+}
+
+.free-space {
+  flex: 1 1 auto;
+}
+
+.search-input {
+  flex: 0 0 auto;
+  width: 250px;
+  margin-right: 5px;
+  padding-right: 35px;
+  position: relative;
+  background-image: url('../images/search-icon.png');
+  background-repeat: no-repeat;
+  background-position: 225px center;
+}
+
+.grid-container {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.paginator {
+  flex: 0 0 auto;
+}
+
+.cell-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.cell {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.progress {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+.progress-bar {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  height: 4px;
+  background-color: #CCD2D5;
+  border-radius: 2px;
+}
+
+.progress-bar-filled {
+  display: flex;
+  flex-direction: row;
+  height: 4px;
+  background-color: #157CBD;
+  border-radius: 2px;
+}
+
+.status {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+}
+
+.status-icon {
+  flex: 0 0 auto;
+  height: 10px;
+  width: 10px;
+}
+
+.status-icon-in-progress {
+  background-image: url('../images/workflow-in-progress.png');
+}
+
+.status-icon-completed {
+  background-image: url('../images/workflow-completed.png');
+}
+
+.status-icon-error {
+  background-image: url('../images/workflow-error.png');
+}
+
+.status-text {
+  margin-left: 5px;
+  flex: 1 1 auto;
+}
+
+.actions-menu {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+}
+
+.actions-menu-icon {
+  background-image: url('../images/actions_menu.png');
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 10px;
+  margin: 0 5px;
+  filter: invert(64%);
+}
+
+.actions-menu-dropdown-icon {
+  background-image: url('../images/dropdown.png');
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 5px;
+  margin: 0 5px;
+  filter: invert(64%);
+}
+
+.dropdown {
+  flex: 0 0 auto;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  color: #464646;
+  padding-left: 39px;
+}
+
+.dropdown-item-properties {
+  background-image: url('../images/properties.png');
+  background-repeat: no-repeat;
+  background-position: 9px 50%;
+}
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+

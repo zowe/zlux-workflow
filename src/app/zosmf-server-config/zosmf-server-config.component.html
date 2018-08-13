@@ -1,0 +1,45 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="config-container">
+  <div class="default-server">
+    <div class="default-server-label">Default z/OSMF server</div>
+    <zosmf-server #defaultzosmfserver *ngIf="config.defaultZosmfServer" bind-zosmfServer="config.defaultZosmfServer" theme="dark"></zosmf-server>
+  </div>
+  <div class="controls controls-top">
+    <button class="button button-plus" on-click="newServer()" title="Add new z/OSMF server">+</button>
+    <div class="button-spacer"></div>
+    <button class="button button-light" on-click="reload()" title="Reload this page">Reload</button>
+    <div class="button-spacer"></div>
+    <button class="button button-light" on-click="save()" title="Save this page">Save</button>
+  </div>
+  <div class="server" *ngFor="let server of config?.zosmfServers">
+    <zosmf-server bind-zosmfServer="server"  bind-showControls="true" on-setDefault="setDefault(server)" on-removed="remove(server)"></zosmf-server>
+  </div>
+  <div class="free-space"></div>
+  <div class="controls controls-bottom">
+      <zlux-button buttonType="button" label="Test All" (onClick)="test()"></zlux-button>
+      <div class="free-space"></div>
+      <zlux-button buttonType="button" label="Cancel" (onClick)="cancel()"></zlux-button>
+      <zlux-button buttonType="button" label="OK" (onClick)="ok()"></zlux-button>
+  </div>
+</div>
+<zosmf-login #zosmflogin on-loggedIn="login()" on-canceled="loginCanceled()"></zosmf-login>
+<zlux-popup-manager>
+</zlux-popup-manager>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

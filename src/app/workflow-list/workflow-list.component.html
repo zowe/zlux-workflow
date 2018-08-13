@@ -1,0 +1,140 @@
+
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="workflow-list-container" (keyup.esc)="cancelSearch()">
+  <div class="header">
+    <div class="title">All Workflows</div>
+    <div class="count">{{workflows?.length}}</div>
+  </div>
+  <div class="filters">
+    <!-- Note: this is Bootstrap CSS dropdown -->
+    <div class="dropdown">
+      <zlux-button
+        #actionButton
+        data-toggle="dropdown"
+      >
+      <div class="actions-menu">
+        <div class="actions-menu-icon"></div>Actions<div class="actions-menu-dropdown-icon"></div>
+      </div>
+      </zlux-button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item dropdown-item-properties" href="#" [hidden]="!selectedWorkflow">Properties</a>
+        <a class="dropdown-item" href="#" (click)="onNewWorkflowActionClicked()">New workflow</a>
+      </div>
+    </div>
+    <div class="free-space"></div>
+    <input
+      #searchInput
+      type="text"
+      zluxInputText
+      class="search-input"
+      name="search-input"
+      autocomplete="off"
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearchTextChanged($event)"
+      [disabled]="workflows.length === 0"
+    />
+  </div>
+  <div class="grid-container">
+    <zlux-grid
+      #grid
+      [autoLayout]="false"
+      [columns]="columnMetaData | zluxTableMetadataToColumns"
+      [customPaginator]="true"
+      [paginator]="false"
+      [customTemplates]="{'workflowName': nameColumnTemplate,'workflowDescription': descriptionColumnTemplate, 'workflowVersion': versionColumnTemplate,'owner': ownerColumnTemplate, 'system': systemColumnTemplate,'statusName': statusColumnTemplate, 'percentComplete': percentCompleteColumnTemplate}"
+      [editable]="false"
+      [emptyMessage]="getEmptyMesssage()"
+      [resizableColumns]="true"
+      [rows]="workflowsToDisplay"
+      (rowsPerPageChange)="onRowsPerPageChange($event)"
+      selectionMode="single"
+      (selectionChange)="onSelectionChange($event)"
+      [scrollableHorizontal]="true"
+    ></zlux-grid>
+  </div>
+  <div class="paginator">
+      <zlux-paginator
+        #paginator
+        [rows]="workflowsPerPage"
+        [totalRecords]="filteredWorkflows?.length"
+        (onPageChange)="onPageChange($event)"
+        [hasMoreRecords]="false"
+      ></zlux-paginator>
+  </div>
+</div>
+
+<ng-template #nameColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.workflowName}}">
+      {{data.workflowName}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #descriptionColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.workflowDescription}}">
+      {{data.workflowDescription}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #versionColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.workflowVersion}}">
+      {{data.workflowVersion}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #ownerColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.owner}}">
+      {{data.owner}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #systemColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="cell" title="{{data.system}}">
+      {{data.system}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #statusColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="status cell">
+      <div class="status-icon" [ngClass]="getStatusIconClass(data.statusName)"></div>
+      <div class="status-text">{{getStatus(data.statusName)}}</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #percentCompleteColumnTemplate let-data="rowData">
+  <div class="cell-container">
+    <div class="progress cell">
+      <div class="progress-bar">
+        <div class="progress-bar-filled" [style.width.%]="data.percentComplete"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

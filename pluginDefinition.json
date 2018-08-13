@@ -1,0 +1,58 @@
+{
+  "identifier": "com.rs.zosmf.workflows",
+  "apiVersion": "1.0",
+  "pluginVersion": "1.0",
+  "pluginType": "application",
+  "webContent": {
+    "framework": "angular2",
+    "launchDefinition": {
+      "pluginShortNameKey": "Workflows",
+      "pluginShortNameDefault": "User Tasks/Workflows",
+      "imageSrc": "images/Workflow.png"
+    },
+    "descriptionKey": "WorkflowsDescription",
+    "descriptionDefault": "Execute and manage end user tasks for administering the system",
+    "isSingleWindowApp": true,
+    "defaultWindowStyle": {
+      "width": 1320,
+      "height": 880,
+      "x": 60,
+      "y": 10
+    }
+  },
+  "configurationData": {
+    "resources": {
+      "zosmf": {
+        "aggregationPolicy": "none"
+      }
+    }
+  },
+  "dataServices": [
+    {
+      "type": "nodeService",
+      "name": "zosmf",
+      "serviceLookupMethod": "external",
+      "fileName": "zosmf-service.js",
+      "handlerInstaller": "zosmfServiceInstaller",
+      "dependenciesIncluded": true,
+      "methods": [
+        "POST",
+        "GET",
+        "PUT",
+        "OPTIONS",
+        "HEAD"
+      ]
+    },
+    {
+      "type": "nodeService",
+      "name": "zosmftracker",
+      "serviceLookupMethod": "external",
+      "fileName": "zosmf-tracker-service.js",
+      "handlerInstaller": "zosmfTrackerServiceInstaller",
+      "dependenciesIncluded": true,
+      "methods": [
+        "GET"
+      ]
+    }
+  ]
+}
