@@ -4,11 +4,11 @@
     <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
     <select class="view-selector"
             [(ngModel)]="selectedView">
-      <option [disabled]="isDisabled('general')" value="general">General</option>
-      <option [disabled]="isDisabled('perform')" value="perform">Perform</option>
-      <option [disabled]="isDisabled('details')" value="details">Details</option>
-      <option [disabled]="isDisabled('notes')" value="notes">Notes</option>
-      <option [disabled]="isDisabled('status')" value="status">Status</option>
+      <option [disabled]="isDisabled('general')" value="general" i18n="view|Title of General view@@general-view">General</option>
+      <option [disabled]="isDisabled('perform')" value="perform" i18n="view|Title of Perform view@@perform-view">Perform</option>
+      <option [disabled]="isDisabled('details')" value="details" i18n="view|Title of Details view@@details-view">Details</option>
+      <option [disabled]="isDisabled('notes')" value="notes" i18n="view|Title of Notes view@@notes-view">Notes</option>
+      <option [disabled]="isDisabled('status')" value="status" i18n="view|Title of Status view@@status-view">Status</option>
     </select>
   </div>
   <div class="step-container-spacer"></div>
@@ -18,9 +18,9 @@
           <div class="flyover-text">{{step.title}}</div>
         </div>
         <div class="flyover-step-info">
-          <div class="flyover-text-small">Corresponding Workflow</div>
+          <div class="flyover-text-small" i18n="flyover text|Workflow for the current step@@corresponding-workflow">Corresponding Workflow</div>
           <div class="flyover-text">{{step.workflow.workflowName}}</div>
-          <div class="flyover-text-small">Step Description</div>
+          <div class="flyover-text-small" i18n="flyover text|Description of the workflow step@@workflow-step-description">Step Description</div>
           <div class="flyover-text">{{step.description}}</div>
         </div>
       </div>

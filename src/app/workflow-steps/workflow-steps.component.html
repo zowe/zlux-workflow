@@ -1,18 +1,19 @@
 
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
 <div class="workflow" (click)="toogle()">
   <div class="workflow-title">
     <div class="workflow-name" zluxFlyover [flyover]="workflowFlyover" (mouseenter)="onWorkflowHover($event, workflow)" position="bottom">{{workflow.workflowName}}</div>
-    <div class="assigned-task-count">{{getAssignedStepCount()}} tasks assigned</div>
-  </div>
+    <div class="assigned-task-count" i18n="label|Label with a number of tasks assigned to the user@@tasks-assigned-message">
+      {getAssignedStepCount(), plural, =0 {no tasks} =1 {one task} other {{{getAssignedStepCount()}} tasks}} assigned
+    </div>
   <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
 </div>
 <div class="step-group" [@collapsed]="collapsed">
@@ -31,11 +32,11 @@
       <div class="flyover-text">{{hoveredStep?.title}}</div>
     </div>
     <div class="flyover-step-info">
-      <div class="flyover-text-small">Status</div>
+      <div class="flyover-text-small" i18n="status|Step Status@@step-status">Status</div>
       <div class="flyover-text text-uppercase">{{hoveredStep?.state}}</div>
-      <div class="flyover-text-small">Corresponding Workflow</div>
+      <div class="flyover-text-small" i18n="corresponding workflow|Corresponding Workflow@@corresponding-workflow">Corresponding Workflow</div>
       <div class="flyover-text">{{hoveredStep?.workflow.workflowName}}</div>
-      <div class="flyover-text-small">Owner</div>
+      <div class="flyover-text-small" i18n="userid|Owner of the workflow@@workflow-owner">Owner</div>
       <div class="flyover-text">{{hoveredStep?.owner}}</div>
     </div>
   </div>
@@ -48,12 +49,12 @@
 
 <div class="workflow-spacer"></div>
 
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
