@@ -3,9 +3,9 @@
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 import {
@@ -70,13 +70,13 @@ export class WorkflowTaskListComponent implements OnInit {
   @Input() collapsed: string = 'no';
   @Input() selectedStep: WorkflowStep;
   @Output() stepSelectedAction = new EventEmitter<WorkflowStepAction>();
-  private pendingTasksShown: boolean = false;
-  private completedTasksShown: boolean = false;
-  private readonly pendingStates: string[] = ['Assigned', 'Ready', 'Failed', 'Submitted', 'Assigned', 'Not Ready', 'In Progress'];
-  private readonly completedStates: string[] = ['Complete', 'Skipped', 'Complete (Override)'];
-  private stepStateFilter: WorkflowStepStateFilter = {};
-  private contentHidden: boolean = false;
-  private filterState: string = 'pending'; //FilterState = FilterState.pending;
+  pendingTasksShown: boolean = false;
+  completedTasksShown: boolean = false;
+  readonly pendingStates: string[] = ['Assigned', 'Ready', 'Failed', 'Submitted', 'Assigned', 'Not Ready', 'In Progress'];
+  readonly completedStates: string[] = ['Complete', 'Skipped', 'Complete (Override)'];
+  stepStateFilter: WorkflowStepStateFilter = {};
+  contentHidden: boolean = false;
+  filterState: string = 'pending'; //FilterState = FilterState.pending;
 
   @HostBinding('@collapsed') get getCollapsed(): string {
     return this.collapsed;
@@ -143,9 +143,9 @@ togglePendingTasks(): void {
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 

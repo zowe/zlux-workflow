@@ -11,7 +11,7 @@
 <div class="workflow" (click)="toogle()">
   <div class="workflow-title">
     <div class="workflow-name" zluxFlyover [flyover]="workflowFlyover" (mouseenter)="onWorkflowHover($event, workflow)" position="bottom">{{workflow.workflowName}}</div>
-    <div class="assigned-task-count">{{getAssignedStepCount(workflow)}} tasks assigned</div>
+    <div class="assigned-task-count">{{getAssignedStepCount()}} tasks assigned</div>
   </div>
   <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
 </div>

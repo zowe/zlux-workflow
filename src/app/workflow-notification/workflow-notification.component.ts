@@ -22,8 +22,8 @@ import { Message } from '../shared/message';
   ]
 })
 export class WorkflowNotificationComponent {
-  private isVisible: boolean = false;
-  private message: string;
+  isVisible: boolean = false;
+  message: string;
   constructor(private loggerService: LoggerService) {
     loggerService.messageObservable.subscribe(message => setTimeout(_ => this.showMessage(message.code + ' ' + message.text), 0));
   }

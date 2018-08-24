@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="paginator" datatype="html">
+        <source>of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@zlux/widgets/components/paginator/paginator.component.d.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@zlux/widgets/components/paginator/paginator.component.d.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description">of preposition in clause n-m of total</note>
+      </trans-unit>
+      <trans-unit id="myTasks" datatype="html">
+        <source>My tasks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">My tasks menu item</note>
+        <note priority="1" from="meaning">main main</note>
+      </trans-unit>
+      <trans-unit id="workflow-step-title" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Title of the workflow step</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="workflow-step-description" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Description of the workflow step</note>
+        <note priority="1" from="meaning">description</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

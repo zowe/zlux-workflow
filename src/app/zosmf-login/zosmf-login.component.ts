@@ -26,12 +26,11 @@ export class ZosmfLoginComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<void>();
   @Output() canceled = new EventEmitter<void>();
   @ViewChild('userid', {read: ElementRef}) useridElementRef: ElementRef;
-  private zosmfUserid: string;
-  private zosmfPassword: string;
-  private authFailed: boolean = false;
-  private isVisible: boolean = false;
-  private errorMessage: string = '';
-
+  zosmfUserid: string;
+  zosmfPassword: string;
+  authFailed: boolean = false;
+  isVisible: boolean = false;
+  errorMessage: string = '';
   constructor(private loginService: ZosmfLoginService) {
   }
 

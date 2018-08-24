@@ -39,18 +39,18 @@ import { ZluxGridComponent } from '@zlux/grid';
   providers: []
 })
 export class WorkflowListComponent implements AfterContentInit, OnChanges {
-  private workflowsToDisplay: Workflow[] = [];
-  private filteredWorkflows: Workflow[] = [];
-  private workflowsPerPage: number = 15;
-  private selectedWorkflow: Workflow;
-  private searchText: string;
-  @Input() private workflows: Workflow[] = [];
+  workflowsToDisplay: Workflow[] = [];
+  filteredWorkflows: Workflow[] = [];
+  workflowsPerPage: number = 15;
+  selectedWorkflow: Workflow;
+  searchText: string;
+  @Input() workflows: Workflow[] = [];
   @ViewChild('grid') grid: ZluxGridComponent;
-  @ViewChild('paginator') private paginator: ZluxPaginatorComponent;
-  @Output() private workflowSelected = new EventEmitter<Workflow>();
-  @Output() private onShowNewWorkflowDialog = new EventEmitter<void>();
+  @ViewChild('paginator') paginator: ZluxPaginatorComponent;
+  @Output() workflowSelected = new EventEmitter<Workflow>();
+  @Output() onShowNewWorkflowDialog = new EventEmitter<void>();
 
-  private readonly displayHints = {
+  readonly displayHints = {
     isCustomTemplating: true,
     // note: custom templating doesn't work without formatParameters
     formatParameters: {
@@ -58,8 +58,7 @@ export class WorkflowListComponent implements AfterContentInit, OnChanges {
     }
   };
 
-  
-  private readonly columnMetaData: any = {
+  readonly columnMetaData: any = {
     columnMetaData: [
       {
         columnIdentifier: 'workflowName',
@@ -168,45 +167,45 @@ export class WorkflowListComponent implements AfterContentInit, OnChanges {
     };
   }
 
-  private getEmptyMesssage(): string {
+  getEmptyMesssage(): string {
     return this.searchText ? 'No workflows match' : 'No workflows';
   }
 
-  private getStatus(statusName: string): string {
+  getStatus(statusName: string): string {
     return statusName.split('-').map(part => part.substr(0, 1).toUpperCase() + part.substr(1)).join(' ');
   }
 
-  private inithWorkflowList(): void {
+  inithWorkflowList(): void {
     this.paginator.changePage(0);
     this.filteredWorkflows = this.search(this.workflows, this.searchText);
     this.workflowsToDisplay = this.filteredWorkflows.slice(0, this.workflowsPerPage);
   }
 
-  private onPageChange(event: {first: number, rows: number}): void {
+  onPageChange(event: {first: number, rows: number}): void {
     logger.debug(`onPageChange ${JSON.stringify(event)}`);
     this.workflowsPerPage = event.rows;
     this.workflowsToDisplay = this.filteredWorkflows.slice(event.first, event.first + event.rows);
   }
 
-  private onNewWorkflowActionClicked(): void {
+  onNewWorkflowActionClicked(): void {
     this.onShowNewWorkflowDialog.emit();
   }
 
-  private onSelectionChange(workflow: Workflow | null) {
+  onSelectionChange(workflow: Workflow | null) {
     this.selectWorkflow(workflow);
   }
 
-  private onRowsPerPageChange(newWorkflowsPerPage: number): void {
+  onRowsPerPageChange(newWorkflowsPerPage: number): void {
     logger.debug(`new value for workflows per page: ${newWorkflowsPerPage}, old: ${this.workflowsPerPage}`);
     setTimeout(_ => this.onPageChange({ first: this.paginator.pageIndex * newWorkflowsPerPage, rows: newWorkflowsPerPage }));
   }
 
-  private updateRowsPerPage(): void {
+  updateRowsPerPage(): void {
     logger.debug(`about to updateRowsPerPage`);
     this.grid.updateRowsPerPage();
   }
 
-  private search(workflows: Workflow[], searchText: string): Workflow[] {
+  search(workflows: Workflow[], searchText: string): Workflow[] {
     if (!workflows) {
       return [];
     }
@@ -233,11 +232,11 @@ export class WorkflowListComponent implements AfterContentInit, OnChanges {
     });
   }
 
-  private onSearchTextChanged(): void {
+  onSearchTextChanged(): void {
     this.inithWorkflowList();
   }
 
-  private cancelSearch(): void {
+  cancelSearch(): void {
     this.searchText = null;
     this.inithWorkflowList();
   }

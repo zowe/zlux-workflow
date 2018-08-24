@@ -23,7 +23,7 @@
       name="search-input"
       autocomplete="off"
       [(ngModel)]="searchText"
-      (ngModelChange)="onSearchTextChanged($event)"
+      (ngModelChange)="onSearchTextChanged()"
       [disabled]="messages.length === 0"
     />
   </div>
