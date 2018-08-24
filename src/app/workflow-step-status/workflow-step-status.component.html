@@ -1,0 +1,36 @@
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->
+<div class="step-status">
+  <div class="job-status-tabs">
+    <div class="job-status-tab"
+         *ngFor="let key of keys(step.wizard.performJobfiles)"
+         [ngClass]="{'job-status-tab-active': key === activeTabKey}"
+      (click)="activeTabKey = key">
+      {{step.wizard.performJobfiles[key].ddname}}
+    </div>
+    <workflow-refresh-button buttonSize="28" iconSize="18" theme="dark" title="Refresh Output" (onClick)="updateJobStatus()"
+      [hidden]="step.state !== 'Submitted'"></workflow-refresh-button>
+  </div>
+  <div class="spool-files">
+    <div class="spool-file"
+         *ngFor="let key of keys(step.wizard.performJobfiles)"
+         [ngClass]="{'spool-file-active': key === activeTabKey}">{{step.wizard.performJobfiles[key].spoolFile}}</div>
+  </div>
+  <zlux-veil [isEnabled]="isWizardVeilEnabled" [enableSpinner]="true"></zlux-veil>
+</div>
+<!-- 
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+-->

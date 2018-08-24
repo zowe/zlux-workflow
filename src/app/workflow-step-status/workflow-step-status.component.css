@@ -1,0 +1,119 @@
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  overflow: hidden;
+  height: 100%;
+}
+
+.step-status {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: stretch;
+  overflow: hidden;
+  height: 100%;
+}
+
+.job-status-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-status-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.job-status-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  background-color: #F5F5F5;
+}
+
+.job-status-tab {
+  align-items: center;
+  background-color: #ffffff;
+  color: #464646;
+  border-color: #6D6D6D;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 22px;
+  width: 117px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.job-status-tab:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-left-width: 1px;
+  margin-left: 24px;
+}
+
+.job-status-tab:nth-last-child(2) {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-right: 5px;
+}
+
+.job-status-tab-active {
+  background-color: #157CBD;
+  color: #ffffff;
+}
+
+.spool-files {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.spool-file {
+  color: #464646;
+  display: none;
+  flex: 1 1 auto;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: normal;
+  overflow: scroll;
+  padding: 5px;
+  white-space: pre;
+}
+
+.spool-file-active {
+  display: flex;
+}
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/

@@ -1,0 +1,16 @@
+<div class="workflow-step-general">
+  <div class="workflow-step-general-title-area">
+    <label class="workflow-field-label" 
+    i18n="title|Title of the workflow step@@workflow-step-title">Title</label>
+    <div class="workflow-step-general-title">{{step.title}}</div>
+  </div>
+  <div class="workflow-step-description-area">
+    <label class="workflow-field-label"
+    i18n="description|Description of the workflow step@@workflow-step-description">Description</label>
+    <textarea readonly class="workflow-step-general-description">{{step.description}}</textarea>
+  </div>
+  <div class="workflow-step-substep-area">
+    <div class=workflow-field-div></div>
+    <div class="workflow-step-substeps"></div><!-- maybe another component? -->
+  </div>
+</div>

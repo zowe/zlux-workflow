@@ -1,5 +1,4 @@
 
-
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -10,28 +9,23 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import { WorkflowStep } from "./workflow-step";
+export class WorkflowStepPluginAction {
+  action: 'embedPlugin' | 'runPlugin';
+  pluginIdentifier: string;
+  inputMap?: VariablesMap;
+  outputMap?: VariablesMap;
 
-export enum WorkflowStepActionType {
-  selectView,
-  modifyStep
-}
+  constructor(jsonAction: any) {
+    this.updateFromJson(jsonAction);
+  }
 
-export enum WorkflowStepActionID {
-  general,
-  perform,
-  status,
-  details
-}
-
-export class WorkflowStepAction {
-
-  constructor(readonly actionType: WorkflowStepActionType,
-              readonly actionID: WorkflowStepActionID,
-              readonly step: WorkflowStep) {
+  updateFromJson(jsonAction: any): void {
+    Object.assign(this, jsonAction);
   }
 }
 
+export type VariablesMap = {[workflowVariable: string]: string};
+
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -41,4 +35,3 @@ export class WorkflowStepAction {
   
   Copyright Contributors to the Zowe Project.
 */
-

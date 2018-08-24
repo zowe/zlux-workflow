@@ -9,8 +9,7 @@
   
   Copyright Contributors to the Zowe Project.
 */
-
-import {WorkflowStepAction, VariablesMap } from './workflow-step-action';
+import {WorkflowStepPluginAction, VariablesMap } from './workflow-step-plugin-action';
 import { Workflow } from './workflow';
 import { WorkflowVariable } from './workflow-variable';
 import { Wizard } from './wizard';
@@ -20,7 +19,7 @@ export class WorkflowStep {
   wizard: Wizard;
   'variable-references'?: any;
   name: string;
-  specificAction?: WorkflowStepAction;
+  specificAction?: WorkflowStepPluginAction;
   workflow: Workflow = null;
   variables: WorkflowVariable[] = [];
   state: string;
@@ -56,7 +55,7 @@ export class WorkflowStep {
     return this.specificAction != null;
   }
 
-  getSpecificAction(): WorkflowStepAction {
+  getSpecificAction(): WorkflowStepPluginAction {
     return this.specificAction;
   }
 
@@ -84,7 +83,7 @@ export class WorkflowStep {
       if (specificActionStartPos >= 0 && specificActionEndPos > specificActionStartPos) {
         specificActionJson = JSON.parse(this.instructions.substring(specificActionStartPos + markerLen, specificActionEndPos));
         logger.info(`found a specific action for step ${this.name} with JSON ${specificActionJson}`);
-        this.specificAction = new WorkflowStepAction(specificActionJson);
+        this.specificAction = new WorkflowStepPluginAction(specificActionJson);
         this.instructions = this.instructions.substring(0, specificActionStartPos) + this.instructions.substring(specificActionEndPos + markerLen);
       }
     }

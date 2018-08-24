@@ -3,9 +3,9 @@
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
@@ -29,7 +29,9 @@ import { WorkflowAppLaunchMetadata } from '../shared/workflow-app-launch-metadat
 import { WorkflowListComponent } from '../workflow-list/workflow-list.component';
 import { WorkflowNotificationComponent } from '../workflow-notification/workflow-notification.component';
 import { WorkflowStep } from '../shared/workflow-step';
+import { WorkflowStepAction } from '../shared/workflow-step-action';
 import { WorkflowStepStateFilter } from '../shared/workflow-step';
+import { WorkflowStepContainerComponent} from '../workflow-step-container/workflow-step-container.component';
 import { WorkflowStepWizardComponent } from '../workflow-step-wizard/workflow-step-wizard.component';
 import { WorkflowTaskListComponent } from '../workflow-task-list/workflow-task-list.component';
 import { WorkflowView } from '../shared/workflow-view';
@@ -62,6 +64,9 @@ export class WorkflowAppComponent implements AfterContentInit {
 
   @ViewChild('workflowstepwizard')
   workflowStepWizardComponent: WorkflowStepWizardComponent;
+
+  @ViewChild('workflowstepcontainer')
+  workflowStepContainerComponent: WorkflowStepContainerComponent;
 
   @ViewChild('zosmflogin')
   zosmfLoginComponent: ZosmfLoginComponent;
@@ -118,8 +123,9 @@ export class WorkflowAppComponent implements AfterContentInit {
     }
   }
 
-  onStepSelected(step: WorkflowStep): void {
-    this.selectedStep = step;
+  onStepSelectedAction(stepAction: WorkflowStepAction): void {
+    this.selectedStep = stepAction.step;
+    this.workflowStepContainerComponent.processStepAction(stepAction);
   }
 
   onWorkflowSelected(workflow: Workflow): void {
@@ -224,8 +230,10 @@ export class WorkflowAppComponent implements AfterContentInit {
     var myHost = this.loginService.host.toString();
     this.windowActions.setTitle(`${nameDefault} (${myHost})`);
   }
-  onStepChangeRequested(step: WorkflowStep): void {
-    this.workflowTaskListComponent.startStep(step);
+
+  onStepChangeRequested(stepAction: WorkflowStepAction): void {
+    this.selectedStep = stepAction.step;
+    this.workflowTaskListComponent.startStep(stepAction);
   }
 
 }
@@ -235,9 +243,9 @@ export class WorkflowAppComponent implements AfterContentInit {
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
