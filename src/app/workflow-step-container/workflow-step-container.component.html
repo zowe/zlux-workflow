@@ -1,0 +1,44 @@
+<div *ngIf="step != null" class="workflow-step-container">
+  <div class="step-container-title">
+    <!-- <div class="step-title">{{step.title}}</div> -->
+    <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
+    <select class="view-selector"
+            [(ngModel)]="selectedView">
+      <option [disabled]="isDisabled('general')" value="general">General</option>
+      <option [disabled]="isDisabled('perform')" value="perform">Perform</option>
+      <option [disabled]="isDisabled('details')" value="details">Details</option>
+      <option [disabled]="isDisabled('notes')" value="notes">Notes</option>
+      <option [disabled]="isDisabled('status')" value="status">Status</option>
+    </select>
+  </div>
+  <div class="step-container-spacer"></div>
+  <zlux-flyover #workflowFlyover>
+      <div class="flyover">
+        <div class="flyover-step-title">
+          <div class="flyover-text">{{step.title}}</div>
+        </div>
+        <div class="flyover-step-info">
+          <div class="flyover-text-small">Corresponding Workflow</div>
+          <div class="flyover-text">{{step.workflow.workflowName}}</div>
+          <div class="flyover-text-small">Step Description</div>
+          <div class="flyover-text">{{step.description}}</div>
+        </div>
+      </div>
+    </zlux-flyover>
+</div>
+<div *ngIf="step != null" class="step-container-body">
+  <workflow-step-general
+      [hidden] = "selectedView !== 'general'"
+      [step]="step">
+  </workflow-step-general>
+  <workflow-step-status
+      [hidden] = "selectedView !== 'status'"
+      [step]="step">
+  </workflow-step-status>
+  <workflow-step-wizard
+      [hidden] = "selectedView !== 'perform'"
+      #workflowstepwizard
+      [step]="step"
+      (stepChangeRequested)="onStepChangeRequested($event)">
+  </workflow-step-wizard>
+  </div>

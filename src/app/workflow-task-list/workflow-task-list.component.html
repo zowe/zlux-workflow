@@ -10,10 +10,11 @@
 -->
 <div class="tasks-header">
   <div class="filter-toolbar" [hidden]="contentHidden">
-    <div class="filter-button" [ngClass]="{'filter-button-active': pendingTasksShown}" (click)="tooglePendingTasks()">Pending</div>
-    <div class="filter-button" [ngClass]="{'filter-button-active': completedTasksShown}" (click)="toogleCompletedTasks()">Completed</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'pending'}" (click)="togglePendingTasks()">Pending</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'completed'}" (click)="toggleCompletedTasks()">Completed</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'all'}" (click)="toggleAllTasks()">All</div>
   </div>
-  <div class="collapse-button" [ngClass]="{'collapsed': contentHidden}" (click)="toogle()"></div>
+  <div class="collapse-button" [ngClass]="{'collapsed': contentHidden}" (click)="toggle()"></div>
 </div>
 <div class="task-list-container" [hidden]="contentHidden">
   <workflow-steps
@@ -21,7 +22,7 @@
     [workflow]="workflow"
     [stateFilter]="stepStateFilter"
     [userid]="userid"
-    (stepSelected)="startStep($event)"
+    (stepSelectedAction)="startStep($event)"
     [selectedStep]="selectedStep">
   </workflow-steps>
 </div>

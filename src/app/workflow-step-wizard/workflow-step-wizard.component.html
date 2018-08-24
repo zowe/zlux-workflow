@@ -9,14 +9,6 @@
   Copyright Contributors to the Zowe Project.
 -->
 <div class="wizard-header">
-  <div class="wizard-title">
-    <!-- <div class="step-title">{{step.title}}</div> -->
-    <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
-    <div class="view-selector">
-      <div class="view-selector-title">General</div>
-      <div class="view-selector-arrow"></div>
-    </div>
-  </div>
   <div class="wizard-spacer"></div>
   <div class="wizard-scheme">
     <div class="wizard-scheme-steps">
@@ -89,42 +81,8 @@
     </div>
   </div>
   <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_VIEW_OUTPUT">
-    <div class="job-status">
-      <!-- <div class="job-status-summary">
-        <div class="job-status-item" *ngFor="let key of keys(step.wizard.performJobstatus)">
-          <div class="job-status-item-key">{{key}}</div>
-          <div class="job-status-item-value">{{step.wizard.performJobstatus[key]}}</div>
-        </div>
-      </div> -->
-      <div class="job-status-tabs">
-        <div class="job-status-tab" *ngFor="let key of keys(step.wizard.performJobfiles)" [ngClass]="{'job-status-tab-active': key === activeTabKey}" (click)="activeTabKey = key">
-          {{step.wizard.performJobfiles[key].ddname}}
-        </div>
-        <workflow-refresh-button
-          buttonSize="28"
-          iconSize="18"
-          theme="dark"
-          title="Refresh Output"
-          (onClick)="updateJobStatus()"
-          [hidden]="step.state !== 'Submitted'"
-        ></workflow-refresh-button>
-      </div>
-      <div class="spool-files">
-        <div class="spool-file" *ngFor="let key of keys(step.wizard.performJobfiles)" [ngClass]="{'spool-file-active': key === activeTabKey}">{{step.wizard.performJobfiles[key].spoolFile}}</div>
-      </div>
-    </div>
+    <workflow-step-status class="job-status" #workflowstepstatus [step]=step></workflow-step-status>
   </div>
-  <zlux-flyover #workflowFlyover>
-    <div class="flyover">
-      <div class="flyover-step-title">
-        <div class="flyover-text">{{step.title}}</div>
-      </div>
-      <div class="flyover-step-info">
-        <div class="flyover-text-small">Corresponding Workflow</div>
-        <div class="flyover-text">{{step.workflow.workflowName}}</div>
-      </div>
-    </div>
-  </zlux-flyover>
   <zlux-veil [isEnabled]="isWizardVeilEnabled" [enableSpinner]="true"></zlux-veil>
 </div>
 <!-- 

@@ -113,6 +113,7 @@
   flex-direction: row;
   height: 4px;
   background-color: #CCD2D5;
+  justify-content: left;
   border-radius: 2px;
 }
 

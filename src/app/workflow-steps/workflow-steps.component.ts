@@ -19,6 +19,7 @@ import {
   transition
 } from '@angular/animations';
 import {WorkflowStep, WorkflowStepStateFilter} from '../shared/workflow-step';
+import {WorkflowStepAction, WorkflowStepActionType, WorkflowStepActionID} from '../shared/workflow-step-action';
 import {Workflow} from '../shared/workflow';
 import {logger} from '../shared/logger';
 
@@ -54,7 +55,7 @@ export class WorkflowStepsComponent implements OnInit {
   @Input() userid: string;
   @Input() shownStates: string[] = [];
   @Input() stateFilter: WorkflowStepStateFilter = {};
-  @Output() stepSelected = new EventEmitter<WorkflowStep>();
+  @Output() stepSelectedAction = new EventEmitter<WorkflowStepAction>();
   @Input() selectedStep: WorkflowStep;
   @Input() collapsed: string = "no";
   hoveredStep: WorkflowStep;
@@ -68,27 +69,55 @@ export class WorkflowStepsComponent implements OnInit {
   } = {
     Ready: {
       title: 'Perform',
-      click: (step: WorkflowStep) => this.startStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.perform,
+        step))
     },
     Failed: {
       title: 'Check',
-      click: (step: WorkflowStep) => this.startStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.status,
+        step))
     },
     Complete: {
       title: 'Check',
-      click: (step: WorkflowStep) => this.startStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.status,
+        step))
+    },
+    SimpleComplete: { // avoid trying to show ouput when there is none
+      // there's nothing really to 'Check', so perhaps it would be good
+      // to find a better label. Also, maybe we should "Details" once that
+      // has been implemented
+      title: 'Check',
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.general,
+        step))
     },
     Submitted: {
       title: 'Check',
-      click: (step: WorkflowStep) => this.startStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.status,
+        step))
     },
     Assigned: {
       title: 'Accept',
-      click: (step: WorkflowStep) => this.acceptStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.general,
+        step))
     },
     'Not Ready': {
       title: 'Assign',
-      click: (step: WorkflowStep) => this.assignStep(step)
+      click: (step: WorkflowStep) =>
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.general,
+        step))
     },
     'In Progress': {
       title: 'Check',
@@ -112,9 +141,20 @@ export class WorkflowStepsComponent implements OnInit {
 
   ngOnInit() {}
 
-  startStep(step: WorkflowStep): void {
-    logger.info(`start step ${step.name}`);
-    this.stepSelected.emit(step);
+  startStep(stepAction: WorkflowStepAction): void {
+    logger.info(`workflow-steps: start step ${stepAction.step.name}`);
+    this.stepSelectedAction.emit(stepAction);
+  }
+
+  // mapping of step state and type to default action is
+  // quite indirect at this point.
+  // We should probably make this more "rational" (and easier to understand)
+  mapStepStateToDefaultAction(step: WorkflowStep): string {
+    if (step.state === 'Complete' && step.isSimpleStep()) {
+      return 'SimpleComplete';
+    } else {
+      return step.state;
+    }
   }
 
   acceptStep(step: WorkflowStep): void {
@@ -179,7 +219,7 @@ export class WorkflowStepsComponent implements OnInit {
     if (
       ["Ready", "Failed", "Complete", "Submitted"].indexOf(step.state) !== -1
     ) {
-      this.startStep(step);
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView, WorkflowStepActionID.general, step));
     } else if (step.state === "Assigned") {
       this.acceptStep(step);
     }

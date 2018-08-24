@@ -1,3 +1,13 @@
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
 import {
   animate,
   state,
@@ -19,19 +29,8 @@ import {
   WorkflowStep,
   WorkflowStepStateFilter
   } from '../shared/workflow-step';
+import {WorkflowStepAction} from '../shared/workflow-step-action';
 import { WorkflowStepsComponent } from '../workflow-steps/workflow-steps.component';
-
-
-/*
-  This program and the accompanying materials are
-  made available under the terms of the Eclipse Public License v2.0 which accompanies
-  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
-  SPDX-License-Identifier: EPL-2.0
-  
-  Copyright Contributors to the Zowe Project.
-*/
-
 
 @Component({
   selector: 'workflow-task-list',
@@ -63,40 +62,41 @@ import { WorkflowStepsComponent } from '../workflow-steps/workflow-steps.compone
   ]
 })
 
+
 export class WorkflowTaskListComponent implements OnInit {
   @Input() workflows: Workflow[];
   @Input() userid: string;
   @Input() shownStates: string[] = [];
   @Input() collapsed: string = 'no';
-  @Output() stepSelected = new EventEmitter<WorkflowStep>();
+  @Input() selectedStep: WorkflowStep;
+  @Output() stepSelectedAction = new EventEmitter<WorkflowStepAction>();
   private pendingTasksShown: boolean = false;
   private completedTasksShown: boolean = false;
   private readonly pendingStates: string[] = ['Assigned', 'Ready', 'Failed', 'Submitted', 'Assigned', 'Not Ready', 'In Progress'];
   private readonly completedStates: string[] = ['Complete', 'Skipped', 'Complete (Override)'];
   private stepStateFilter: WorkflowStepStateFilter = {};
   private contentHidden: boolean = false;
+  private filterState: string = 'pending'; //FilterState = FilterState.pending;
 
-  private selectedStep: WorkflowStep;
   @HostBinding('@collapsed') get getCollapsed(): string {
     return this.collapsed;
   }
-
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.tooglePendingTasks();
+    this.togglePendingTasks();
   }
 
-  startStep(step: WorkflowStep): void {
-    logger.info(`start step ${step.name}`);
-    this.selectedStep = step;
-    this.stepSelected.emit(step);
+  startStep(stepAction: WorkflowStepAction): void {
+    logger.info(`workflow-task-list: start step ${stepAction.step.name}`);
+    this.selectedStep = stepAction.step;
+    this.stepSelectedAction.emit(stepAction);
   }
 
-  toogle(): void {
+  toggle(): void {
     if (this.collapsed === 'yes') {
       this.contentHidden = false;
       this.collapsed = 'no';
@@ -104,17 +104,37 @@ export class WorkflowTaskListComponent implements OnInit {
       this.collapsed = 'yes';
       this.contentHidden = true;
     }
-    console.log(`toogle ${this.collapsed}`);
+    console.log(`toggle ${this.collapsed}`);
   }
 
-  tooglePendingTasks(): void {
-    this.pendingTasksShown = !this.pendingTasksShown;
-    this.pendingStates.forEach(state => this.stepStateFilter[state] = this.pendingTasksShown);
+  // When I switched from toggle with completed/pending to radio behavior
+  // with pending/completed/all, I didn't want to spend the time to refactor properly,
+  // so these three toggle functions are not necessarily the best solution.
+  // I also wanted to use an enum, but I had trouble figuring out how to use it
+  // in the template.
+
+//  enum FilterState {
+//    pending = "pending",
+//    completed = "completed",
+//    all = "all"
+//  }
+
+togglePendingTasks(): void {
+    this.filterState = 'pending';
+    this.pendingStates.forEach(state => this.stepStateFilter[state] = true);
+    this.completedStates.forEach(state => this.stepStateFilter[state] = false);
   }
 
-  toogleCompletedTasks(): void {
-    this.completedTasksShown = !this.completedTasksShown;
-    this.completedStates.forEach(state => this.stepStateFilter[state] = this.completedTasksShown);
+  toggleCompletedTasks(): void {
+    this.filterState = 'completed';
+    this.pendingStates.forEach(state => this.stepStateFilter[state] = false);
+    this.completedStates.forEach(state => this.stepStateFilter[state] = true);
+  }
+
+  toggleAllTasks(): void {
+    this.filterState = 'all';
+    this.pendingStates.forEach(state => this.stepStateFilter[state] = true);
+    this.completedStates.forEach(state => this.stepStateFilter[state] = true);
   }
 
 }
