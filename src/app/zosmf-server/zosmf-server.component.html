@@ -1,20 +1,20 @@
 
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
 <form class="config-form" #configForm="ngForm" [ngClass]="getFormClass()">
-  <div for="host" class="host-label">Host</div>
+  <div for="host" class="host-label" i18n="label|Title of Z/osmf host label@@host-label">Host</div>
   <div class="host">
     <input type="text" zluxInputText [dark]="isDark()" class="host-input" name="host" required spellcheck="false" [(ngModel)]="zosmfServer.host" autocomplete="off"
       #host="ngModel">
   </div>
-  <div for="port" class="port-label">Port</div>
+  <div for="port" class="port-label" i18n="label|Title of Z/osmf port label@@port-label">Port</div>
   <div class="port">
     <input type="number" zluxInputText [dark]="isDark()" class="port-input" name="port" min="1" max="65535" required [(ngModel)]="zosmfServer.port" #port="ngModel">
   </div>
@@ -22,20 +22,30 @@
   <div class="status-indicator-text" [ngClass]="getStatusIndicatorTextClass()">{{status}}</div>
   <div class="free-space"></div>
   <div class="buttons">
-    <button type="button" class="button button-theme-{{theme}}" [disabled]="!configForm.form.valid" (click)="test()" title="Test connection">Test</button>
+    <button type="button" class="button button-theme-{{theme}}" [disabled]="!configForm.form.valid" (click)="test()"
+      i18n-title="tooltip|Tooltip of Test Connection button@@test-tooltip"
+      i18n="title|Title of Test Connection button@@test-title"
+      title="Test connection"
+    >Test</button>
     <div class="button-spacer" [style.visibility]="getButtonVisibilityStyle()"></div>
     <button type="button" [style.visibility]="getButtonVisibilityStyle()" class="button" [disabled]="!configForm.form.valid" (click)="setAsDefault()"
-      title="Set as active z/OSMF server">Set as active server</button>
+      i18n-title="tooltip|Tooltip of Set as active z/OSMF server button@@set-active-tooltip"
+      title="Set as active z/OSMF server"
+      i18n="title|Title of Set as active z/OSMF server button@@set-active-title"
+      >Set as active server</button>
     <div class="button-spacer" [style.visibility]="getButtonVisibilityStyle()"></div>
-    <button type="button" [style.visibility]="getButtonVisibilityStyle()" class="button button-remove" (click)="remove()" title="Remove">&times;</button>
+    <button type="button" [style.visibility]="getButtonVisibilityStyle()" class="button button-remove" (click)="remove()"
+      i18n-title="tooltip|Tooltip of Remove Server button@@remove-server-tooltip"
+      title="Remove"
+    > &times;</button>
   </div>
 </form>
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
