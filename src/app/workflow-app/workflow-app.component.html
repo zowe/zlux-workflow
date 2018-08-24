@@ -10,7 +10,7 @@
 -->
 <div class="workflow-container">
   <div class="workflow-menu">
-    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()">My tasks</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()" i18n="main main|My tasks menu item@@myTasks">My tasks</div>
     <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Workflows'}" class="workflow-menu-item" (click)="showWorkflows()">Workflows</div>
     <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Warnings'}" class="workflow-menu-item" (click)="showWarnings()">Warnings</div>
     <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Configuration'}" class="workflow-menu-item" (click)="showConfiguration()">Configuration</div>

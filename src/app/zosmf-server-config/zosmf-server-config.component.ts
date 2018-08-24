@@ -39,7 +39,7 @@ import { ZluxPopupManagerService, ZluxErrorSeverity } from '@zlux/widgets';
   ]
 })
 export class ZosmfServerConfigComponent {
-  private config: ZosmfServerConfig = {
+  config: ZosmfServerConfig = {
     defaultZosmfServer: null,
     zosmfServers: []
   };

@@ -17,6 +17,7 @@ import {
   ElementRef,
   EventEmitter,
   Inject,
+  Injector,
   Input,
   OnChanges,
   OnInit,
@@ -73,10 +74,11 @@ export class WorkflowStepWizardComponent
   private initialized: boolean = false;
   public wizardStepTypes = WizardStepType;
   private embeddedInstance: EmbeddedInstance;
-  private activeTabKey = null;
-  private isWizardVeilEnabled = false;
-  private isJCLEditable = false;
+  activeTabKey = null;
+  isWizardVeilEnabled = false;
+  isJCLEditable = false;
   private nextWorkflowStep: WorkflowStep = null;
+  private applicationManager: MVDHosting.ApplicationManagerInterface;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -85,10 +87,11 @@ export class WorkflowStepWizardComponent
     @Optional()
     @Inject(Angular2InjectionTokens.PLUGIN_EMBED_ACTIONS)
     private embedActions: Angular2PluginEmbedActions,
-    @Inject(MVDHosting.Tokens.ApplicationManagerToken)
-    private applicationManager: MVDHosting.ApplicationManagerInterface,
+    private injector: Injector,
     private loginService: ZosmfLoginService
-  ) {}
+  ) {
+    this.applicationManager = injector.get(MVDHosting.Tokens.ApplicationManagerToken);
+  }
 
   ngOnInit(): void {}
 
@@ -428,7 +431,7 @@ export class WorkflowStepWizardComponent
     this.isWizardVeilEnabled = false;
   }
 
-  private editOrSaveJCL(): void {
+  editOrSaveJCL(): void {
     this.isJCLEditable = !this.isJCLEditable;
     if (this.isJCLEditable) {
       this.step.wizard.fileContentsForEditor = this.step.wizard.fileContents;
@@ -438,7 +441,7 @@ export class WorkflowStepWizardComponent
     }
   }
 
-  private discardJCL(): void {
+  discardJCL(): void {
     this.isJCLEditable = false;
     this.step.wizard.fileContentsForEditor = this.step.wizard.fileContents;
   }

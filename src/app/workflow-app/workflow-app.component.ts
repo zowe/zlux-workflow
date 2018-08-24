@@ -78,13 +78,13 @@ export class WorkflowAppComponent implements AfterContentInit {
   selectedStep: WorkflowStep = null;
   selectedWorkflow: Workflow;
   myTasksActive = true;
-  private loggedIn: boolean = false;
-  private userid: string;
-  private configured: boolean = false;
-  private defaultZosmfServer: ZosmfServer;
-  private nextWorkflowStepIsReady: boolean = false;
-  private viewCreateWorkflow: boolean = false;
-  private activeMenuItem: WorkflowView = 'My Tasks';
+  loggedIn: boolean = false;
+  userid: string;
+  configured: boolean = false;
+  defaultZosmfServer: ZosmfServer;
+  nextWorkflowStepIsReady: boolean = false;
+  viewCreateWorkflow: boolean = false;
+  activeMenuItem: WorkflowView = 'My Tasks';
 
   constructor(
     @Inject(Angular2InjectionTokens.LAUNCH_METADATA) private launchMetadata: WorkflowAppLaunchMetadata,
@@ -92,7 +92,7 @@ export class WorkflowAppComponent implements AfterContentInit {
     @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition,
     private configService: ZosmfServerConfigService,
     private loggerService: LoggerService,
-    private globalVeilService: GlobalVeilService,
+    public globalVeilService: GlobalVeilService,
     private loginService: ZosmfLoginService,
     private zosmfWorkflowService: ZosmfWorkflowService
   ) {

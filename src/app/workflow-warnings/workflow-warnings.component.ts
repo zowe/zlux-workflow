@@ -40,7 +40,7 @@ export class WorkflowWarningsComponent implements AfterContentInit {
   @Input() messageObservable: Observable<Message>;
   @ViewChild('grid') grid: ZluxGridComponent;
   @ViewChild('paginator') paginator: ZluxPaginatorComponent;
-  private messagesPerPage: number = 15;
+  messagesPerPage: number = 15;
   private readonly displayHints = {
     isCustomTemplating: true,
     // note: custom templating doesn't work without formatParameters
@@ -49,7 +49,7 @@ export class WorkflowWarningsComponent implements AfterContentInit {
     }
   };
 
-  private columnMetaData: any = {
+  columnMetaData: any = {
     columnMetaData: [
       {
         columnIdentifier: 'code',
@@ -93,10 +93,10 @@ export class WorkflowWarningsComponent implements AfterContentInit {
       }
     ]
   };
-  private messages: Message[] = [];
-  private filteredMessages: Message[] = [];
-  private messagesToDisplay: Message[] = [];
-  private searchText: string;
+  messages: Message[] = [];
+  filteredMessages: Message[] = [];
+  messagesToDisplay: Message[] = [];
+  searchText: string;
 
   constructor(
     private loggerService: LoggerService,
@@ -123,40 +123,40 @@ export class WorkflowWarningsComponent implements AfterContentInit {
     setTimeout(_ => this.updateRowsPerPage(), 0);
   }
 
-  private onSearchTextChanged(): void {
+  onSearchTextChanged(): void {
     this.initMessageList();
   }
 
-  private cancelSearch(): void {
+  cancelSearch(): void {
     if (this.searchText) {
       this.searchText = null;
       this.initMessageList();
     }
   }
 
-  private initMessageList(): void {
+  initMessageList(): void {
     this.paginator.changePage(0);
     this.filteredMessages = this.search(this.messages, this.searchText);
     this.messagesToDisplay = this.filteredMessages.slice(0, this.messagesPerPage);
   }
 
-  private onPageChange(event: {first: number, rows: number}): void {
+  onPageChange(event: {first: number, rows: number}): void {
     logger.debug(`onPageChange ${JSON.stringify(event)}`);
     this.messagesPerPage = event.rows;
     this.messagesToDisplay = this.filteredMessages.slice(event.first, event.first + event.rows);
   }
 
-  private onRowsPerPageChange(newMessagesPerPage: number): void {
+  onRowsPerPageChange(newMessagesPerPage: number): void {
     logger.debug(`new value for messages per page: ${newMessagesPerPage}, old: ${this.messagesPerPage}`);
     setTimeout(_ => this.onPageChange({ first: this.paginator.pageIndex * newMessagesPerPage, rows: newMessagesPerPage }));
   }
 
-  private updateRowsPerPage(): void {
+  updateRowsPerPage(): void {
     logger.debug(`about to updateRowsPerPage`);
     this.grid.updateRowsPerPage();
   }
 
-  private search(messages: Message[], searchText: string): Message[] {
+  search(messages: Message[], searchText: string): Message[] {
     if (!messages) {
       return [];
     }
@@ -172,7 +172,7 @@ export class WorkflowWarningsComponent implements AfterContentInit {
     });
   }
 
-  private getMessageType(warning: Message): string {
+  getMessageType(warning: Message): string {
     const code = warning.code;
     if (code) {
       return code[code.length - 1];
@@ -180,7 +180,7 @@ export class WorkflowWarningsComponent implements AfterContentInit {
     return '';
   }
 
-  private getEmptyMesssage(): string {
+  getEmptyMesssage(): string {
     if (this.searchText) {
       return 'No warnings match';
     }
