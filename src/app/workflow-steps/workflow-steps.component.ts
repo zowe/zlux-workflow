@@ -4,9 +4,9 @@
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
@@ -61,82 +61,6 @@ export class WorkflowStepsComponent implements OnInit {
   hoveredStep: WorkflowStep;
   hoveredWorkflow: Workflow;
 
-  private actions: {
-    [state: string]: {
-      title: string,
-      click: (step: WorkflowStep) => void
-    }
-  } = {
-    Ready: {
-      title: 'Perform',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.perform,
-        step))
-    },
-    Failed: {
-      title: 'Check',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.status,
-        step))
-    },
-    Complete: {
-      title: 'Check',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.status,
-        step))
-    },
-    SimpleComplete: { // avoid trying to show ouput when there is none
-      // there's nothing really to 'Check', so perhaps it would be good
-      // to find a better label. Also, maybe we should "Details" once that
-      // has been implemented
-      title: 'Check',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.general,
-        step))
-    },
-    Submitted: {
-      title: 'Check',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.status,
-        step))
-    },
-    Assigned: {
-      title: 'Accept',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.general,
-        step))
-    },
-    'Not Ready': {
-      title: 'Assign',
-      click: (step: WorkflowStep) =>
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.general,
-        step))
-    },
-    'In Progress': {
-      title: 'Check',
-      click: (step: WorkflowStep) => {}
-    },
-    'Skipped': {
-      title: 'Check',
-      click: (step: WorkflowStep) => {}
-    },
-    'Unassigned': {
-      title: 'Assign',
-      click: (step: WorkflowStep) => {}
-    },
-    'Complete (Override)': {
-      title: 'Check',
-      click: (step: WorkflowStep) => {}
-    }
-  };
-
   constructor() {}
 
   ngOnInit() {}
@@ -144,17 +68,6 @@ export class WorkflowStepsComponent implements OnInit {
   startStep(stepAction: WorkflowStepAction): void {
     logger.info(`workflow-steps: start step ${stepAction.step.name}`);
     this.stepSelectedAction.emit(stepAction);
-  }
-
-  // mapping of step state and type to default action is
-  // quite indirect at this point.
-  // We should probably make this more "rational" (and easier to understand)
-  mapStepStateToDefaultAction(step: WorkflowStep): string {
-    if (step.state === 'Complete' && step.isSimpleStep()) {
-      return 'SimpleComplete';
-    } else {
-      return step.state;
-    }
   }
 
   acceptStep(step: WorkflowStep): void {
@@ -238,16 +151,6 @@ export class WorkflowStepsComponent implements OnInit {
     }
   }
 
-  getStepActionTitle(step: WorkflowStep): string {
-    const action = this.actions[step.state];
-    if (action) {
-      return action.title;
-    } else {
-      logger.warn(`Unknown step state ${step.state}`);
-      return null;
-    }
-  }
-
   @HostBinding('hidden') get getHidden(): boolean {
     return this.getAssignedStepCount() < 1;
   }
@@ -259,15 +162,31 @@ export class WorkflowStepsComponent implements OnInit {
   onWorkflowHover(event: Event, workflow: Workflow) {
     this.hoveredWorkflow = workflow;
   }
+
+  performStep(step: WorkflowStep) {
+    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+      WorkflowStepActionID.perform, step));
+  }
+
+  checkStepStatus(step: WorkflowStep) {
+    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+      WorkflowStepActionID.status, step));
+  }
+
+  showStepInfo(step: WorkflowStep) {
+    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+      WorkflowStepActionID.general,
+      step));
+  }
 }
 
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
