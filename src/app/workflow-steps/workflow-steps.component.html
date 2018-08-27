@@ -17,11 +17,25 @@
   <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
 </div>
 <div class="step-group" [@collapsed]="collapsed">
-  <div class="step" *ngFor="let step of workflow.steps;" [@collapsed]="getStepCollapsedState(step)" [ngClass]="getStepClass(step)">
+  <ng-container class="step" *ngFor="let step of workflow.steps;" [@collapsed]="getStepCollapsedState(step)" [ngClass]="getStepClass(step)">
     <div class="selector" [ngClass]="{'selector-active': step === selectedStep}"></div>
     <div class="step-icon" [ngClass]="getStepIconClass(step)"></div>
     <div class="step-title" [ngClass]="{'step-title-active': step === selectedStep}"><span zluxFlyover [flyover]="stepFlyover" (mouseenter)="onStepHover($event, step)" position="bottom">{{step.title}}</span></div>
-    <div class="action-button" (click)="actions[mapStepStateToDefaultAction(step)].click(step)">{{this.getStepActionTitle(step)}}</div>
+    <ng-container  [ngSwitch]="step.state">
+      <div class="action-button" *ngSwitchCase="'Ready'" (click)="performStep(step)" i18n="button label|Label for a button that starts a wizard for Workflow Step@@perform-button-label">Peform</div>
+      <div class="action-button" *ngSwitchCase="'Failed'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      <ng-container *ngSwitchCase="'Complete'">
+        <div class="action-button" *ngIf="step.isJclStep()" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+        <div class="action-button" *ngIf="step.isSimpleStep()" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      </ng-container>
+      <div class="action-button" *ngSwitchCase="'Submitted'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      <div class="action-button" *ngSwitchCase="'Assigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that accepts Workflow Stepe@@accept-button-label">Accept</div>
+      <div class="action-button" *ngSwitchCase="'Not Ready'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
+      <div class="action-button" *ngSwitchCase="'In Progress'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      <div class="action-button" *ngSwitchCase="'Skipped'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      <div class="action-button" *ngSwitchCase="'Unassigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
+      <div class="action-button" *ngSwitchCase="'Complete (Override)'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+    </ng-container>
     <!-- Did have a "dots-menu" here, but feel that changing the button to a dropdown button is better -->
   </div>
 </div>
