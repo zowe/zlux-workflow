@@ -14,10 +14,11 @@
     <div class="assigned-task-count" i18n="label|Label with a number of tasks assigned to the user@@tasks-assigned-message">
       {getAssignedStepCount(), plural, =0 {no tasks} =1 {one task} other {{{getAssignedStepCount()}} tasks}} assigned
     </div>
-  <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
+    <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
+  </div>
 </div>
 <div class="step-group" [@collapsed]="collapsed">
-  <ng-container class="step" *ngFor="let step of workflow.steps;" [@collapsed]="getStepCollapsedState(step)" [ngClass]="getStepClass(step)">
+  <div class="step" *ngFor="let step of workflow.steps;" [@collapsed]="getStepCollapsedState(step)" [ngClass]="getStepClass(step)">
     <div class="selector" [ngClass]="{'selector-active': step === selectedStep}"></div>
     <div class="step-icon" [ngClass]="getStepIconClass(step)"></div>
     <div class="step-title" [ngClass]="{'step-title-active': step === selectedStep}"><span zluxFlyover [flyover]="stepFlyover" (mouseenter)="onStepHover($event, step)" position="bottom">{{step.title}}</span></div>
@@ -71,4 +72,9 @@
   SPDX-License-Identifier: EPL-2.0
 
   Copyright Contributors to the Zowe Project.
+-->
+<!--
+<div class="assigned-task-count">
+  {{getAssignedStepCount()}} <ng-container i18n="label|Label for a number of tasks assigned to the user@@tasks-assigned-label">tasks assigned</ng-container>
+</div>
 -->
