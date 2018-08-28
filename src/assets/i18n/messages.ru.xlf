@@ -15,7 +15,7 @@
         </context-group>
         <note priority="1" from="description">of preposition in clause n-m of total</note>
       </trans-unit><trans-unit id="workflow-list-header" datatype="html">
-        <source>All Workflows</source><target state="new">All Workflows</target>
+        <source>All Workflows</source><target state="new">Все рабочие процессы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -23,7 +23,7 @@
         <note priority="1" from="description">Title of Workflow list</note>
         <note priority="1" from="meaning">header</note>
       </trans-unit><trans-unit id="actions-menu" datatype="html">
-        <source>Actions</source><target state="new">Actions</target>
+        <source>Actions</source><target state="new">Действия</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
           <context context-type="linenumber">24</context>
@@ -31,7 +31,7 @@
         <note priority="1" from="description">Title of Actions menu</note>
         <note priority="1" from="meaning">menu</note>
       </trans-unit><trans-unit id="properties-menu-item" datatype="html">
-        <source>Properties</source><target state="new">Properties</target>
+        <source>Properties</source><target state="new">Свойства</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -51,7 +51,7 @@
         <note priority="1" from="description">label of OK button|</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="general-view" datatype="html">
-        <source>General</source><target state="new">General</target>
+        <source>General</source><target state="new">Общие</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -59,7 +59,7 @@
         <note priority="1" from="description">Title of General view</note>
         <note priority="1" from="meaning">view</note>
       </trans-unit><trans-unit id="perform-view" datatype="html">
-        <source>Perform</source><target state="new">Perform</target>
+        <source>Perform</source><target state="new">Выполнение</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -67,7 +67,7 @@
         <note priority="1" from="description">Title of Perform view</note>
         <note priority="1" from="meaning">view</note>
       </trans-unit><trans-unit id="details-view" datatype="html">
-        <source>Details</source><target state="new">Details</target>
+        <source>Details</source><target state="new">Детали</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -75,7 +75,7 @@
         <note priority="1" from="description">Title of Details view</note>
         <note priority="1" from="meaning">view</note>
       </trans-unit><trans-unit id="notes-view" datatype="html">
-        <source>Notes</source><target state="new">Notes</target>
+        <source>Notes</source><target state="new">Заметки</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -83,7 +83,7 @@
         <note priority="1" from="description">Title of Notes view</note>
         <note priority="1" from="meaning">view</note>
       </trans-unit><trans-unit id="status-view" datatype="html">
-        <source>Status</source><target state="new">Status</target>
+        <source>Status</source><target state="new">Статус</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -91,7 +91,7 @@
         <note priority="1" from="description">Title of Status view</note>
         <note priority="1" from="meaning">view</note>
       </trans-unit><trans-unit id="corresponding-workflow" datatype="html">
-        <source>Corresponding Workflow</source><target state="new">Corresponding Workflow</target>
+        <source>Corresponding Workflow</source><target state="new">Связанный рабочий процесс</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">21</context>
@@ -103,7 +103,7 @@
         <note priority="1" from="description">Workflow for the current step</note>
         <note priority="1" from="meaning">flyover text</note>
       </trans-unit><trans-unit id="workflow-step-description" datatype="html">
-        <source>Step Description</source><target state="new">Step Description</target>
+        <source>Step Description</source><target state="new">Описание шага</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
           <context context-type="linenumber">23</context>
@@ -111,7 +111,7 @@
         <note priority="1" from="description">Description of the workflow step</note>
         <note priority="1" from="meaning">flyover text</note>
       </trans-unit><trans-unit id="refresh-output-tooltip" datatype="html">
-        <source>Refresh Output</source><target state="new">Refresh Output</target>
+        <source>Refresh Output</source><target state="new">Обновить Output</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-status/workflow-step-status.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -119,7 +119,7 @@
         <note priority="1" from="description">Tooltip for Refresh job output button></note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="workflow-completed" datatype="html">
-        <source>Workflow Completed</source><target state="new">Workflow Completed</target>
+        <source>Workflow Completed</source><target state="new">Рабочий процесс выполнен</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">22</context>
@@ -127,7 +127,7 @@
         <note priority="1" from="description">The workflow is completed</note>
         <note priority="1" from="meaning">workflow completed</note>
       </trans-unit><trans-unit id="next-workflow-step-not-available" datatype="html">
-        <source>Next Step Not Available</source><target state="new">Next Step Not Available</target>
+        <source>Next Step Not Available</source><target state="new">Следующий шаг недоступен для выполнения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -135,7 +135,7 @@
         <note priority="1" from="description">Next Workflow Step is not available</note>
         <note priority="1" from="meaning">next step not available</note>
       </trans-unit><trans-unit id="finish-workflow-step" datatype="html">
-        <source>Finish</source><target state="new">Finish</target>
+        <source>Finish</source><target state="new">Завершить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -143,7 +143,7 @@
         <note priority="1" from="description">Finish current workflow step</note>
         <note priority="1" from="meaning">finished</note>
       </trans-unit><trans-unit id="next-wizard-step" datatype="html">
-        <source>Next</source><target state="new">Next</target>
+        <source>Next</source><target state="new">Следующий</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">34</context>
@@ -159,7 +159,7 @@
         <note priority="1" from="description">Caption of Next Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
       </trans-unit><trans-unit id="next-workflow-step-title" datatype="html">
-        <source>Next Workflow Step</source><target state="new">Next Workflow Step</target>
+        <source>Next Workflow Step</source><target state="new">Следующий шаг рабочего процесса</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">42</context>
@@ -167,7 +167,7 @@
         <note priority="1" from="description">Title of the Next Workflow Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
       </trans-unit><trans-unit id="enter-variable-values-message" datatype="html">
-        <source>Enter the variable values for this input category.</source><target state="new">Enter the variable values for this input category.</target>
+        <source>Enter the variable values for this input category.</source><target state="new">Введите переменные.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">51</context>
@@ -175,7 +175,7 @@
         <note priority="1" from="description">Title of Input Variables step in Wizard</note>
         <note priority="1" from="meaning">&lt;meaning></note>
       </trans-unit><trans-unit id="discard-jcl-changes" datatype="html">
-        <source>Discard</source><target state="new">Discard</target>
+        <source>Discard</source><target state="new">Отказаться</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">72</context>
@@ -183,7 +183,7 @@
         <note priority="1" from="description">Title of Discard JCL changes button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="edit-jcl" datatype="html">
-        <source>Edit JCL</source><target state="new">Edit JCL</target>
+        <source>Edit JCL</source><target state="new">Редактировать</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">73</context>
@@ -191,7 +191,7 @@
         <note priority="1" from="description">Title of Edit JCL button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="save-jcl" datatype="html">
-        <source>Save</source><target state="new">Save</target>
+        <source>Save</source><target state="new">Сохранить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">74</context>
@@ -217,7 +217,7 @@
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit><trans-unit id="perform-button-label" datatype="html">
-        <source>Peform</source><target state="new">Peform</target>
+        <source>Peform</source><target state="new">Выполнить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">26</context>
@@ -225,7 +225,7 @@
         <note priority="1" from="description">Label for a button that starts a wizard for Workflow Step</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit><trans-unit id="check-button-label" datatype="html">
-        <source>Check</source><target state="new">Check</target>
+        <source>Check</source><target state="new">Проверить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">27</context>
@@ -257,7 +257,7 @@
         <note priority="1" from="description">Label for a button that shows Workflow Step status</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit><trans-unit id="accept-button-label" datatype="html">
-        <source>Accept</source><target state="new">Accept</target>
+        <source>Accept</source><target state="new">Принять</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -265,7 +265,7 @@
         <note priority="1" from="description">Label for a button that accepts Workflow Stepe</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit><trans-unit id="assign-button-label" datatype="html">
-        <source>Assign</source><target state="new">Assign</target>
+        <source>Assign</source><target state="new">Назначить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">34</context>
@@ -277,7 +277,7 @@
         <note priority="1" from="description">Label for a button that shows Assignments Dialog for Workflow Step</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit><trans-unit id="step-status" datatype="html">
-        <source>Status</source><target state="new">Status</target>
+        <source>Status</source><target state="new">Статус</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">50</context>
@@ -285,7 +285,7 @@
         <note priority="1" from="description">Step Status</note>
         <note priority="1" from="meaning">status</note>
       </trans-unit><trans-unit id="workflow-owner" datatype="html">
-        <source>Owner</source><target state="new">Owner</target>
+        <source>Owner</source><target state="new">Владелец</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">54</context>
@@ -293,7 +293,7 @@
         <note priority="1" from="description">Owner of the workflow</note>
         <note priority="1" from="meaning">userid</note>
       </trans-unit><trans-unit id="pending-tasks-filter" datatype="html">
-        <source>Pending</source><target state="new">Pending</target>
+        <source>Pending</source><target state="new">Ожидающие</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -301,7 +301,7 @@
         <note priority="1" from="description">Title of filter button that shows Pending tasks</note>
         <note priority="1" from="meaning">pending tasks</note>
       </trans-unit><trans-unit id="completed-tasks-filter" datatype="html">
-        <source>Completed</source><target state="new">Completed</target>
+        <source>Completed</source><target state="new">Выполненные</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -309,7 +309,7 @@
         <note priority="1" from="description">Title of filter button that shows Completd tasks</note>
         <note priority="1" from="meaning">completed tasks</note>
       </trans-unit><trans-unit id="all-tasks-filter" datatype="html">
-        <source>All</source><target state="new">All</target>
+        <source>All</source><target state="new">Все</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -317,7 +317,7 @@
         <note priority="1" from="description">Title of filter button that shows All tasks</note>
         <note priority="1" from="meaning">all tasks</note>
       </trans-unit><trans-unit id="warnings-title" datatype="html">
-        <source>Warnings</source><target state="new">Warnings</target>
+        <source>Warnings</source><target state="new">Предупреждения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-warnings/workflow-warnings.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -325,7 +325,7 @@
         <note priority="1" from="description">Title of Warnings</note>
         <note priority="1" from="meaning">warnings</note>
       </trans-unit><trans-unit id="login-to-label" datatype="html">
-        <source>Login to </source><target state="new">Login to </target>
+        <source>Login to </source><target state="new">Войти на </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -333,7 +333,7 @@
         <note priority="1" from="description">Login to host label</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="userid-label" datatype="html">
-        <source>User ID</source><target state="new">User ID</target>
+        <source>User ID</source><target state="new">Пользователь</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -341,7 +341,7 @@
         <note priority="1" from="description">Label for User ID text field</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="userid-required-message" datatype="html">
-        <source>User ID is required</source><target state="new">User ID is required</target>
+        <source>User ID is required</source><target state="new">Не указан пользователь</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -349,7 +349,7 @@
         <note priority="1" from="description">Message when User id is empty</note>
         <note priority="1" from="meaning">error message</note>
       </trans-unit><trans-unit id="password-label" datatype="html">
-        <source>Password or pass phrase</source><target state="new">Password or pass phrase</target>
+        <source>Password or pass phrase</source><target state="new">Пароль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -357,7 +357,7 @@
         <note priority="1" from="description">Label for Password text field</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="password-required-message" datatype="html">
-        <source>Password or pass phrase is required</source><target state="new">Password or pass phrase is required</target>
+        <source>Password or pass phrase is required</source><target state="new">Не указан пароль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">38</context>
@@ -365,7 +365,7 @@
         <note priority="1" from="description">Message when Password is empty</note>
         <note priority="1" from="meaning">error message</note>
       </trans-unit><trans-unit id="cancel-title" datatype="html">
-        <source>Cancel</source><target state="new">Cancel</target>
+        <source>Cancel</source><target state="new">Отмена</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">48</context>
@@ -377,7 +377,7 @@
         <note priority="1" from="description">Title of Cancel button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="sign-in-title" datatype="html">
-        <source>Sign in</source><target state="new">Sign in</target>
+        <source>Sign in</source><target state="new">Войти</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
           <context context-type="linenumber">53</context>
@@ -385,7 +385,7 @@
         <note priority="1" from="description">Title of Sign In button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="host-label" datatype="html">
-        <source>Host</source><target state="new">Host</target>
+        <source>Host</source><target state="new">Хост</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -393,7 +393,7 @@
         <note priority="1" from="description">Title of Z/osmf host label</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="port-label" datatype="html">
-        <source>Port</source><target state="new">Port</target>
+        <source>Port</source><target state="new">Порт</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -401,7 +401,7 @@
         <note priority="1" from="description">Title of Z/osmf port label</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="test-title" datatype="html">
-        <source>Test</source><target state="new">Test</target>
+        <source>Test</source><target state="new">Проверить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">29</context>
@@ -409,7 +409,7 @@
         <note priority="1" from="description">Title of Test Connection button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="test-tooltip" datatype="html">
-        <source>Test connection</source><target state="new">Test connection</target>
+        <source>Test connection</source><target state="new">Проверить подключение</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -417,7 +417,7 @@
         <note priority="1" from="description">Tooltip of Test Connection button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="set-active-title" datatype="html">
-        <source>Set as active server</source><target state="new">Set as active server</target>
+        <source>Set as active server</source><target state="new">Установить активным сервером</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -425,7 +425,7 @@
         <note priority="1" from="description">Title of Set as active z/OSMF server button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="set-active-tooltip" datatype="html">
-        <source>Set as active z/OSMF server</source><target state="new">Set as active z/OSMF server</target>
+        <source>Set as active z/OSMF server</source><target state="new">Установить активным z/OSMF сервером</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">33</context>
@@ -433,7 +433,7 @@
         <note priority="1" from="description">Tooltip of Set as active z/OSMF server button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="remove-server-tooltip" datatype="html">
-        <source>Remove</source><target state="new">Remove</target>
+        <source>Remove</source><target state="new">Удалить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">39</context>
@@ -441,7 +441,7 @@
         <note priority="1" from="description">Tooltip of Remove Server button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="active-zosmf-server-label" datatype="html">
-        <source>Active z/OSMF server</source><target state="new">Active z/OSMF server</target>
+        <source>Active z/OSMF server</source><target state="new">Активный z/OSMF сервер</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -449,7 +449,7 @@
         <note priority="1" from="description">Label of Active z/OSMF server|</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="new-server-tooltip" datatype="html">
-        <source>Add new z/OSMF server</source><target state="new">Add new z/OSMF server</target>
+        <source>Add new z/OSMF server</source><target state="new">Добавить новый z/OSMF сервер</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -457,7 +457,7 @@
         <note priority="1" from="description">Tooltip for Add new z/OSMF server button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="reload-title" datatype="html">
-        <source>Reload</source><target state="new">Reload</target>
+        <source>Reload</source><target state="new">Обновить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">26</context>
@@ -465,7 +465,7 @@
         <note priority="1" from="description">Totle for Reload button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="reload-tooltip" datatype="html">
-        <source>Reload this page</source><target state="new">Reload this page</target>
+        <source>Reload this page</source><target state="new">Обновить эту страницу</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">24</context>
@@ -473,7 +473,7 @@
         <note priority="1" from="description">Tooltip for Reload button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="save-title" datatype="html">
-        <source>Save</source><target state="new">Save</target>
+        <source>Save</source><target state="new">Сохранить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">32</context>
@@ -481,7 +481,7 @@
         <note priority="1" from="description">Title for Save this page button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="save-tooltip" datatype="html">
-        <source>Save this page</source><target state="new">Save this page</target>
+        <source>Save this page</source><target state="new">Сохранить эту страницу</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">30</context>
@@ -489,7 +489,7 @@
         <note priority="1" from="description">Tooltip for Save this page button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="test-all-title" datatype="html">
-        <source>Test All</source><target state="new">Test All</target>
+        <source>Test All</source><target state="new">Проверить все</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -505,7 +505,7 @@
         <note priority="1" from="description">Title of OK button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="my-tasks-item" datatype="html">
-        <source>My tasks</source><target state="new">My tasks</target>
+        <source>My tasks</source><target state="new">Мои задачи</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -513,7 +513,7 @@
         <note priority="1" from="description">Title of item that shows user tasks</note>
         <note priority="1" from="meaning">main menu item</note>
       </trans-unit><trans-unit id="workflows-item" datatype="html">
-        <source>Workflows</source><target state="new">Workflows</target>
+        <source>Workflows</source><target state="new">Рабочие процессы</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -521,7 +521,7 @@
         <note priority="1" from="description">Title of item that shows Workflow list</note>
         <note priority="1" from="meaning">main menu item</note>
       </trans-unit><trans-unit id="warnings-item" datatype="html">
-        <source>Warnings</source><target state="new">Warnings</target>
+        <source>Warnings</source><target state="new">Предупреждения</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -529,7 +529,7 @@
         <note priority="1" from="description">Title of item that shows warnings</note>
         <note priority="1" from="meaning">main menu item</note>
       </trans-unit><trans-unit id="configuration-item" datatype="html">
-        <source>Configuration</source><target state="new">Configuration</target>
+        <source>Configuration</source><target state="new">Конфигурация</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">16</context>
@@ -537,7 +537,7 @@
         <note priority="1" from="description">Title of item that shows Configuration for the app</note>
         <note priority="1" from="meaning">main menu item</note>
       </trans-unit><trans-unit id="refresh-tooltip" datatype="html">
-        <source>Refresh</source><target state="new">Refresh</target>
+        <source>Refresh</source><target state="new">Обновить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -545,7 +545,7 @@
         <note priority="1" from="description">Tooltip of Refresh button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="advanced-mode-label" datatype="html">
-        <source>Advanced Mode</source><target state="new">Advanced Mode</target>
+        <source>Advanced Mode</source><target state="new">Расширенный режим</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -556,7 +556,7 @@
         <source>
         Advanced Settings
       </source><target state="new">
-        Advanced Settings
+        Расширенные настройки
       </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
@@ -568,7 +568,7 @@
         <source>
             Workflow definition file
         </source><target state="new">
-            Workflow definition file
+            Файл определения рабочего процесса
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
@@ -580,7 +580,7 @@
         <source>
             System
         </source><target state="new">
-            System
+            Система
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
@@ -592,7 +592,7 @@
         <source>
             Owner
         </source><target state="new">
-            Owner
+            Владелец
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
@@ -601,7 +601,7 @@
         <note priority="1" from="description">Label for Owner of the workflow</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="set-owner-to-current-user-label" datatype="html">
-        <source>Set owner to current user</source><target state="new">Set owner to current user</target>
+        <source>Set owner to current user</source><target state="new">Установить текущего пользователя владельцем</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
           <context context-type="linenumber">84</context>
@@ -609,7 +609,7 @@
         <note priority="1" from="description">Label for Set owner to current user checkbox</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="cancel-button-label" datatype="html">
-        <source>Cancel</source><target state="new">Cancel</target>
+        <source>Cancel</source><target state="new">Отмена</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
           <context context-type="linenumber">108</context>
@@ -617,7 +617,7 @@
         <note priority="1" from="description">Label of Cancel button</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="create-workflow-header" datatype="html">
-        <source>Create Workflow</source><target state="new">Create Workflow</target>
+        <source>Create Workflow</source><target state="new">Создать рабочий процесс</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
           <context context-type="linenumber">11</context>
@@ -625,7 +625,7 @@
         <note priority="1" from="description">Header of Create Workflow dialog</note>
         <note priority="1" from="meaning">dialog header</note>
       </trans-unit><trans-unit id="workflow-step-title-label" datatype="html">
-        <source>Title</source><target state="new">Title</target>
+        <source>Title</source><target state="new">Название</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -633,7 +633,7 @@
         <note priority="1" from="description">Label for workflow step title</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="workflow-step-description-label" datatype="html">
-        <source>Description</source><target state="new">Description</target>
+        <source>Description</source><target state="new">Описание</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -641,7 +641,7 @@
         <note priority="1" from="description">Label for Description of the workflow step</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit>
-      
+
     </body>
   </file>
 </xliff>
