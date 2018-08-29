@@ -166,7 +166,7 @@
         <note priority="1" from="description">Finish current workflow step</note>
         <note priority="1" from="meaning">finished</note>
       <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="next-wizard-step" datatype="html">
-        <source>Next</source><target state="new">Следующий</target>
+        <source>Next</source><target state="new">Далее</target>
 
         <note priority="1" from="description">Move to next wizard step</note>
         <note priority="1" from="meaning">next</note>
@@ -388,7 +388,7 @@
         <note priority="1" from="description">Title of Sign In button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit><trans-unit id="host-label" datatype="html">
-        <source>Host</source><target state="new">Хост</target>
+        <source>Host</source><target state="new">Сервер</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -403,47 +403,64 @@
         </context-group>
         <note priority="1" from="description">Title of Z/osmf port label</note>
         <note priority="1" from="meaning">label</note>
+      </trans-unit><trans-unit id="b1cb67f0a85b89a57ebc2ed7396731e78a752fc4" datatype="html">
+        <source>Online</source><target state="new">Доступен</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">online-status-label</note>
+        <note priority="1" from="meaning">Label indicating that the server is online</note>
+      </trans-unit><trans-unit id="c0ce13a5d6a6f4baae09f208ca71b67f76aae617" datatype="html">
+        <source>Offline</source><target state="new">Недоступен</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">offline-status-label</note>
+        <note priority="1" from="meaning">Label indicating that the server is offline</note>
+      </trans-unit><trans-unit id="4353c7257d39616e6051d7129fbfc842c17e8376" datatype="html">
+        <source>Unknown</source><target state="new">Неизвестно</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">unknown-status-label</note>
+        <note priority="1" from="meaning">Label when availability of the server is unknown</note>
+      </trans-unit><trans-unit id="77f189fd3c83a83930d38950fe23f973b3e99937" datatype="html">
+        <source>Testing</source><target state="new">Проверка...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">testing-status-label</note>
+        <note priority="1" from="meaning">Label when availability of the server is being tested</note>
       </trans-unit><trans-unit id="test-title" datatype="html">
         <source>Test</source><target state="new">Проверить</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
+
         <note priority="1" from="description">Title of Test Connection button</note>
         <note priority="1" from="meaning">title</note>
-      </trans-unit><trans-unit id="test-tooltip" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context><context context-type="linenumber">36</context></context-group></trans-unit><trans-unit id="test-tooltip" datatype="html">
         <source>Test connection</source><target state="new">Проверить подключение</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
+
         <note priority="1" from="description">Tooltip of Test Connection button</note>
         <note priority="1" from="meaning">tooltip</note>
-      </trans-unit><trans-unit id="set-active-title" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context><context context-type="linenumber">35</context></context-group></trans-unit><trans-unit id="set-active-title" datatype="html">
         <source>Set as active server</source><target state="new">Установить активным сервером</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
+
         <note priority="1" from="description">Title of Set as active z/OSMF server button</note>
         <note priority="1" from="meaning">title</note>
-      </trans-unit><trans-unit id="set-active-tooltip" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context><context context-type="linenumber">42</context></context-group></trans-unit><trans-unit id="set-active-tooltip" datatype="html">
         <source>Set as active z/OSMF server</source><target state="new">Установить активным z/OSMF сервером</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
+
         <note priority="1" from="description">Tooltip of Set as active z/OSMF server button</note>
         <note priority="1" from="meaning">tooltip</note>
-      </trans-unit><trans-unit id="remove-server-tooltip" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="remove-server-tooltip" datatype="html">
         <source>Remove</source><target state="new">Удалить</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
+
         <note priority="1" from="description">Tooltip of Remove Server button</note>
         <note priority="1" from="meaning">tooltip</note>
-      </trans-unit><trans-unit id="active-zosmf-server-label" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context><context context-type="linenumber">46</context></context-group></trans-unit><trans-unit id="active-zosmf-server-label" datatype="html">
         <source>Active z/OSMF server</source><target state="new">Активный z/OSMF сервер</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
@@ -492,7 +509,7 @@
         <note priority="1" from="description">Tooltip for Save this page button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="test-all-title" datatype="html">
-        <source>Test All</source><target state="new">Проверить все</target>
+        <source>Test All</source><target state="new">Проверить&nbsp;все</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">41</context>
