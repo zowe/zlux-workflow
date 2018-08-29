@@ -256,9 +256,9 @@
         <note priority="1" from="description">Title of Save JCL button</note>
         <note priority="1" from="meaning">title</note>
       </trans-unit>
-      <trans-unit id="tasks-assigned-message" datatype="html">
+      <trans-unit id="assigned-tasks-message" datatype="html">
         <source>
-      <x id="ICU" equiv-text="{getAssignedStepCount(), plural, =0 {...} =1 {...} other {...}}"/> assigned
+      <x id="ICU" equiv-text="{getAssignedStepCount(), plural, =0 {...} =1 {...} other {...}}"/>
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -267,8 +267,8 @@
         <note priority="1" from="description">Label with a number of tasks assigned to the user</note>
         <note priority="1" from="meaning">label</note>
       </trans-unit>
-      <trans-unit id="29d3ec4ab1ab6ca6d63f8109a31bd13fa885c024" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {no tasks} =1 {one task} other {<x id="INTERPOLATION" equiv-text="{{getAssignedStepCount()}}"/> tasks} }</source>
+      <trans-unit id="0df65f799dd7a99a5d72c8bcf036862d27830f8a" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no tasks assigned} =1 {one task assigned} other {<x id="INTERPOLATION" equiv-text="{{getAssignedStepCount()}}"/> tasks assigned} }</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">15</context>

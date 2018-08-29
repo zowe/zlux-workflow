@@ -11,8 +11,8 @@
 <div class="workflow" (click)="toogle()">
   <div class="workflow-title">
     <div class="workflow-name" zluxFlyover [flyover]="workflowFlyover" (mouseenter)="onWorkflowHover($event, workflow)" position="bottom">{{workflow.workflowName}}</div>
-    <div class="assigned-task-count" i18n="label|Label with a number of tasks assigned to the user@@tasks-assigned-message">
-      {getAssignedStepCount(), plural, =0 {no tasks} =1 {one task} other {{{getAssignedStepCount()}} tasks}} assigned
+    <div class="assigned-task-count" i18n="label|Label with a number of tasks assigned to the user@@assigned-tasks-message">
+      {getAssignedStepCount(), plural, =0 {no tasks assigned} =1 {one task assigned} other {{{getAssignedStepCount()}} tasks assigned}}
     </div>
     <div class="arrow" [ngClass]="{'arrow-closed': collapsed === 'yes'}"></div>
   </div>
