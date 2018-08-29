@@ -118,87 +118,89 @@
         </context-group>
         <note priority="1" from="description">Tooltip for Refresh job output button></note>
         <note priority="1" from="meaning">tooltip</note>
-      </trans-unit><trans-unit id="workflow-completed" datatype="html">
-        <source>Workflow Completed</source><target state="new">Рабочий процесс выполнен</target>
+      </trans-unit><trans-unit id="input-variables-wizard-label" datatype="html">
+        <source>Input Variables</source><target state="new">Входные переменные</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can input workflow variables</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit><trans-unit id="instructions-wizard-label" datatype="html">
+        <source>Instructions</source><target state="new">Инструкции</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows instructions</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit><trans-unit id="execution-of-jcl-wizard-label" datatype="html">
+        <source>Execution of JCL</source><target state="new">Выполнение JCL</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
           <context context-type="linenumber">22</context>
         </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can edit JCL</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit><trans-unit id="output-wizard-label" datatype="html">
+        <source>View Output</source><target state="new">Просмотр результата</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows job output</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit><trans-unit id="workflow-completed" datatype="html">
+        <source>Workflow Completed</source><target state="new">Рабочий процесс выполнен</target>
+        
         <note priority="1" from="description">The workflow is completed</note>
         <note priority="1" from="meaning">workflow completed</note>
-      </trans-unit><trans-unit id="next-workflow-step-not-available" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">29</context></context-group></trans-unit><trans-unit id="next-workflow-step-not-available" datatype="html">
         <source>Next Step Not Available</source><target state="new">Следующий шаг недоступен для выполнения</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
+        
         <note priority="1" from="description">Next Workflow Step is not available</note>
         <note priority="1" from="meaning">next step not available</note>
-      </trans-unit><trans-unit id="finish-workflow-step" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">32</context></context-group></trans-unit><trans-unit id="finish-workflow-step" datatype="html">
         <source>Finish</source><target state="new">Завершить</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
+        
         <note priority="1" from="description">Finish current workflow step</note>
         <note priority="1" from="meaning">finished</note>
-      </trans-unit><trans-unit id="next-wizard-step" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="next-wizard-step" datatype="html">
         <source>Next</source><target state="new">Следующий</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
+        
         <note priority="1" from="description">Move to next wizard step</note>
         <note priority="1" from="meaning">next</note>
-      </trans-unit><trans-unit id="next-workflow-step" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="next-workflow-step" datatype="html">
         <source>Next Step</source><target state="new">Next Step</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
+        
         <note priority="1" from="description">Caption of Next Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
-      </trans-unit><trans-unit id="next-workflow-step-title" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="next-workflow-step-title" datatype="html">
         <source>Next Workflow Step</source><target state="new">Следующий шаг рабочего процесса</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
+        
         <note priority="1" from="description">Title of the Next Workflow Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
-      </trans-unit><trans-unit id="enter-variable-values-message" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="enter-variable-values-message" datatype="html">
         <source>Enter the variable values for this input category.</source><target state="new">Введите переменные.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
+        
         <note priority="1" from="description">Title of Input Variables step in Wizard</note>
         <note priority="1" from="meaning">&lt;meaning></note>
-      </trans-unit><trans-unit id="discard-jcl-changes" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="discard-jcl-changes" datatype="html">
         <source>Discard</source><target state="new">Отказаться</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
+        
         <note priority="1" from="description">Title of Discard JCL changes button</note>
         <note priority="1" from="meaning">title</note>
-      </trans-unit><trans-unit id="edit-jcl" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">79</context></context-group></trans-unit><trans-unit id="edit-jcl" datatype="html">
         <source>Edit JCL</source><target state="new">Редактировать</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">73</context>
-        </context-group>
+        
         <note priority="1" from="description">Title of Edit JCL button</note>
         <note priority="1" from="meaning">title</note>
-      </trans-unit><trans-unit id="save-jcl" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">80</context></context-group></trans-unit><trans-unit id="save-jcl" datatype="html">
         <source>Save</source><target state="new">Сохранить</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">74</context>
-        </context-group>
+        
         <note priority="1" from="description">Title of Save JCL button</note>
         <note priority="1" from="meaning">title</note>
-      </trans-unit><trans-unit id="tasks-assigned-message" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="tasks-assigned-message" datatype="html">
         <source>
       <x id="ICU" equiv-text="{getAssignedStepCount(), plural, =0 {...} =1 {...} other {...}}"/> assigned
     </source><target state="new">

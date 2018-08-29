@@ -130,11 +130,47 @@
         <note priority="1" from="description">Tooltip for Refresh job output button&gt;</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit>
+      <trans-unit id="input-variables-wizard-label" datatype="html">
+        <source>Input Variables</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can input workflow variables</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="instructions-wizard-label" datatype="html">
+        <source>Instructions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows instructions</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="execution-of-jcl-wizard-label" datatype="html">
+        <source>Execution of JCL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can edit JCL</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="output-wizard-label" datatype="html">
+        <source>View Output</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows job output</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
       <trans-unit id="workflow-completed" datatype="html">
         <source>Workflow Completed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <note priority="1" from="description">The workflow is completed</note>
         <note priority="1" from="meaning">workflow completed</note>
@@ -143,7 +179,7 @@
         <source>Next Step Not Available</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <note priority="1" from="description">Next Workflow Step is not available</note>
         <note priority="1" from="meaning">next step not available</note>
@@ -152,7 +188,7 @@
         <source>Finish</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <note priority="1" from="description">Finish current workflow step</note>
         <note priority="1" from="meaning">finished</note>
@@ -161,7 +197,7 @@
         <source>Next</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <note priority="1" from="description">Move to next wizard step</note>
         <note priority="1" from="meaning">next</note>
@@ -170,7 +206,7 @@
         <source>Next Step</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">51</context>
         </context-group>
         <note priority="1" from="description">Caption of Next Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
@@ -179,7 +215,7 @@
         <source>Next Workflow Step</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Title of the Next Workflow Step button</note>
         <note priority="1" from="meaning">next workflow step</note>
@@ -188,7 +224,7 @@
         <source>Enter the variable values for this input category.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">Title of Input Variables step in Wizard</note>
         <note priority="1" from="meaning">&lt;meaning&gt;</note>
@@ -197,7 +233,7 @@
         <source>Discard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">79</context>
         </context-group>
         <note priority="1" from="description">Title of Discard JCL changes button</note>
         <note priority="1" from="meaning">title</note>
@@ -206,7 +242,7 @@
         <source>Edit JCL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <note priority="1" from="description">Title of Edit JCL button</note>
         <note priority="1" from="meaning">title</note>
@@ -215,7 +251,7 @@
         <source>Save</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">81</context>
         </context-group>
         <note priority="1" from="description">Title of Save JCL button</note>
         <note priority="1" from="meaning">title</note>
