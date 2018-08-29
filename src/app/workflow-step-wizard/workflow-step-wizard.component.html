@@ -15,7 +15,14 @@
       <div class="wizard-scheme-step" *ngFor="let wizardStep of step.wizard.wizardSteps; first as $first; last as $last; index as $index">
         <div class="wizard-scheme-step-icon" *ngIf="!wizardStep.isInProgress()">{{$index+1}}</div>
         <div class="wizard-scheme-step-icon wizard-scheme-step-icon-active" *ngIf="wizardStep.isInProgress()"></div>
-        <div class="wizard-scheme-step-title" [ngClass]="{'wizard-scheme-step-title-atcive': wizardStep.isInProgress()}">{{wizardStep.text}}</div>
+        <div class="wizard-scheme-step-title" [ngClass]="{'wizard-scheme-step-title-atcive': wizardStep.isInProgress()}">
+          <ng-container [ngSwitch]="wizardStep.type">
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_INPUT_VARIABLES" i18n="wizard step label|Label for the wizard step where the user can input workflow variables@@input-variables-wizard-label">Input Variables</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_INSTRUCTIONS" i18n="wizard step label|Label for the wizard step that shows instructions@@instructions-wizard-label">Instructions</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_EXECUTION_OF_JCL" i18n="wizard step label|Label for the wizard step where the user can edit JCL@@execution-of-jcl-wizard-label">Execution of JCL</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_VIEW_OUTPUT" i18n="wizard step label|Label for the wizard step that shows job output@@output-wizard-label">View Output</ng-container>
+          </ng-container>
+        </div>
         <div class="wizard-scheme-step-arrow" *ngIf="!$last"></div>
       </div>
     </div>
