@@ -4,9 +4,9 @@
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
@@ -314,9 +314,48 @@ export class ZosmfWorkflowService {
       .do(jobStatement => step.wizard.jobCards = jobStatement)
   }
 
+  overrideCompleteStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.OverrideComplete, comment);
+  }
+
+  skipStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Skipped, comment);
+  }
+
+  acceptStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Ready, comment);
+  }
+
+  returnStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Assigned, comment);
+  }
+
+  private changeStepState(step: WorkflowStep, newState: StepState, comment?: string): Observable<void> {
+    const workflow = step.workflow;
+    const jsonRequest = {
+      'workflowKey': workflow.workflowKey,
+      'workflowName': workflow.workflowName,
+      'steps': [step.name],
+      // WorkflowComment key begins with a capital W, this is not a mistake
+      // Other keys begin with a lowercase letter
+      'WorkflowComment': comment || '',
+      'workflowState': String(newState)
+    };
+    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowStateChange/`;
+    const data = JSON.stringify(jsonRequest);
+    const headers = new Headers();
+    headers.append('ZOSMF-host', this.zosmfHost);
+    headers.append('ZOSMF-port', this.zosmfPort.toString());
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.put(url, data, {headers: headers})
+      .mergeMap(() => this.updateWorkflow(step.workflow))
+      .map((res: Response) => res.json());
+  }
+
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {
     return this.getJobStatement(step).mergeMap(_ => this.substituteVariablesIntoTemplates(step));
   }
+
 }
 
 interface WorkflowListJson {
@@ -361,15 +400,22 @@ interface JobStatementResponse {
   jobStatement: string;
 }
 
+// Numeric codes for z/OSMF Workflow step states
+enum StepState {
+  Ready = 1,
+  OverrideComplete = 5,
+  Assigned = 7,
+  Skipped = 8,
+}
 
 
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
