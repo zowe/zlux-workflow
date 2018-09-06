@@ -348,8 +348,42 @@ export class ZosmfWorkflowService {
     headers.append('ZOSMF-port', this.zosmfPort.toString());
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.put(url, data, {headers: headers})
-      .mergeMap(() => this.updateWorkflow(step.workflow))
-      .map((res: Response) => res.json());
+      .mergeMap(() => this.updateWorkflow(step.workflow));
+    }
+
+    assignStepToUser(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, userid, 'user', comment);
+    }
+
+    assignStepToGroup(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, groupid, 'group', comment);
+    }
+
+    private assignStep(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
+      const workflow = step.workflow;
+      const jsonRequest = {
+        'workflowKey': workflow.workflowKey,
+        'workflowName': workflow.workflowName,
+        'steps': [step.name],
+        // WorkflowComment key begins with a capital W, this is not a mistake
+        // Other keys begin with a lowercase letter
+        'WorkflowComment': comment || '',
+        'assignees': [
+          {
+            id: id,
+            type: type
+          }
+        ],
+        'notify': false
+      };
+      const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+      const data = JSON.stringify(jsonRequest);
+      const headers = new Headers();
+      headers.append('ZOSMF-host', this.zosmfHost);
+      headers.append('ZOSMF-port', this.zosmfPort.toString());
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.put(url, data, {headers: headers})
+        .mergeMap(() => this.updateWorkflow(step.workflow));
   }
 
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {
