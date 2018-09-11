@@ -63,7 +63,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     WorkflowWarningsComponent,
     ZosmfLoginComponent,
     ZosmfServerComponent,
-    ZosmfServerConfigComponent,
+    ZosmfServerConfigComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +77,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     ZluxPopupWindowModule,
     ZluxPopupManagerModule,
     ZluxVeilModule,
-    ZluxErrorReportModule,
+    ZluxErrorReportModule
   ],
   providers: [
     LoggerService,

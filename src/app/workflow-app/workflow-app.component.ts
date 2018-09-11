@@ -16,7 +16,6 @@ import {
   Inject,
   ViewChild,
   HostListener,
-  ApplicationModule
   } from '@angular/core';
 import {
   Angular2InjectionTokens,
@@ -45,7 +44,6 @@ import { ZosmfServerConfigComponent } from '../zosmf-server-config/zosmf-server-
 import { ZosmfServerConfigService } from '../shared/zosmf-server-config.service';
 import { ZosmfWorkflowService } from '../shared/zosmf-workflow-service';
 import { ZluxPopupManagerService, ZluxErrorSeverity } from '@zlux/widgets';
-import { WindowManagerService } from '../../../../zlux-app-manager/virtual-desktop/src/app/window-manager/mvd-window-manager/shared/window-manager.service';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
@@ -211,7 +209,7 @@ export class WorkflowAppComponent implements AfterContentInit {
   serverConfigNotSaved(): void {
     if (this.activeMenuItem == 'Configuration' && this.zosmfServerConfigComponent.unsavedChanges() == true)
       { 
-        let buttons = ["OK", "Save", "Go Back"];
+        let buttons = ["Continue", "Save", "Go Back"];
         const options = {
           blocking: true,
           buttons: buttons
