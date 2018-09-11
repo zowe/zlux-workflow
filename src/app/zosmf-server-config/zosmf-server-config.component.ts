@@ -26,7 +26,7 @@ import { ZosmfServerComponent } from '../zosmf-server/zosmf-server.component';
 import { ZosmfServerConfig } from '../shared/zosmf-server-config';
 import { ZosmfServerConfigService } from '../shared/zosmf-server-config.service';
 import { LoggerService } from '../shared/logger-service';
-import { ZluxPopupManagerService, ZluxErrorSeverity } from '@zlux/widgets';
+import { ZluxPopupManagerService, ZluxErrorSeverity} from '@zlux/widgets';
 
 
 @Component({
@@ -52,6 +52,7 @@ export class ZosmfServerConfigComponent {
   zosmfServers: QueryList<ZosmfServerComponent>;
   @Output() configured = new EventEmitter<ZosmfServer>();
   private zosmfServerCandidate: ZosmfServer;
+  private popupEnabled: boolean;
 
   constructor(
     private configService: ZosmfServerConfigService,
@@ -60,6 +61,7 @@ export class ZosmfServerConfigComponent {
   ) {
     const config = this.configService.getCachedConfig();
     popupManager.setLogger(logger);
+    this.popupEnabled = true;
     if (config) {
       this.config = config;
     } else {
@@ -76,6 +78,21 @@ export class ZosmfServerConfigComponent {
 
   save(): void {
     this.configService.saveConfig(this.config);
+  }
+
+  unsavedChanges(): boolean {
+    if (this.configService.getLocalConfig().zosmfServers.length != this.config.zosmfServers.length)
+      { return true; }
+    if (this.configService.getLocalConfig().defaultZosmfServer.host != this.config.defaultZosmfServer.host &&
+        this.configService.getLocalConfig().defaultZosmfServer.port != this.config.defaultZosmfServer.port)
+      { return true; }
+    for (let check = this.config.zosmfServers.length; check--;)
+    {
+      if (this.config.zosmfServers[check].host != this.configService.getLocalConfig().zosmfServers[check].host &&
+      this.config.zosmfServers[check].port != this.configService.getLocalConfig().zosmfServers[check].port)
+      { return true; }
+    }
+    return false;
   }
 
   setDefault(item: ZosmfServer) {
@@ -102,21 +119,22 @@ export class ZosmfServerConfigComponent {
   }
 
   reload(): void {
-    this.globalVeilService.showVeil();
-    this.configService
-      .getConfig()
-      .then(config => (this.config = config))
-      .then(_ => setTimeout(() => this.test(), 0))
-      .then(_ => this.globalVeilService.hideVeil())
-      .catch(err => {
-        this.globalVeilService.hideVeil()
-        let errorTitle: string = "Error";
-        let errorMessage: string = "Server configuration not found.";
-        const options = {
-          blocking: true
-        };
-          this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
-        });
+      this.globalVeilService.showVeil();
+      this.configService
+        .getConfig()
+        .then(config => (this.config = config))
+        .then(_ => setTimeout(() => this.test(), 0))
+        .then(_ => this.globalVeilService.hideVeil())
+        .catch(err => {
+          this.globalVeilService.hideVeil()
+          let errorTitle: string = "Error";
+          let errorMessage: string = "Server configuration not found.";
+          const options = {
+            blocking: true
+          };
+            this.popupEnabled = true;
+            this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
+          });
   }
 
   remove(zosmfServer: ZosmfServer): void {
@@ -142,6 +160,10 @@ export class ZosmfServerConfigComponent {
 
   loginCanceled(): void {
     this.zosmfLoginComponent.setZosmfServer(this.config.defaultZosmfServer);
+  }
+
+  togglePopup(toggle: boolean): void {
+    this.popupEnabled = toggle;
   }
 
 

@@ -8,7 +8,7 @@
   
   Copyright Contributors to the Zowe Project.
 -->
-<div class="workflow-container">
+<div class="workflow-container" ng-controller="exitController">
   <div class="workflow-menu">
     <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()" i18n="main main|My tasks menu item@@myTasks">My tasks</div>
     <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Workflows'}" class="workflow-menu-item" (click)="showWorkflows()">Workflows</div>
@@ -42,6 +42,8 @@
 <zosmf-login #zosmflogin on-loggedIn="login()"></zosmf-login>
 <workflow-notification></workflow-notification>
 <zlux-veil [isEnabled]="globalVeilService.isEnabled()" [enableSpinner]="true"></zlux-veil>
+<zlux-popup-manager *ngIf="popupEnabled" (click)="onPopupMenuSelected($event)">
+</zlux-popup-manager>
 <!-- 
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
