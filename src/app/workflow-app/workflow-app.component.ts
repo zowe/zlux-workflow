@@ -121,7 +121,7 @@ export class WorkflowAppComponent implements AfterContentInit {
       let promise = new Promise<void>((resolve, reject) => 
         {
           //TODO: Make ZluxPopupManager so that it accepts ZluxButtonComponents instead of String[] for button titles
-          let buttons = ["Save", "Exit", "Cancel"];
+          let buttons = ["Save & Exit", "Exit", "Cancel"];
           const options = {
             blocking: true,
             buttons: buttons
@@ -173,6 +173,10 @@ export class WorkflowAppComponent implements AfterContentInit {
     } 
     else if (event.target.innerText == " Exit ")
     { this.windowActions.close();
+    }
+    else if (event.target.innerText == " Save & Exit ")
+    { this.zosmfServerConfigComponent.save();
+      this.windowActions.close();
     }
   }
 
