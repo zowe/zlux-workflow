@@ -31,6 +31,9 @@ import { WorkflowCreateComponent } from './workflow-create/workflow-create.compo
 import { WorkflowListComponent } from './workflow-list/workflow-list.component';
 import { WorkflowNotificationComponent } from './workflow-notification/workflow-notification.component';
 import { WorkflowRefreshButtonComponent } from './workflow-refresh-button/workflow-refresh-button.component';
+import { WorkflowStepContainerComponent } from './workflow-step-container/workflow-step-container.component';
+import { WorkflowStepGeneralComponent } from './workflow-step-general/workflow-step-general.component';
+import { WorkflowStepStatusComponent } from './workflow-step-status/workflow-step-status.component';
 import { WorkflowStepWizardComponent } from './workflow-step-wizard/workflow-step-wizard.component';
 import { WorkflowStepsComponent } from './workflow-steps/workflow-steps.component';
 import { WorkflowTaskListComponent } from './workflow-task-list/workflow-task-list.component';
@@ -50,6 +53,9 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     WorkflowListComponent,
     WorkflowNotificationComponent,
     WorkflowRefreshButtonComponent,
+    WorkflowStepContainerComponent,
+    WorkflowStepGeneralComponent,
+    WorkflowStepStatusComponent,
     WorkflowStepWizardComponent,
     WorkflowStepsComponent,
     WorkflowTaskListComponent,

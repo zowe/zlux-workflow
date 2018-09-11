@@ -40,11 +40,13 @@ import { Observable } from 'rxjs/Observable';
 import { WizardStepType } from '../shared/wizard-step';
 import { Workflow } from '../shared/workflow';
 import { WorkflowStep } from '../shared/workflow-step';
-import { WorkflowStepAction } from '../shared/workflow-step-action';
+import { WorkflowStepAction, WorkflowStepActionID, WorkflowStepActionType } from '../shared/workflow-step-action';
+import { WorkflowStepPluginAction } from '../shared/workflow-step-plugin-action';
 import { WorkflowVariable } from '../shared/workflow-variable';
 import { LoggerService } from '../shared/logger-service';
 import { ZosmfLoginService } from '../shared/zosmf-login.service';
 import { ZosmfWorkflowService } from '../shared/zosmf-workflow-service';
+import { WorkflowStepStatusComponent} from '../workflow-step-status/workflow-step-status.component';
 import 'rxjs/add/operator/do';
 import '../images/check-green.svg';
 
@@ -58,13 +60,16 @@ import '../images/check-green.svg';
   ],
   providers: []
 })
+
 export class WorkflowStepWizardComponent
   implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
   @Input() step: WorkflowStep;
   @Output() completed = new EventEmitter();
-  @ViewChild("embeddedwindow", { read: ViewContainerRef })  viewContainerRef: ViewContainerRef;
+  @Output() stepChangeRequested = new EventEmitter<WorkflowStepAction>();
+  @ViewChild('embeddedwindow', { read: ViewContainerRef })  viewContainerRef: ViewContainerRef;
   @ViewChild('jcltextarea') jclTextArea: ElementRef;
-  @Output() stepChangeRequested = new EventEmitter<WorkflowStep>();
+  @ViewChild('workflowstepstatus') workflowStepStatusComponent: WorkflowStepStatusComponent;
+
   private initialized: boolean = false;
   public wizardStepTypes = WizardStepType;
   private embeddedInstance: EmbeddedInstance;
@@ -188,6 +193,7 @@ export class WorkflowStepWizardComponent
       () => {
         logger.info('workflow updated');
         this.completed.emit();
+        this.workflowStepStatusComponent.updateJobStatus()
       });
   }
 
@@ -197,26 +203,11 @@ export class WorkflowStepWizardComponent
   }
 
   submitAndGetJobStatusWithFiles(): Observable<any> {
+    this.workflowStepStatusComponent.step = this.step;
     return this.zosmfWorkflowService
       .submitJob(this.step)
-      .mergeMap(() => this.getJobStatusWithFiles())
+      .mergeMap(() => this.workflowStepStatusComponent.getJobStatusWithFiles())
       .mergeMap(() => this.updateWorkflowAndShowNotification());
-  }
-
-  getJobStatusWithFiles(): Observable<any> {
-    return this.zosmfWorkflowService
-      .getJobStatusWithFiles(this.step)
-      .do(_ => logger.info('getJobStatusWithFiles done'))
-      .do(_ => this.activateFirstSpoolFileTab());
-  }
-
-  activateFirstSpoolFileTab(): void {
-    const ddnames = this.keys(this.step.wizard.performJobfiles);
-    if (ddnames && ddnames.length > 0) {
-      this.activeTabKey = ddnames[0];
-    } else {
-      this.activeTabKey = null;
-    }
   }
 
   startInstuctionsStep(): void {
@@ -247,7 +238,7 @@ export class WorkflowStepWizardComponent
     return this.zosmfWorkflowService.substituteVariablesIntoTemplates(this.step);
   }
 
-  embedPlugin(action: WorkflowStepAction): void {
+  embedPlugin(action: WorkflowStepPluginAction): void {
     if (this.embedActions) {
       logger.info(
         `about to embed ${action.pluginIdentifier} into viewContainerRef ${
@@ -284,7 +275,7 @@ export class WorkflowStepWizardComponent
     return !!this.embeddedInstance;
   }
 
-  preparePluginToRun(action: WorkflowStepAction): void {
+  preparePluginToRun(action: WorkflowStepPluginAction): void {
     this.step.hasPluginToRun = true;
   }
 
@@ -311,6 +302,7 @@ export class WorkflowStepWizardComponent
     if (currentWizardStep.type === WizardStepType.STEP_TYPE_INSTRUCTIONS) {
       this.startInstuctionsStep();
     } else if (currentWizardStep.type === WizardStepType.STEP_TYPE_VIEW_OUTPUT) {
+      this.workflowStepStatusComponent.getJobStatusWithFiles();
       this.startViewOutputStep();
     }
   }
@@ -319,7 +311,8 @@ export class WorkflowStepWizardComponent
     this.step.wizard.checkStatus();
     if (this.step.isJclStep()) {
       this.showVeil();
-      this.getJobStatusWithFiles()
+      this.workflowStepStatusComponent.step = this.step;
+      this.workflowStepStatusComponent.getJobStatusWithFiles()
         .finally(() => this.hideVeil())
         .subscribe(
           _ => this.startCurrentStep(),
@@ -328,17 +321,6 @@ export class WorkflowStepWizardComponent
     } else {
       this.startCurrentStep();
     }
-  }
-
-  updateJobStatus(): void {
-    this.showVeil();
-    this.getJobStatusWithFiles()
-      .finally(() => this.hideVeil())
-      .mergeMap(() => this.updateWorkflowAndShowNotification())
-      .subscribe(
-        _ => logger.info('job output updated'),
-        err => this.loggerService.zosmfError(err)
-      );
   }
 
   keys(o: object): any[] {
@@ -354,7 +336,9 @@ export class WorkflowStepWizardComponent
   }
 
   startNextWorkflowStep(): void {
-    this.stepChangeRequested.emit(this.nextWorkflowStep);
+    this.stepChangeRequested.emit(
+      new WorkflowStepAction(
+        WorkflowStepActionType.selectView, WorkflowStepActionID.perform, this.nextWorkflowStep));
   }
 
   isNextWorkflowStepReady(): boolean {

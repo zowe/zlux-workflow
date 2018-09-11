@@ -20,8 +20,8 @@
     <div class="selector" [ngClass]="{'selector-active': step === selectedStep}"></div>
     <div class="step-icon" [ngClass]="getStepIconClass(step)"></div>
     <div class="step-title" [ngClass]="{'step-title-active': step === selectedStep}"><span zluxFlyover [flyover]="stepFlyover" (mouseenter)="onStepHover($event, step)" position="bottom">{{step.title}}</span></div>
-    <div class="action-button" (click)="actions[step.state].click(step)">{{this.getStepActionTitle(step)}}</div>
-    <div class="dots-menu"></div>
+    <div class="action-button" (click)="actions[mapStepStateToDefaultAction(step)].click(step)">{{this.getStepActionTitle(step)}}</div>
+    <!-- Did have a "dots-menu" here, but feel that changing the button to a dropdown button is better -->
   </div>
 </div>
 <zlux-flyover #stepFlyover>
