@@ -37,7 +37,38 @@
       <div class="action-button" *ngSwitchCase="'Unassigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
       <div class="action-button" *ngSwitchCase="'Complete (Override)'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
     </ng-container>
-    <!-- Did have a "dots-menu" here, but feel that changing the button to a dropdown button is better -->
+    <div class="dots-menu" (click)="menu.show()">
+      <workflow-popup-menu #menu position='left'>
+        <workflow-popup-menu-item *ngIf="step.state === 'Assigned'" (onClick)="acceptStep(step)">
+          <div item-icon class="icon icon-accept"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to accept a Workflow Step for execution@@accept-item-title">Accept</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="['Ready', 'Failed'].includes(step.state)" (onClick)="overrideCompleteStep(step)">
+          <div item-icon class="icon icon-override-complete"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to make step complete without execution@@override-complete-item-title">Override Complete</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="performStep(step)">
+          <div item-icon class="icon icon-perform"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to perform a Workflow Step@@perform-item-title">Perform</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="showStepInfo(step)">
+          <div item-icon class="icon icon-properties"></div>
+          <div item-title i18n="action menu item title|Title of an action that show properties of Workflow step@@properties-item-title">Properties</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep(step)">
+          <div item-icon class="icon icon-return"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="skipStep(step)">
+          <div item-icon class="icon icon-skip"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to skip execution of Workflow Step@@skip-item-title">Skip</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="showAssignmentView(step)">
+          <div item-icon class="icon icon-assignment"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows Assignment view for Workflow Step@@assignment-item-title">Assignment</div>
+        </workflow-popup-menu-item>
+      </workflow-popup-menu>
+    </div>
   </div>
 </div>
 <zlux-flyover #stepFlyover>

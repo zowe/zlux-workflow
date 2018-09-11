@@ -1,5 +1,3 @@
-
-
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -10,30 +8,27 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import { WorkflowStep } from "./workflow-step";
+import {
+   Component,
+   Input,
+   OnInit
+} from '@angular/core';
+import { WorkflowStep } from '../shared/workflow-step';
 
-export enum WorkflowStepActionType {
-  selectView,
-  modifyStep
-}
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'workflow-step-assignment',
+  templateUrl: './workflow-step-assignment.component.html',
+  styleUrls: ['./workflow-step-assignment.component.css']
+})
+export class WorkflowStepAssignmentComponent implements OnInit {
+  @Input() step: WorkflowStep;
+  constructor() { }
 
-export enum WorkflowStepActionID {
-  general,
-  perform,
-  status,
-  details,
-  assignment
-}
-
-export class WorkflowStepAction {
-
-  constructor(readonly actionType: WorkflowStepActionType,
-              readonly actionID: WorkflowStepActionID,
-              readonly step: WorkflowStep) {
+  ngOnInit() {
   }
-}
 
-/*
+}/*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
@@ -42,4 +37,3 @@ export class WorkflowStepAction {
 
   Copyright Contributors to the Zowe Project.
 */
-

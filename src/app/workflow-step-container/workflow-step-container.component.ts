@@ -40,7 +40,7 @@ export class WorkflowStepContainerComponent
   @Output() stepChangeRequested = new EventEmitter<WorkflowStepAction>();
 
   selectedView: string = 'perform';
-  enabledViews: string[] = ['perform', 'general', 'status'];
+  enabledViews: string[] = ['perform', 'general', 'status', 'assignment'];
 
   ngOnInit(): void {
 
@@ -76,6 +76,8 @@ export class WorkflowStepContainerComponent
       return 'perform';
       case WorkflowStepActionID.status:
       return 'status';
+      case WorkflowStepActionID.assignment:
+      return 'assignment';
       default:
       return 'general';
     }

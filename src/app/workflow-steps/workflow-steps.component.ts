@@ -18,10 +18,17 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import {WorkflowStep, WorkflowStepStateFilter} from '../shared/workflow-step';
-import {WorkflowStepAction, WorkflowStepActionType, WorkflowStepActionID} from '../shared/workflow-step-action';
-import {Workflow} from '../shared/workflow';
-import {logger} from '../shared/logger';
+import { logger } from '../shared/logger';
+import { LoggerService } from './../shared/logger-service';
+import { WorkflowStep,
+   WorkflowStepStateFilter
+  } from '../shared/workflow-step';
+import { WorkflowStepAction,
+   WorkflowStepActionType,
+   WorkflowStepActionID
+  } from '../shared/workflow-step-action';
+import { Workflow } from '../shared/workflow';
+import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
 
 @Component({
   selector: "workflow-steps",
@@ -61,7 +68,10 @@ export class WorkflowStepsComponent implements OnInit {
   hoveredStep: WorkflowStep;
   hoveredWorkflow: Workflow;
 
-  constructor() {}
+  constructor(
+    private zosmfWorkflowService: ZosmfWorkflowService,
+    private loggerService: LoggerService
+    ) {}
 
   ngOnInit() {}
 
@@ -71,7 +81,32 @@ export class WorkflowStepsComponent implements OnInit {
   }
 
   acceptStep(step: WorkflowStep): void {
-    alert('Implement me');
+    this.zosmfWorkflowService.acceptStep(step)
+      .subscribe(
+        () => logger.info(`step ${step.name} accepted`),
+        (err) => this.loggerService.zosmfError(err)
+      );
+  }
+
+  returnStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.returnStep(step).subscribe(
+      () => logger.info(`step ${step.name} returned`),
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  skipStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.skipStep(step).subscribe(
+      () => logger.info(`step ${step.name} skipped`),
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  overrideCompleteStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.overrideCompleteStep(step).subscribe(
+      () => logger.info('state of step ${step.name} changed to override complete'),
+      (err) => this.loggerService.zosmfError(err)
+    );
   }
 
   assignStep(step: WorkflowStep): void {
@@ -176,6 +211,12 @@ export class WorkflowStepsComponent implements OnInit {
   showStepInfo(step: WorkflowStep) {
     this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
       WorkflowStepActionID.general,
+      step));
+  }
+
+  showAssignmentView(step: WorkflowStep) {
+    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+      WorkflowStepActionID.assignment,
       step));
   }
 }
