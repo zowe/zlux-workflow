@@ -14,32 +14,728 @@
         </context-group>
         <note priority="1" from="description">of preposition in clause n-m of total</note>
       </trans-unit>
-      <trans-unit id="myTasks" datatype="html">
+      <trans-unit id="workflow-list-header" datatype="html">
+        <source>All Workflows</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Title of Workflow list</note>
+        <note priority="1" from="meaning">header</note>
+      </trans-unit>
+      <trans-unit id="actions-menu" datatype="html">
+        <source>Actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">Title of Actions menu</note>
+        <note priority="1" from="meaning">menu</note>
+      </trans-unit>
+      <trans-unit id="properties-menu-item" datatype="html">
+        <source>Properties</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Title of Properties menu item</note>
+        <note priority="1" from="meaning">menu item</note>
+      </trans-unit>
+      <trans-unit id="ok-button-label" datatype="html">
+        <source>OK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-notification/workflow-notification.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+        <note priority="1" from="description">label of OK button|</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="general-view" datatype="html">
+        <source>General</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Title of General view</note>
+        <note priority="1" from="meaning">view</note>
+      </trans-unit>
+      <trans-unit id="perform-view" datatype="html">
+        <source>Perform</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Title of Perform view</note>
+        <note priority="1" from="meaning">view</note>
+      </trans-unit>
+      <trans-unit id="details-view" datatype="html">
+        <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Title of Details view</note>
+        <note priority="1" from="meaning">view</note>
+      </trans-unit>
+      <trans-unit id="notes-view" datatype="html">
+        <source>Notes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Title of Notes view</note>
+        <note priority="1" from="meaning">view</note>
+      </trans-unit>
+      <trans-unit id="status-view" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Title of Status view</note>
+        <note priority="1" from="meaning">view</note>
+      </trans-unit>
+      <trans-unit id="corresponding-workflow" datatype="html">
+        <source>Corresponding Workflow</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">Workflow for the current step</note>
+        <note priority="1" from="meaning">flyover text</note>
+      </trans-unit>
+      <trans-unit id="workflow-step-description" datatype="html">
+        <source>Step Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Description of the workflow step</note>
+        <note priority="1" from="meaning">flyover text</note>
+      </trans-unit>
+      <trans-unit id="refresh-output-tooltip" datatype="html">
+        <source>Refresh Output</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-status/workflow-step-status.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip for Refresh job output button&gt;</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="input-variables-wizard-label" datatype="html">
+        <source>Input Variables</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can input workflow variables</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="instructions-wizard-label" datatype="html">
+        <source>Instructions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows instructions</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="execution-of-jcl-wizard-label" datatype="html">
+        <source>Execution of JCL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step where the user can edit JCL</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="output-wizard-label" datatype="html">
+        <source>View Output</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Label for the wizard step that shows job output</note>
+        <note priority="1" from="meaning">wizard step label</note>
+      </trans-unit>
+      <trans-unit id="workflow-completed" datatype="html">
+        <source>Workflow Completed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">The workflow is completed</note>
+        <note priority="1" from="meaning">workflow completed</note>
+      </trans-unit>
+      <trans-unit id="next-workflow-step-not-available" datatype="html">
+        <source>Next Step Not Available</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <note priority="1" from="description">Next Workflow Step is not available</note>
+        <note priority="1" from="meaning">next step not available</note>
+      </trans-unit>
+      <trans-unit id="finish-workflow-step" datatype="html">
+        <source>Finish</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">Finish current workflow step</note>
+        <note priority="1" from="meaning">finished</note>
+      </trans-unit>
+      <trans-unit id="next-wizard-step" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Move to next wizard step</note>
+        <note priority="1" from="meaning">next</note>
+      </trans-unit>
+      <trans-unit id="next-workflow-step" datatype="html">
+        <source>Next Step</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description">Caption of Next Step button</note>
+        <note priority="1" from="meaning">next workflow step</note>
+      </trans-unit>
+      <trans-unit id="next-workflow-step-title" datatype="html">
+        <source>Next Workflow Step</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">Title of the Next Workflow Step button</note>
+        <note priority="1" from="meaning">next workflow step</note>
+      </trans-unit>
+      <trans-unit id="enter-variable-values-message" datatype="html">
+        <source>Enter the variable values for this input category.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description">Title of Input Variables step in Wizard</note>
+        <note priority="1" from="meaning">&lt;meaning&gt;</note>
+      </trans-unit>
+      <trans-unit id="discard-jcl-changes" datatype="html">
+        <source>Discard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <note priority="1" from="description">Title of Discard JCL changes button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="edit-jcl" datatype="html">
+        <source>Edit JCL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <note priority="1" from="description">Title of Edit JCL button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="save-jcl" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-wizard/workflow-step-wizard.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <note priority="1" from="description">Title of Save JCL button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="assigned-tasks-message" datatype="html">
+        <source>
+      <x id="ICU" equiv-text="{getAssignedStepCount(), plural, =0 {...} =1 {...} other {...}}"/>
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Label with a number of tasks assigned to the user</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="0df65f799dd7a99a5d72c8bcf036862d27830f8a" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {no tasks assigned} =1 {one task assigned} other {<x id="INTERPOLATION" equiv-text="{{getAssignedStepCount()}}"/> tasks assigned} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="perform-button-label" datatype="html">
+        <source>Peform</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Label for a button that starts a wizard for Workflow Step</note>
+        <note priority="1" from="meaning">button label</note>
+      </trans-unit>
+      <trans-unit id="check-button-label" datatype="html">
+        <source>Check</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Label for a button that shows Workflow Step status</note>
+        <note priority="1" from="meaning">button label</note>
+      </trans-unit>
+      <trans-unit id="accept-button-label" datatype="html">
+        <source>Accept</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Label for a button that accepts Workflow Stepe</note>
+        <note priority="1" from="meaning">button label</note>
+      </trans-unit>
+      <trans-unit id="assign-button-label" datatype="html">
+        <source>Assign</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Label for a button that shows Assignments Dialog for Workflow Step</note>
+        <note priority="1" from="meaning">button label</note>
+      </trans-unit>
+      <trans-unit id="step-status" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">Step Status</note>
+        <note priority="1" from="meaning">status</note>
+      </trans-unit>
+      <trans-unit id="workflow-owner" datatype="html">
+        <source>Owner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <note priority="1" from="description">Owner of the workflow</note>
+        <note priority="1" from="meaning">userid</note>
+      </trans-unit>
+      <trans-unit id="pending-tasks-filter" datatype="html">
+        <source>Pending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Title of filter button that shows Pending tasks</note>
+        <note priority="1" from="meaning">pending tasks</note>
+      </trans-unit>
+      <trans-unit id="completed-tasks-filter" datatype="html">
+        <source>Completed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Title of filter button that shows Completd tasks</note>
+        <note priority="1" from="meaning">completed tasks</note>
+      </trans-unit>
+      <trans-unit id="all-tasks-filter" datatype="html">
+        <source>All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Title of filter button that shows All tasks</note>
+        <note priority="1" from="meaning">all tasks</note>
+      </trans-unit>
+      <trans-unit id="warnings-title" datatype="html">
+        <source>Warnings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-warnings/workflow-warnings.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Title of Warnings</note>
+        <note priority="1" from="meaning">warnings</note>
+      </trans-unit>
+      <trans-unit id="login-to-label" datatype="html">
+        <source>Login to </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Login to host label</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="userid-label" datatype="html">
+        <source>User ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Label for User ID text field</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="userid-required-message" datatype="html">
+        <source>User ID is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Message when User id is empty</note>
+        <note priority="1" from="meaning">error message</note>
+      </trans-unit>
+      <trans-unit id="password-label" datatype="html">
+        <source>Password or pass phrase</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description">Label for Password text field</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="password-required-message" datatype="html">
+        <source>Password or pass phrase is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Message when Password is empty</note>
+        <note priority="1" from="meaning">error message</note>
+      </trans-unit>
+      <trans-unit id="cancel-title" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="description">Title of Cancel button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="sign-in-title" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <note priority="1" from="description">Title of Sign In button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="host-label" datatype="html">
+        <source>Host</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">Title of Z/osmf host label</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="port-label" datatype="html">
+        <source>Port</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Title of Z/osmf port label</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="test-title" datatype="html">
+        <source>Test</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Title of Test Connection button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="test-tooltip" datatype="html">
+        <source>Test connection</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip of Test Connection button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="set-active-title" datatype="html">
+        <source>Set as active server</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description">Title of Set as active z/OSMF server button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="set-active-tooltip" datatype="html">
+        <source>Set as active z/OSMF server</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip of Set as active z/OSMF server button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="remove-server-tooltip" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip of Remove Server button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="active-zosmf-server-label" datatype="html">
+        <source>Active z/OSMF server</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Label of Active z/OSMF server|</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="new-server-tooltip" datatype="html">
+        <source>Add new z/OSMF server</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip for Add new z/OSMF server button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="reload-title" datatype="html">
+        <source>Reload</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Totle for Reload button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="reload-tooltip" datatype="html">
+        <source>Reload this page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip for Reload button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="save-title" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <note priority="1" from="description">Title for Save this page button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="save-tooltip" datatype="html">
+        <source>Save this page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip for Save this page button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="test-all-title" datatype="html">
+        <source>Test All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Title of Test All button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="ok-title" datatype="html">
+        <source>OK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">Title of OK button</note>
+        <note priority="1" from="meaning">title</note>
+      </trans-unit>
+      <trans-unit id="my-tasks-item" datatype="html">
         <source>My tasks</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
           <context context-type="linenumber">13</context>
         </context-group>
-        <note priority="1" from="description">My tasks menu item</note>
-        <note priority="1" from="meaning">main main</note>
+        <note priority="1" from="description">Title of item that shows user tasks</note>
+        <note priority="1" from="meaning">main menu item</note>
       </trans-unit>
-      <trans-unit id="workflow-step-title" datatype="html">
+      <trans-unit id="workflows-item" datatype="html">
+        <source>Workflows</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Title of item that shows Workflow list</note>
+        <note priority="1" from="meaning">main menu item</note>
+      </trans-unit>
+      <trans-unit id="warnings-item" datatype="html">
+        <source>Warnings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Title of item that shows warnings</note>
+        <note priority="1" from="meaning">main menu item</note>
+      </trans-unit>
+      <trans-unit id="configuration-item" datatype="html">
+        <source>Configuration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Title of item that shows Configuration for the app</note>
+        <note priority="1" from="meaning">main menu item</note>
+      </trans-unit>
+      <trans-unit id="refresh-tooltip" datatype="html">
+        <source>Refresh</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-app/workflow-app.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip of Refresh button</note>
+        <note priority="1" from="meaning">tooltip</note>
+      </trans-unit>
+      <trans-unit id="advanced-mode-label" datatype="html">
+        <source>Advanced Mode</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Label for Advanced Mode</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="advanced-settings-label" datatype="html">
+        <source>
+        Advanced Settings
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">Label for Advanced Settings</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="workflow-defintion-file-label" datatype="html">
+        <source>
+            Workflow definition file
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">Label for Path to workflow defintion file</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="zosmf-system-label" datatype="html">
+        <source>
+            System
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <note priority="1" from="description">Label for Z/osmf system</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="owner-label" datatype="html">
+        <source>
+            Owner
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <note priority="1" from="description">Label for Owner of the workflow</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="set-owner-to-current-user-label" datatype="html">
+        <source>Set owner to current user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <note priority="1" from="description">Label for Set owner to current user checkbox</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="cancel-button-label" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <note priority="1" from="description">Label of Cancel button</note>
+        <note priority="1" from="meaning">label</note>
+      </trans-unit>
+      <trans-unit id="create-workflow-header" datatype="html">
+        <source>Create Workflow</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Header of Create Workflow dialog</note>
+        <note priority="1" from="meaning">dialog header</note>
+      </trans-unit>
+      <trans-unit id="workflow-step-title-label" datatype="html">
         <source>Title</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
-        <note priority="1" from="description">Title of the workflow step</note>
-        <note priority="1" from="meaning">title</note>
+        <note priority="1" from="description">Label for workflow step title</note>
+        <note priority="1" from="meaning">label</note>
       </trans-unit>
-      <trans-unit id="workflow-step-description" datatype="html">
+      <trans-unit id="workflow-step-description-label" datatype="html">
         <source>Description</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
-        <note priority="1" from="description">Description of the workflow step</note>
-        <note priority="1" from="meaning">description</note>
+        <note priority="1" from="description">Label for Description of the workflow step</note>
+        <note priority="1" from="meaning">label</note>
       </trans-unit>
     </body>
   </file>

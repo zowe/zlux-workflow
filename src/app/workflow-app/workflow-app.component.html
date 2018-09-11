@@ -1,24 +1,24 @@
 
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
 <div class="workflow-container">
   <div class="workflow-menu">
-    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()" i18n="main main|My tasks menu item@@myTasks">My tasks</div>
-    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Workflows'}" class="workflow-menu-item" (click)="showWorkflows()">Workflows</div>
-    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Warnings'}" class="workflow-menu-item" (click)="showWarnings()">Warnings</div>
-    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Configuration'}" class="workflow-menu-item" (click)="showConfiguration()">Configuration</div>
-    <div class="refresh-button-container"><workflow-refresh-button size="24" title="Refresh" (onClick)="refresh()"></workflow-refresh-button></div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'My Tasks'}"  class="workflow-menu-item" (click)="showMyTasks()" i18n="main menu item|Title of item that shows user tasks@@my-tasks-item">My tasks</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Workflows'}" class="workflow-menu-item" (click)="showWorkflows()" i18n="main menu item|Title of item that shows Workflow list@@workflows-item">Workflows</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Warnings'}" class="workflow-menu-item" (click)="showWarnings()" i18n="main menu item|Title of item that shows warnings@@warnings-item">Warnings</div>
+    <div [ngClass]="{'workflow-menu-item-active': activeMenuItem === 'Configuration'}" class="workflow-menu-item" (click)="showConfiguration()" i18n="main menu item|Title of item that shows Configuration for the app@@configuration-item">Configuration</div>
+    <div class="refresh-button-container"><workflow-refresh-button size="24" i18n-title="tooltip|Tooltip of Refresh button@@refresh-tooltip" title="Refresh" (onClick)="refresh()"></workflow-refresh-button></div>
   </div>
   <div class="task-view" [hidden]="activeMenuItem !== 'My Tasks'">
     <div class="task-list">
-      <workflow-task-list #workflowtasklist [workflows]="workflows" [userid]="userid" 
+      <workflow-task-list #workflowtasklist [workflows]="workflows" [userid]="userid"
       (stepSelectedAction)="onStepSelectedAction($event)" [selectedStep]="selectedStep"></workflow-task-list>
     </div>
     <div class="step-container" [hidden]="!hasSelectedStep()">
@@ -42,12 +42,12 @@
 <zosmf-login #zosmflogin on-loggedIn="login()"></zosmf-login>
 <workflow-notification></workflow-notification>
 <zlux-veil [isEnabled]="globalVeilService.isEnabled()" [enableSpinner]="true"></zlux-veil>
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
