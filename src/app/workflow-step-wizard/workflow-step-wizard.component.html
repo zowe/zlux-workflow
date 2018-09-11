@@ -1,11 +1,11 @@
 
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->
 <div class="wizard-header">
@@ -15,12 +15,21 @@
       <div class="wizard-scheme-step" *ngFor="let wizardStep of step.wizard.wizardSteps; first as $first; last as $last; index as $index">
         <div class="wizard-scheme-step-icon" *ngIf="!wizardStep.isInProgress()">{{$index+1}}</div>
         <div class="wizard-scheme-step-icon wizard-scheme-step-icon-active" *ngIf="wizardStep.isInProgress()"></div>
-        <div class="wizard-scheme-step-title" [ngClass]="{'wizard-scheme-step-title-atcive': wizardStep.isInProgress()}">{{wizardStep.text}}</div>
+        <div class="wizard-scheme-step-title" [ngClass]="{'wizard-scheme-step-title-atcive': wizardStep.isInProgress()}">
+          <ng-container [ngSwitch]="wizardStep.type">
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_INPUT_VARIABLES" i18n="wizard step label|Label for the wizard step where the user can input workflow variables@@input-variables-wizard-label">Input Variables</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_INSTRUCTIONS" i18n="wizard step label|Label for the wizard step that shows instructions@@instructions-wizard-label">Instructions</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_EXECUTION_OF_JCL" i18n="wizard step label|Label for the wizard step where the user can edit JCL@@execution-of-jcl-wizard-label">Execution of JCL</ng-container>
+            <ng-container *ngSwitchCase="wizardStepTypes.STEP_TYPE_VIEW_OUTPUT" i18n="wizard step label|Label for the wizard step that shows job output@@output-wizard-label">View Output</ng-container>
+          </ng-container>
+        </div>
         <div class="wizard-scheme-step-arrow" *ngIf="!$last"></div>
       </div>
     </div>
-    <label *ngIf="step.workflow.isCompleted()">Workflow Completed</label>
-    <label *ngIf="step.wizard.isFinished() && !isNextWorkflowStepReady() && !step.workflow.isCompleted()">Next Step Not Available</label>
+    <label *ngIf="step.workflow.isCompleted()" i18n="workflow completed|The workflow is completed@@workflow-completed">Workflow Completed</label>
+    <label *ngIf="step.wizard.isFinished() && !isNextWorkflowStepReady() && !step.workflow.isCompleted()"
+      i18n="next step not available|Next Workflow Step is not available@@next-workflow-step-not-available"
+      >Next Step Not Available</label>
     <zlux-button
       *ngIf="!step.wizard.isFinished()"
       (onClick)="next()"
@@ -28,24 +37,25 @@
       [lightSkin]="false"
     >
       <ng-template *ngIf="step.wizard.canBeFinished(); then finishButtontemplate else nextButtonTemplate"></ng-template>
-      <ng-template #finishButtontemplate>Finish</ng-template>
-      <ng-template #nextButtonTemplate><div class="arrow">Next</div></ng-template>
+      <ng-template #finishButtontemplate i18n="finished|Finish current workflow step@@finish-workflow-step">Finish</ng-template>
+      <ng-template #nextButtonTemplate><div class="arrow" i18n="next|Move to next wizard step@@next-wizard-step">Next</div></ng-template>
     </zlux-button>
     <zlux-button
       *ngIf="step.wizard.isFinished() && isNextWorkflowStepReady()"
       (onClick)="startNextWorkflowStep()"
       [callToAction]="true"
       [lightSkin]="false"
+      i18n-title="next workflow step|Title of the Next Workflow Step button@@next-workflow-step-title"
       title="Next Workflow Step"
     >
-      <div class="arrow">Next Step</div>
+      <div class="arrow" i18n="next workflow step|Caption of Next Step button@@next-workflow-step">Next Step</div>
     </zlux-button>
   </div>
 </div>
 <div class="wizard-body">
   <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_INPUT_VARIABLES">
     <div class="panel-body">
-      <h5>Enter the variable values for this input category.</h5>
+      <h5 i18n="<meaning>|Title of Input Variables step in Wizard@@enter-variable-values-message">Enter the variable values for this input category.</h5>
       <ul class="list-group" *ngIf="step.variables">
         <li href="#" class="list-group-item" *ngFor="let v of step.variables;">
           <p class="list-group-item-text">{{v.name}} - {{v.type}}</p>
@@ -66,8 +76,9 @@
     <div class="wizard-step-jcl">
       <textarea class="jcl-textarea" #jcltextarea [(ngModel)]="step.wizard.fileContentsForEditor" [disabled]="!isJCLEditable" spellcheck="false"></textarea>
       <div class="edit-jcl-buttons-container">
-        <zlux-button label="Discard" (onClick)="discardJCL()" [callToAction]="false" [hidden]="!isJCLEditable"></zlux-button>
-        <zlux-button [label]="isJCLEditable ? 'Save' : 'Edit JCL'" (onClick)="editOrSaveJCL()" [callToAction]="isJCLEditable"></zlux-button>
+        <zlux-button i18n-label="title|Title of Discard JCL changes button@@discard-jcl-changes" label="Discard" (onClick)="discardJCL()" [callToAction]="false" [hidden]="!isJCLEditable"></zlux-button>
+        <zlux-button i18n-label="title|Title of Edit JCL button@@edit-jcl" label="Edit JCL" (onClick)="editOrSaveJCL()" [callToAction]="isJCLEditable" [hidden]="isJCLEditable"></zlux-button>
+        <zlux-button i18n-label="title|Title of Save JCL button@@save-jcl" label="Save" (onClick)="editOrSaveJCL()" [callToAction]="isJCLEditable" [hidden]="!isJCLEditable"></zlux-button>
       </div>
     </div>
   </div>
@@ -76,12 +87,12 @@
   </div>
   <zlux-veil [isEnabled]="isWizardVeilEnabled" [enableSpinner]="true"></zlux-veil>
 </div>
-<!-- 
+<!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 -->

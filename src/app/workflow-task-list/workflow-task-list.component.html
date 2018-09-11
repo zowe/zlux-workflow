@@ -10,9 +10,9 @@
 -->
 <div class="tasks-header">
   <div class="filter-toolbar" [hidden]="contentHidden">
-    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'pending'}" (click)="togglePendingTasks()">Pending</div>
-    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'completed'}" (click)="toggleCompletedTasks()">Completed</div>
-    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'all'}" (click)="toggleAllTasks()">All</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'pending'}" (click)="togglePendingTasks()" i18n="pending tasks|Title of filter button that shows Pending tasks@@pending-tasks-filter">Pending</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'completed'}" (click)="toggleCompletedTasks()"i18n="completed tasks|Title of filter button that shows Completd tasks@@completed-tasks-filter">Completed</div>
+    <div class="filter-button" [ngClass]="{'filter-button-active': filterState == 'all'}" (click)="toggleAllTasks()" i18n="all tasks|Title of filter button that shows All tasks@@all-tasks-filter">All</div>
   </div>
   <div class="collapse-button" [ngClass]="{'collapsed': contentHidden}" (click)="toggle()"></div>
 </div>
