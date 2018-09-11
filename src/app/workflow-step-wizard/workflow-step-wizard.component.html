@@ -62,15 +62,6 @@
       <ng-container #embeddedwindow></ng-container>
     </div>
   </div>
-  <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_CREATE_JOB_STATEMENT">
-    <div class="card-title">{{step.wizard.currentWizardStep.text}}</div>
-    <div class="card-text">
-      <div class="form-group">
-        <label for="jobcards">JOB statement JCL:</label>
-        <textarea class="form-control" rows="5" id="jobcards" [(ngModel)]="step.wizard.jobCards"></textarea>
-      </div>
-    </div>
-  </div>
   <div class="wizard-step" [hidden]="step.wizard.currentWizardStep.type !== wizardStepTypes.STEP_TYPE_EXECUTION_OF_JCL">
     <div class="wizard-step-jcl">
       <textarea class="jcl-textarea" #jcltextarea [(ngModel)]="step.wizard.fileContentsForEditor" [disabled]="!isJCLEditable" spellcheck="false"></textarea>

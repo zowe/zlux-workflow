@@ -26,6 +26,7 @@ export class WorkflowStep {
   submitAs: string;
   steps?: any[];
   level?: number;
+  description?: string;
   instructions?: string;
   templateSub?: string;
   instructionsSub?: string;
@@ -40,6 +41,8 @@ export class WorkflowStep {
   performState?: string;
   returnCode?: string | any; // ???
   pinned?: boolean;
+  title: string;
+  owner: string;
 
   constructor(jsonStep: any) {
     this.updateFromJson(jsonStep);

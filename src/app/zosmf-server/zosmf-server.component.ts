@@ -42,7 +42,7 @@ export class ZosmfServerComponent implements AfterContentInit {
   @Input() theme: 'dark' | 'light' = 'light';
   @Output() setDefault = new EventEmitter<void>();
   @Output() removed = new EventEmitter<void>();
-  private status: ServerStatus = 'unknown';
+  status: ServerStatus = 'unknown';
   @ViewChild('configForm') form: NgForm;
   private initialized = false;
   constructor(private zosmfTrackerService: ZosmfTrackerService) {}

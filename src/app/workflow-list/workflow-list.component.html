@@ -38,7 +38,7 @@
       name="search-input"
       autocomplete="off"
       [(ngModel)]="searchText"
-      (ngModelChange)="onSearchTextChanged($event)"
+      (ngModelChange)="onSearchTextChanged()"
       [disabled]="workflows.length === 0"
     />
   </div>
