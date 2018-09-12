@@ -72,6 +72,7 @@ export class ZosmfWorkflowService {
         let updatedSteps = updatedWorkflow.steps;
         for (let i = 0; i < steps.length; i++) {
           steps[i].state = updatedSteps[i].state;
+          steps[i].assignees = updatedSteps[i].assignees;
           steps[i].instructions = updatedSteps[i].instructions;
           steps[i].specificAction = updatedSteps[i].specificAction;
         }
@@ -384,6 +385,40 @@ export class ZosmfWorkflowService {
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       return this.http.put(url, data, {headers: headers})
         .mergeMap(() => this.updateWorkflow(step.workflow));
+  }
+
+  removeUserFromStepAssignees(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, userid, 'user', comment);
+  }
+
+  removeGroupFromStepAssignees(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, groupid, 'group', comment);
+  }
+
+  private removeStepAssignee(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
+    const workflow = step.workflow;
+    const jsonRequest = {
+      'workflowKey': workflow.workflowKey,
+      'workflowName': workflow.workflowName,
+      'steps': [step.name],
+      // WorkflowComment key begins with a capital W, this is not a mistake
+      // Other keys begin with a lowercase letter
+      'WorkflowComment': comment || '',
+      'assignees': [
+        {
+          id: id,
+          type: type
+        }
+      ]
+    };
+    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+    const query = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
+    const headers = new Headers();
+    headers.append('ZOSMF-host', this.zosmfHost);
+    headers.append('ZOSMF-port', this.zosmfPort.toString());
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.delete(`${url}?${query}`, {headers: headers})
+      .mergeMap(() => this.updateWorkflow(step.workflow));
   }
 
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {
