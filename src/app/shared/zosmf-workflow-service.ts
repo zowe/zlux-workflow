@@ -384,6 +384,7 @@ export class ZosmfWorkflowService {
       headers.append('ZOSMF-port', this.zosmfPort.toString());
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       return this.http.put(url, data, {headers: headers})
+        .map((res: Response) => this.checkError(res))
         .mergeMap(() => this.updateWorkflow(step.workflow));
   }
 
@@ -418,7 +419,17 @@ export class ZosmfWorkflowService {
     headers.append('ZOSMF-port', this.zosmfPort.toString());
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.delete(`${url}?${query}`, {headers: headers})
+      .map((res: Response) => this.checkError(res))
       .mergeMap(() => this.updateWorkflow(step.workflow));
+  }
+
+  // checkError throws response as an error if repsonse shape looks like an error
+  private checkError(res: Response): Response {
+    const json = res.json();
+    if ((json as any).errorData) {
+      throw res;
+    }
+    return res;  
   }
 
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {
