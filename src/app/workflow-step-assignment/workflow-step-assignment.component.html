@@ -7,9 +7,43 @@
 
   Copyright Contributors to the Zowe Project.
 -->
-<p>
-
-</p>
+<div class="assignee-list">
+  <div
+    class="assignee-list-title"
+    i18n="view title|Title of Assignment view@@assignment-view-title"
+  >Assignees</div>
+  <div class="assignee" *ngFor="let assignee of assignees">
+    <div class="assignee-id">{{assignee}}</div>
+    <button
+      type="button"
+      class="button button-remove"
+      (click)="removeAssignee(assignee)"
+      i18n-title="tooltip|Tooltip of Remove Assignee button@@remove-assignee-tooltip"
+      title="Remove assignee">
+      &times;
+    </button>
+  </div>
+  <form class="add-assignee-form" #addAssigneForm="ngForm">
+    <input type="text"
+      zluxInputText
+      class="userid-input"
+      name="userid"
+      maxlength="8"
+      required
+      [(ngModel)]="userid"
+      i18n-placeholder="label|Label for User ID text field@@assignee-userid-label"
+      placeholder="User ID"
+    >
+    <zlux-button
+      [disabled]="!addAssigneForm.valid"
+      [callToAction]="true"
+      [lightSkin]="false"
+      i18n-label="button label|Label of the button that adds an assignee for Workflow Step@@add-assignee-button-label"
+      label="Add"
+      (onClick)="addAssignee(userid)"
+    ></zlux-button>
+  </form>
+</div>
 <!--
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies

@@ -8,6 +8,89 @@
   Copyright Contributors to the Zowe Project.
 */
 
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.button {
+  border-radius: 2px;
+  height: 29px;
+  min-width: 51px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  border: 0;
+  padding: 5px 13px;
+  color: #000;
+}
+
+.button:hover {
+  background-color: #0D5D8D;
+  color: #FFF;
+}
+
+.button-spacer {
+  width: 1px;
+  height: 19px;
+  background-color: #D9D9D9;
+  display: inline-block;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.button-remove {
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 700;
+  font-weight: 800;
+  height: 29px;
+  margin-left: 0px;
+  margin-right: 5px;
+  min-width: 19px;
+  padding: 2px 2px 2px 2px;
+  width: 29px;
+}
+
+.add-assignee-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.assignee-list {
+  flex: 1 1 auto;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.assignee-list-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.assignee {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.assignee-id {
+  width: 200px;
+  margin: 3px 7px 3px 0; 
+}
+
+.userid-input {
+  flex: 0 0 auto;
+  width: 200px;
+}
+
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
