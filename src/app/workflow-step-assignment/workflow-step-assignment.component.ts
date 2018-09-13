@@ -27,6 +27,7 @@ import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
 export class WorkflowStepAssignmentComponent implements OnInit {
   @Input() step: WorkflowStep;
   userid: string;
+  isVeilEnabled = false;
   constructor(
     private zosmfWorkflowService: ZosmfWorkflowService,
     private loggerService: LoggerService
@@ -43,20 +44,32 @@ export class WorkflowStepAssignmentComponent implements OnInit {
   }
 
   addAssignee(userid: string): void {
+    this.showVeil();
     this.zosmfWorkflowService.assignStepToUser(this.step, userid)
       .finally(() => this.userid = '')
+      .finally(() => this.hideVeil())
       .subscribe(
-        () => logger.info(`step ${this.step.name} assigned to ${userid}`),
+        () => logger.debug(`step ${this.step.name} assigned to ${userid}`),
         (err) => this.loggerService.zosmfError(err)
       );
   }
 
   removeAssignee(userid: string): void {
+    this.showVeil();
     this.zosmfWorkflowService.removeUserFromStepAssignees(this.step, userid)
+      .finally(() => this.hideVeil())
       .subscribe(
-        () => logger.info(`${userid} has been removed from assignees list of ${this.step.name}`),
+        () => logger.debug(`${userid} has been removed from assignees list of ${this.step.name}`),
         (err) => this.loggerService.zosmfError(err)
       );
+  }
+
+  private showVeil(): void {
+    this.isVeilEnabled = true;
+  }
+
+  private hideVeil(): void {
+    this.isVeilEnabled = false;
   }
 
 }
