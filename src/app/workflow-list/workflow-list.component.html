@@ -49,6 +49,7 @@
       [columns]="columnMetaData | zluxTableMetadataToColumns"
       [customPaginator]="true"
       [paginator]="false"
+      [dynamicPageSize]="true"
       [customTemplates]="{'workflowName': nameColumnTemplate,'workflowDescription': descriptionColumnTemplate, 'workflowVersion': versionColumnTemplate,'owner': ownerColumnTemplate, 'system': systemColumnTemplate,'statusName': statusColumnTemplate, 'percentComplete': percentCompleteColumnTemplate}"
       [editable]="false"
       [emptyMessage]="getEmptyMesssage()"
