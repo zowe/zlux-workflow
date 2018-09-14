@@ -108,7 +108,7 @@ export class WorkflowAppComponent implements AfterContentInit {
       loginService.host = this.defaultZosmfServer.host;
       loginService.port = this.defaultZosmfServer.port;
       loginService.checkAuth()
-        .then(_ => this.login(), _ => this.zosmfLoginComponent.show())
+        .then(_ => this.login(), _ => this.zosmfLoginComponent.show());
     }
     this.setupCloseHandler();
   }
