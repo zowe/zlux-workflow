@@ -83,12 +83,12 @@ export class ZosmfServerConfigComponent {
   unsavedChanges(): boolean {
     if (this.configService.getLocalConfig().zosmfServers.length != this.config.zosmfServers.length)
       { return true; }
-    if (this.configService.getLocalConfig().defaultZosmfServer.host != this.config.defaultZosmfServer.host &&
+    if (this.configService.getLocalConfig().defaultZosmfServer.host != this.config.defaultZosmfServer.host ||
         this.configService.getLocalConfig().defaultZosmfServer.port != this.config.defaultZosmfServer.port)
       { return true; }
     for (let check = this.config.zosmfServers.length; check--;)
     {
-      if (this.config.zosmfServers[check].host != this.configService.getLocalConfig().zosmfServers[check].host &&
+      if (this.config.zosmfServers[check].host != this.configService.getLocalConfig().zosmfServers[check].host ||
       this.config.zosmfServers[check].port != this.configService.getLocalConfig().zosmfServers[check].port)
       { return true; }
     }
@@ -119,22 +119,22 @@ export class ZosmfServerConfigComponent {
   }
 
   reload(): void {
-      this.globalVeilService.showVeil();
-      this.configService
-        .getConfig()
-        .then(config => (this.config = config))
-        .then(_ => setTimeout(() => this.test(), 0))
-        .then(_ => this.globalVeilService.hideVeil())
-        .catch(err => {
-          this.globalVeilService.hideVeil()
-          let errorTitle: string = "Error";
-          let errorMessage: string = "Server configuration not found.";
-          const options = {
-            blocking: true
-          };
-            this.popupEnabled = true;
-            this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
-          });
+    this.globalVeilService.showVeil();
+    this.configService
+      .getConfig()
+      .then(config => (this.config = config))
+      .then(_ => setTimeout(() => this.test(), 0))
+      .then(_ => this.globalVeilService.hideVeil())
+      .catch(err => {
+        this.globalVeilService.hideVeil()
+        let errorTitle: string = "Error";
+        let errorMessage: string = "Server configuration not found.";
+        const options = {
+          blocking: true
+        };
+          this.popupEnabled = true;
+          this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
+        });
   }
 
   remove(zosmfServer: ZosmfServer): void {
