@@ -22,7 +22,8 @@ import {
   ZluxInputTextModule,
   ZluxCheckboxModule,
   ZluxPaginatorModule,
-  ZluxVeilModule
+  ZluxVeilModule,
+  ZluxErrorReportModule,
 } from '@zlux/widgets';
 import { LoggerService } from './shared/logger-service';
 import { GlobalVeilService } from './shared/global-veil-service';
@@ -76,6 +77,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     ZluxPopupWindowModule,
     ZluxPopupManagerModule,
     ZluxVeilModule,
+    ZluxErrorReportModule,
   ],
   providers: [
     LoggerService,

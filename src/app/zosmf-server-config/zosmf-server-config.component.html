@@ -32,7 +32,7 @@
   </div>
 </div>
 <zosmf-login #zosmflogin on-loggedIn="login()" on-canceled="loginCanceled()"></zosmf-login>
-<zlux-popup-manager>
+<zlux-popup-manager *ngIf="popupEnabled">
 </zlux-popup-manager>
 <!-- 
   This program and the accompanying materials are

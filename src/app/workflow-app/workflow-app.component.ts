@@ -14,7 +14,8 @@ import {
   AfterContentInit,
   Component,
   Inject,
-  ViewChild
+  ViewChild,
+  HostListener,
   } from '@angular/core';
 import {
   Angular2InjectionTokens,
@@ -42,6 +43,7 @@ import { ZosmfServer } from '../shared/zosmf-server-config';
 import { ZosmfServerConfigComponent } from '../zosmf-server-config/zosmf-server-config.component';
 import { ZosmfServerConfigService } from '../shared/zosmf-server-config.service';
 import { ZosmfWorkflowService } from '../shared/zosmf-workflow-service';
+import { ZluxPopupManagerService, ZluxErrorSeverity } from '@zlux/widgets';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
@@ -85,6 +87,7 @@ export class WorkflowAppComponent implements AfterContentInit {
   nextWorkflowStepIsReady: boolean = false;
   viewCreateWorkflow: boolean = false;
   activeMenuItem: WorkflowView = 'My Tasks';
+  popupEnabled: boolean = true;
 
   constructor(
     @Inject(Angular2InjectionTokens.LAUNCH_METADATA) private launchMetadata: WorkflowAppLaunchMetadata,
@@ -94,8 +97,10 @@ export class WorkflowAppComponent implements AfterContentInit {
     private loggerService: LoggerService,
     public globalVeilService: GlobalVeilService,
     private loginService: ZosmfLoginService,
-    private zosmfWorkflowService: ZosmfWorkflowService
+    private zosmfWorkflowService: ZosmfWorkflowService,
+    private popupManager: ZluxPopupManagerService
   ) {
+    popupManager.setLogger(logger)
     this.configured = configService.configured;
     if (this.configured) {
       this.defaultZosmfServer = configService.defaultZosmfServer;
@@ -105,6 +110,26 @@ export class WorkflowAppComponent implements AfterContentInit {
       loginService.checkAuth()
         .then(_ => this.login(), _ => this.zosmfLoginComponent.show());
     }
+    this.setupCloseHandler();
+  }
+
+  setupCloseHandler(): void {
+    this.windowActions.registerCloseHandler(():Promise<void>=> {
+      return new Promise((resolve,reject)=> {
+          if (this.zosmfServerConfigComponent.unsavedChanges() == true)
+          {
+            let buttons = ["Save & Exit", "Exit", "Cancel"];
+            const options = {
+              blocking: true,
+              buttons: buttons
+            };
+            this.zosmfServerConfigComponent.togglePopup(false);
+            this.popupManager.reportError(ZluxErrorSeverity.INFO, "Unsaved Changes", "You have unsaved changes in your Configuration menu. Are you sure you wish to exit?", options);
+            reject();
+          }
+        resolve();
+      });
+    });
   }
 
   initWorkflowList(): void {
@@ -132,6 +157,24 @@ export class WorkflowAppComponent implements AfterContentInit {
     this.selectedWorkflow = workflow;
   }
 
+  onPopupMenuSelected(event): void {
+    if (event.target.innerText == " Save ")
+    { this.zosmfServerConfigComponent.ok();
+    } 
+    else if (event.target.innerText == " Go Back ")
+    { this.activeMenuItem = 'Configuration';
+      this.zosmfServerConfigComponent.test();
+    } 
+    else if (event.target.innerText == " Exit ")
+    { this.windowActions.registerCloseHandler(null); 
+      this.windowActions.close();
+    }
+    else if (event.target.innerText == " Save & Exit ")
+    { this.zosmfServerConfigComponent.save();
+      this.windowActions.close();
+    }
+  }
+
   hasSelectedStep(): boolean {
     return (this.selectedStep && (this.selectedStep.isJclStep() || this.selectedStep.isSimpleStep()));
   }
@@ -141,10 +184,12 @@ export class WorkflowAppComponent implements AfterContentInit {
   }
 
   showMyTasks(): void {
+    this.serverConfigNotSaved();
     this.activeMenuItem = 'My Tasks';
   }
 
   showWorkflows(): void {
+    this.serverConfigNotSaved();
     this.activeMenuItem = 'Workflows';
     this.workflowListComponent.update();
   }
@@ -155,8 +200,22 @@ export class WorkflowAppComponent implements AfterContentInit {
   }
 
   showWarnings(): void {
+    this.serverConfigNotSaved();
     this.activeMenuItem = 'Warnings';
     this.workflowWarningsComponent.update();
+  }
+
+  serverConfigNotSaved(): void {
+    if (this.activeMenuItem == 'Configuration' && this.zosmfServerConfigComponent.unsavedChanges() == true)
+      { 
+        let buttons = ["Continue", "Save", "Go Back"];
+        const options = {
+          blocking: true,
+          buttons: buttons
+        };
+        this.zosmfServerConfigComponent.togglePopup(false);
+        this.popupManager.reportError(ZluxErrorSeverity.INFO, "Unsaved Changes", "You have unsaved changes in your Configuration menu.", options);
+      }
   }
 
   showView(view: WorkflowView): void {
