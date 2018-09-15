@@ -38,6 +38,14 @@
         </context-group>
         <note priority="1" from="description">Title of Properties menu item</note>
         <note priority="1" from="meaning">menu item</note>
+      </trans-unit><trans-unit id="new-workflow-menu-item" datatype="html">
+        <source>New workflow</source><target state="new">Создать процесс</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-list/workflow-list.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Title of New Workflow menu item</note>
+        <note priority="1" from="meaning">menu item</note>
       </trans-unit><trans-unit id="ok-button-label" datatype="html">
         <source>OK</source><target state="new">OK</target>
         <context-group purpose="location">
@@ -403,38 +411,34 @@
         </context-group>
         <note priority="1" from="description">Title of Z/osmf port label</note>
         <note priority="1" from="meaning">label</note>
-      </trans-unit><trans-unit id="b1cb67f0a85b89a57ebc2ed7396731e78a752fc4" datatype="html">
+      </trans-unit><trans-unit id="online-status-label" datatype="html">
         <source>Online</source><target state="new">Доступен</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">24</context>
         </context-group>
-        <note priority="1" from="description">online-status-label</note>
-        <note priority="1" from="meaning">Label indicating that the server is online</note>
-      </trans-unit><trans-unit id="c0ce13a5d6a6f4baae09f208ca71b67f76aae617" datatype="html">
+        <note priority="1" from="description">Label indicating that the server is online</note>
+      </trans-unit><trans-unit id="offline-status-label" datatype="html">
         <source>Offline</source><target state="new">Недоступен</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">25</context>
         </context-group>
-        <note priority="1" from="description">offline-status-label</note>
-        <note priority="1" from="meaning">Label indicating that the server is offline</note>
-      </trans-unit><trans-unit id="4353c7257d39616e6051d7129fbfc842c17e8376" datatype="html">
+        <note priority="1" from="description">Label indicating that the server is offline</note>
+      </trans-unit><trans-unit id="unknown-status-label" datatype="html">
         <source>Unknown</source><target state="new">Неизвестно</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">26</context>
         </context-group>
-        <note priority="1" from="description">unknown-status-label</note>
-        <note priority="1" from="meaning">Label when availability of the server is unknown</note>
-      </trans-unit><trans-unit id="77f189fd3c83a83930d38950fe23f973b3e99937" datatype="html">
-        <source>Testing</source><target state="new">Проверка...</target>
+        <note priority="1" from="description">Label when availability of the server is unknown</note>
+      </trans-unit><trans-unit id="testing-status-label" datatype="html">
+        <source>Testing</source><target state="new">Проверка</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server/zosmf-server.component.ts</context>
           <context context-type="linenumber">27</context>
         </context-group>
-        <note priority="1" from="description">testing-status-label</note>
-        <note priority="1" from="meaning">Label when availability of the server is being tested</note>
+        <note priority="1" from="description">Label when availability of the server is being tested</note>
       </trans-unit><trans-unit id="test-title" datatype="html">
         <source>Test</source><target state="new">Проверить</target>
 

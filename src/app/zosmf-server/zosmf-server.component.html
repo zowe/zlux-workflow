@@ -21,10 +21,10 @@
   <div class="status-indicator" [ngClass]="getStatusIndicatorClass()"></div>
   <div class="status-indicator-text" [ngClass]="getStatusIndicatorTextClass()">
     <ng-container [ngSwitch]="status">
-      <ng-container *ngSwitchCase="'online'" i18n="Label indicating that the server is online|online-status-label">Online</ng-container>
-      <ng-container *ngSwitchCase="'offline'" i18n="Label indicating that the server is offline|offline-status-label">Offline</ng-container>
-      <ng-container *ngSwitchCase="'unknown'" i18n="Label when availability of the server is unknown|unknown-status-label">Unknown</ng-container>
-      <ng-container *ngSwitchCase="'testing'" i18n="Label when availability of the server is being tested|testing-status-label">Testing</ng-container>
+      <ng-container *ngSwitchCase="'online'" i18n="Label indicating that the server is online@@online-status-label">Online</ng-container>
+      <ng-container *ngSwitchCase="'offline'" i18n="Label indicating that the server is offline@@offline-status-label">Offline</ng-container>
+      <ng-container *ngSwitchCase="'unknown'" i18n="Label when availability of the server is unknown@@unknown-status-label">Unknown</ng-container>
+      <ng-container *ngSwitchCase="'testing'" i18n="Label when availability of the server is being tested@@testing-status-label">Testing</ng-container>
     </ng-container>
   </div>
   <div class="free-space"></div>
