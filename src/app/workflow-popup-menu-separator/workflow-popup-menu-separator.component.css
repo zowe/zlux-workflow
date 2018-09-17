@@ -1,4 +1,4 @@
-<!--
+/*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
@@ -6,13 +6,16 @@
   SPDX-License-Identifier: EPL-2.0
 
   Copyright Contributors to the Zowe Project.
--->
+*/
 
-<div class="workflow-popup-menu" [hidden]="!isVisible" [ngClass]="position" [@visible]="isVisible">
-  <ng-content select="workflow-popup-menu-item,workflow-popup-menu-separator"></ng-content>
-</div>
+:host {
+  flex: 0 0 auto;
+  height: 1px;
+  background-image: url("../images/spacer.png");
+  background-repeat: no-repeat;
+}
 
-<!--
+/*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
@@ -20,4 +23,4 @@
   SPDX-License-Identifier: EPL-2.0
 
   Copyright Contributors to the Zowe Project.
--->
+*/

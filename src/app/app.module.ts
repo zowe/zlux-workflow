@@ -32,6 +32,7 @@ import { WorkflowListComponent } from './workflow-list/workflow-list.component';
 import { WorkflowNotificationComponent } from './workflow-notification/workflow-notification.component';
 import { WorkflowPopupMenuComponent } from './workflow-popup-menu/workflow-popup-menu.component';
 import { WorkflowPopupMenuItemComponent } from './workflow-popup-menu-item/workflow-popup-menu-item.component';
+import { WorkflowPopupMenuSeparatorComponent } from './workflow-popup-menu-separator/workflow-popup-menu-separator.component';
 import { WorkflowRefreshButtonComponent } from './workflow-refresh-button/workflow-refresh-button.component';
 import { WorkflowStepAssignmentComponent } from './workflow-step-assignment/workflow-step-assignment.component';
 import { WorkflowStepContainerComponent } from './workflow-step-container/workflow-step-container.component';
@@ -57,6 +58,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     WorkflowNotificationComponent,
     WorkflowPopupMenuComponent,
     WorkflowPopupMenuItemComponent,
+    WorkflowPopupMenuSeparatorComponent,
     WorkflowRefreshButtonComponent,
     WorkflowStepAssignmentComponent,
     WorkflowStepContainerComponent,
