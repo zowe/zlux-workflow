@@ -242,8 +242,8 @@
   background-image: url('../images/popup-menu/perform.png');
 }
 
-.icon-properties {
-  background-image: url('../images/popup-menu/properties.png');
+.icon-general {
+  background-image: url('../images/popup-menu/general.png');
 }
 
 .icon-return {
@@ -252,6 +252,10 @@
 
 .icon-skip {
   background-image: url('../images/popup-menu/skip.png');
+}
+
+.icon-output {
+  background-image: url('../images/popup-menu/output.png');
 }
 
 /*

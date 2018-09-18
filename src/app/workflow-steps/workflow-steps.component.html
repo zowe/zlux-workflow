@@ -39,21 +39,22 @@
     </ng-container>
     <div class="dots-menu" (click)="menu.show()">
       <workflow-popup-menu #menu position='left'>
-        <workflow-popup-menu-item (onClick)="showStepInfo(step)">
-          <div item-icon class="icon icon-properties"></div>
-          <div item-title i18n="action menu item title|Title of an action that show properties of Workflow step@@properties-item-title">Properties</div>
-        </workflow-popup-menu-item>
-        <workflow-popup-menu-item *ngIf="step.state === 'Assigned'" (onClick)="acceptStep(step)">
-          <div item-icon class="icon icon-accept"></div>
-          <div item-title i18n="action menu item title|Title of an action that allows the user to accept a Workflow Step for execution@@accept-item-title">Accept</div>
-        </workflow-popup-menu-item>
-        <workflow-popup-menu-item *ngIf="['Ready', 'Failed'].includes(step.state)" (onClick)="performStep(step)">
+        <workflow-popup-menu-item *ngIf="['Ready', 'Failed', 'Assigned'].includes(step.state)" (onClick)="performStep(step)">
           <div item-icon class="icon icon-perform"></div>
           <div item-title i18n="action menu item title|Title of an action that allows the user to perform a Workflow Step@@perform-item-title">Perform</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep(step)">
-          <div item-icon class="icon icon-return"></div>
-          <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
+        <workflow-popup-menu-item (onClick)="showStepInfo(step)">
+          <div item-icon class="icon icon-general"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows properties and details of Workflow step@@general-item-title">General</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.isJclStep() && ['Complete', 'Failed', 'Submitted'].includes(step.state)" (onClick)="checkStepStatus(step)">
+          <div item-icon class="icon icon-output"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows Output of Workflow step@@output-item-title">Output</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-separator></workflow-popup-menu-separator>
+        <workflow-popup-menu-item *ngIf="step.state === 'Assigned'" (onClick)="acceptStep(step)">
+          <div item-icon class="icon icon-accept"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to accept a Workflow Step for execution@@accept-item-title">Accept</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="skipStep(step)">
           <div item-icon class="icon icon-skip"></div>
@@ -66,6 +67,10 @@
         <workflow-popup-menu-item (onClick)="showAssignmentView(step)">
           <div item-icon class="icon icon-assignment"></div>
           <div item-title i18n="action menu item title|Title of an action that shows Assignment view for Workflow Step@@assignment-item-title">Assignment</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep(step)">
+          <div item-icon class="icon icon-return"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
         </workflow-popup-menu-item>
       </workflow-popup-menu>
     </div>

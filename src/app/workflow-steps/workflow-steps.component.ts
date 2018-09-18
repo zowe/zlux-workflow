@@ -198,9 +198,21 @@ export class WorkflowStepsComponent implements OnInit {
     this.hoveredWorkflow = workflow;
   }
 
-  performStep(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.perform, step));
+  performStep(step: WorkflowStep): void {
+    if (step.state === 'Assigned') {
+      this.acceptAndPerformStep(step);
+    } else {
+      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
+        WorkflowStepActionID.perform, step));
+    }
+  }
+
+  acceptAndPerformStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.acceptStep(step)
+      .subscribe(
+        () => this.performStep(step),
+        (err) => this.loggerService.zosmfError(err)
+      );
   }
 
   checkStepStatus(step: WorkflowStep) {
