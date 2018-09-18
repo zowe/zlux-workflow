@@ -41,7 +41,7 @@ export class ZosmfServerConfigService {
   {
     popupManager.setLogger(logger);
     this.cachedConfig = this.getLocalConfig();
-    this.uri = RocketMVD.uriBroker.pluginConfigForScopeUri(this.pluginDefinition.getBasePlugin(),'user', 'zosmf', 'server-config')
+    this.uri = ZoweZLUX.uriBroker.pluginConfigForScopeUri(this.pluginDefinition.getBasePlugin(),'user', 'zosmf', 'server-config')
   }
   
   getLocalConfig(): ZosmfServerConfig {
