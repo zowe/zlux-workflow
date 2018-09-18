@@ -40,7 +40,6 @@ export class WorkflowStepContainerComponent
   @Output() stepChangeRequested = new EventEmitter<WorkflowStepAction>();
 
   selectedView: string = 'perform';
-  enabledViews: string[] = ['perform', 'general', 'status', 'assignment'];
 
   ngOnInit(): void {
 
@@ -56,10 +55,6 @@ export class WorkflowStepContainerComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     logger.debug(`workflow-step-container changes=${changes}`)
-  }
-
-  isDisabled(view: string): boolean {
-    return !this.enabledViews.includes(view);
   }
 
   onWorkflowStepPluginAction(stepAction: WorkflowStepPluginAction) {
@@ -91,5 +86,9 @@ export class WorkflowStepContainerComponent
   onStepChangeRequested(stepAction: WorkflowStepAction): void {
     this.processStepAction(stepAction);
     this.stepChangeRequested.emit(stepAction);
+  }
+
+  selectView(view: string): void {
+    this.selectedView = view;
   }
 }

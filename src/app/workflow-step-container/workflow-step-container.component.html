@@ -2,15 +2,34 @@
   <div class="step-container-title">
     <!-- <div class="step-title">{{step.title}}</div> -->
     <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
-    <select class="view-selector"
-            [(ngModel)]="selectedView">
-      <option [disabled]="isDisabled('general')" value="general" i18n="view|Title of General view@@general-view">General</option>
-      <option [disabled]="isDisabled('perform')" value="perform" i18n="view|Title of Perform view@@perform-view">Perform</option>
-      <option [disabled]="isDisabled('details')" value="details" i18n="view|Title of Details view@@details-view">Details</option>
-      <option [disabled]="isDisabled('notes')" value="notes" i18n="view|Title of Notes view@@notes-view">Notes</option>
-      <option [disabled]="isDisabled('status')" value="status" i18n="view|Title of Status view@@status-view">Status</option>
-      <option [disabled]="isDisabled('assignment')" value="assignment" i18n="view|Title of Assignment view@@assignment-view">Assignment</option>
-    </select>
+    <div class="view-selector-title">
+      <ng-container [ngSwitch]="selectedView">
+        <ng-container *ngSwitchCase="'general'"i18n="view|Title of General view@@general-view">General</ng-container>
+        <ng-container *ngSwitchCase="'perform'"i18n="view|Title of Perform view@@perform-view">Perform</ng-container>
+        <ng-container *ngSwitchCase="'notes'"i18n="view|Title of Notes view@@notes-view">Notes</ng-container>
+        <ng-container *ngSwitchCase="'status'"i18n="view|Title of Status view@@status-view">Status</ng-container>
+      </ng-container>
+    </div>
+    <div class="view-selector-arrow" (click)="menu.show()">
+      <workflow-popup-menu #menu position='left'>
+        <workflow-popup-menu-item (onClick)="selectView('general')">
+          <div item-icon class="icon icon-general"></div>
+          <div item-title i18n="view|Title of General view@@general-view">General</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('perform')">
+          <div item-icon class="icon icon-perform"></div>
+          <div item-title i18n="view|Title of Perform view@@perform-view">Perform</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('notes')">
+          <div item-icon class="icon icon-notes"></div>
+          <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('status')">
+          <div item-icon class="icon icon-status"></div>
+          <div item-title i18n="view|Title of Status view@@status-view">Status</div>
+        </workflow-popup-menu-item>
+      </workflow-popup-menu>
+    </div>
   </div>
   <div class="step-container-spacer"></div>
   <zlux-flyover #workflowFlyover>
