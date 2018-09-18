@@ -89,15 +89,22 @@
 }
 
 .dots-menu {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  margin: 0 3px;
+  position: relative;
+}
+
+.dots-menu:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-image: url('../images/dots.png');
   background-position: center;
   background-repeat: no-repeat;
-  cursor: pointer;
-  height: 100%;
-  width: 16px;
-  height: 16px;
-  margin: 0 5px;
-  position: relative;
+  transform: rotate(90deg);
 }
 
 .task-ready {
