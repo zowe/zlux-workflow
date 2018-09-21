@@ -34,6 +34,7 @@
       [columns]="columnMetaData | zluxTableMetadataToColumns"
       [customPaginator]="true"
       [paginator]="false"
+      [dynamicPageSize]="true"
       [customTemplates]="{'code': codeColumnTemplate, 'text': textColumnTemplate, 'date': dateColumnTemplate, 'workflow': workflowColumnTemplate}"
       [editable]="false"
       [emptyMessage]="getEmptyMesssage()"
