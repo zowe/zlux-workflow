@@ -10,7 +10,7 @@
 -->
 <div class="warnings-container" (keyup.esc)="cancelSearch()">
   <div class="header">
-    <div class="title">Warnings</div>
+    <div class="title" i18n="warnings|Title of Warnings@@warnings-title">Warnings</div>
     <div class="count">{{messages.length}}</div>
   </div>
   <div class="filters">
@@ -34,6 +34,7 @@
       [columns]="columnMetaData | zluxTableMetadataToColumns"
       [customPaginator]="true"
       [paginator]="false"
+      [dynamicPageSize]="true"
       [customTemplates]="{'code': codeColumnTemplate, 'text': textColumnTemplate, 'date': dateColumnTemplate, 'workflow': workflowColumnTemplate}"
       [editable]="false"
       [emptyMessage]="getEmptyMesssage()"
