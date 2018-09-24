@@ -42,6 +42,22 @@
       label="Add"
       (onClick)="addAssignee(userid)"
     ></zlux-button>
+    <zlux-button
+      [disabled]="!dirty"
+      [callToAction]="true"
+      [lightSkin]="false"
+      i18n-label="button label|Label of the button that saves changes made for assignment list@@save-changes-button-label"
+      label="Save"
+      (onClick)="applyChanges()"
+    ></zlux-button>
+    <zlux-button
+      [disabled]="!dirty"
+      [callToAction]="false"
+      [lightSkin]="false"
+      i18n-label="button label|Label of the button that cancels changes made for assignement list@@cancel-changes-button-label"
+      label="Cancel"
+      (onClick)="cancelChanges()"
+    ></zlux-button>
   </form>
   <zlux-veil [isEnabled]="isVeilEnabled" [enableSpinner]="true"></zlux-veil>
 </div>
