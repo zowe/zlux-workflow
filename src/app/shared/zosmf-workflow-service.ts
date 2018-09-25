@@ -14,7 +14,6 @@ import {Http, Response, Headers} from '@angular/http';
 import {Injectable} from '@angular/core';
 import * as Rx from 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import {Assignee} from './assignee';
 import {WorkflowStep} from './workflow-step';
 import {WorkflowVariable} from './workflow-variable';
 import {Workflow} from "./workflow";
@@ -353,30 +352,50 @@ export class ZosmfWorkflowService {
       .mergeMap(() => this.updateWorkflow(step.workflow));
     }
 
-  addStepAssignees(step: WorkflowStep, assignees: Assignee[], comment?: string): Observable<void> {
-    const workflow = step.workflow;
-    const jsonRequest = {
-      'workflowKey': workflow.workflowKey,
-      'workflowName': workflow.workflowName,
-      'steps': [step.name],
-      // WorkflowComment key begins with a capital W, this is not a mistake
-      // Other keys begin with a lowercase letter
-      'WorkflowComment': comment || '',
-      'assignees': assignees,
-      'notify': false
-    };
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
-    const data = JSON.stringify(jsonRequest);
-    const headers = new Headers();
-    headers.append('ZOSMF-host', this.zosmfHost);
-    headers.append('ZOSMF-port', this.zosmfPort.toString());
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.put(url, data, {headers: headers})
-      .map((res: Response) => this.checkError(res))
-      .mergeMap(() => this.updateWorkflow(step.workflow));
+    assignStepToUser(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, userid, 'user', comment);
+    }
+
+    assignStepToGroup(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, groupid, 'group', comment);
+    }
+
+    private assignStep(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
+      const workflow = step.workflow;
+      const jsonRequest = {
+        'workflowKey': workflow.workflowKey,
+        'workflowName': workflow.workflowName,
+        'steps': [step.name],
+        // WorkflowComment key begins with a capital W, this is not a mistake
+        // Other keys begin with a lowercase letter
+        'WorkflowComment': comment || '',
+        'assignees': [
+          {
+            id: id,
+            type: type
+          }
+        ],
+        'notify': false
+      };
+      const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+      const data = JSON.stringify(jsonRequest);
+      const headers = new Headers();
+      headers.append('ZOSMF-host', this.zosmfHost);
+      headers.append('ZOSMF-port', this.zosmfPort.toString());
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.put(url, data, {headers: headers})
+        .map((res: Response) => this.checkError(res));
   }
 
-  removeStepAssignees(step: WorkflowStep, assignees: Assignee[], comment?: string): Observable<void> {
+  removeUserFromStepAssignees(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, userid, 'user', comment);
+  }
+
+  removeGroupFromStepAssignees(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, groupid, 'group', comment);
+  }
+
+  private removeStepAssignee(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
     const workflow = step.workflow;
     const jsonRequest = {
       'workflowKey': workflow.workflowKey,
@@ -385,7 +404,12 @@ export class ZosmfWorkflowService {
       // WorkflowComment key begins with a capital W, this is not a mistake
       // Other keys begin with a lowercase letter
       'WorkflowComment': comment || '',
-      'assignees': assignees
+      'assignees': [
+        {
+          id: id,
+          type: type
+        }
+      ]
     };
     const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
     const query = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
@@ -394,17 +418,15 @@ export class ZosmfWorkflowService {
     headers.append('ZOSMF-port', this.zosmfPort.toString());
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.delete(`${url}?${query}`, {headers: headers})
-      .map((res: Response) => this.checkError(res))
-      .mergeMap(() => this.updateWorkflow(step.workflow));
+      .map((res: Response) => this.checkError(res));
   }
 
   // checkError throws response as an error if repsonse shape looks like an error
-  private checkError(res: Response): Response {
+  private checkError(res: Response): void {
     const json = res.json();
     if ((json as any).errorData) {
       throw res;
     }
-    return res;
   }
 
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {

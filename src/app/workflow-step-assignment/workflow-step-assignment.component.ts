@@ -19,8 +19,7 @@ import { logger } from '../shared/logger';
 import { LoggerService } from '../shared/logger-service';
 import { WorkflowStep } from '../shared/workflow-step';
 import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
-import { Assignee } from '../shared/assignee';
-import { mergeMap } from 'rxjs-compat/operator/mergeMap';
+import * as Rx from 'rxjs/Rx';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,7 +31,8 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
   @Input() step: WorkflowStep;
   userid: string;
   isVeilEnabled = false;
-  private history: AssignmentOperation[] = [];
+  private added: string[] = [];
+  private removed: string[] = [];
   private currentAssignees: string[] = [];
 
   constructor(
@@ -41,6 +41,12 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+  }
+
+  init(): void {
+    this.currentAssignees =  this.getStepAssignees();
+    this.added = [];
+    this.removed = [];
   }
 
   getStepAssignees(): string[] {
@@ -54,62 +60,56 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
     return this.currentAssignees;
   }
 
-  get added(): string[] {
-    return this.history.filter(op => op.type === 'add').map(op => op.userid);
-  }
-
-  get removed(): string[] {
-    return this.history.filter(op => op.type === 'remove').map(op => op.userid);
-  }
-
   addAssignee(userid: string): void {
-    this.applyOp({type: 'add', userid: userid});
+    if (!this.currentAssignees.includes(userid)) {
+      this.currentAssignees.push(userid);
+      if (!this.removed.includes(userid)) {
+        this.added.push(userid);
+      } else {
+        this.removed = this.removed.filter(id => id !== userid)
+      }
+    }
     this.userid = '';
   }
 
   removeAssignee(userid: string): void {
-    this.applyOp({type: 'remove', userid});
-  }
-
-  private applyOp(op: AssignmentOperation): boolean {
-    if (op.type === 'add') {
-      if (!this.currentAssignees.includes(op.userid)) {
-        this.currentAssignees.push(op.userid);
-        this.history.push(op);
-        return true;
+    if (this.currentAssignees.includes(userid)) {
+      this.currentAssignees = this.currentAssignees.filter(id => id !== userid);
+      if (!this.added.includes(userid)) {
+        this.removed.push(userid);
+      } else {
+        this.added = this.added.filter(id => id !== userid)
       }
-      return false;
-    } else if (op.type === 'remove') {
-      const index = this.currentAssignees.indexOf(op.userid)
-      if (index !== -1) {
-        this.currentAssignees.splice(index, 1);
-        this.history.push(op);
-        return true;
-      }
-      return false;
-    } else {
-      return false;
     }
   }
 
   applyChanges(): void {
-    this.showVeil()
-    this.zosmfWorkflowService.addStepAssignees(this.step, this.added.map(userid => <Assignee>{id: userid, type: 'userid'}))
-    .mergeMap(
-      () => this.zosmfWorkflowService.removeStepAssignees(this.step, this.removed.map(userid => <Assignee>{id: userid, type: 'userid'}))
-    )
-    .finally(() => this.currentAssignees =  this.getStepAssignees())
-    .finally(() => this.history =  [])
-    .finally(() => this.hideVeil())
-    .subscribe(
-      () => logger.debug(`step ${this.step.name} assignee list changed`),
-      (err) => this.loggerService.zosmfError(err)
+    const added = this.added.map(
+      userid => this.zosmfWorkflowService.assignStepToUser(this.step, userid).catch(err => this.catchError(err))
     );
+    const removed = this.removed.map(
+      userid => this.zosmfWorkflowService.removeUserFromStepAssignees(this.step, userid).catch(err => this.catchError(err))
+    );
+    const observables = [...added, ...removed];
+    this.showVeil();
+    Rx.Observable.forkJoin(observables)
+      .defaultIfEmpty([])
+      .mergeMap(() => this.zosmfWorkflowService.updateWorkflow(this.step.workflow))
+      .finally(() => this.init())
+      .finally(() => this.hideVeil())
+      .subscribe(
+        () => logger.info(`step ${this.step.name} assignee list changed`),
+        (err) => this.loggerService.zosmfError(err)
+      );
+  }
+
+  catchError(err: Response): Rx.Observable<void> {
+    this.loggerService.zosmfError(err);
+    return Rx.Observable.of();
   }
 
   cancelChanges(): void {
-    this.currentAssignees =  this.getStepAssignees();
-    this.history = [];
+    this.init();
 }
 
   private showVeil(): void {
@@ -122,20 +122,14 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['step']) {
-      this.currentAssignees =  this.getStepAssignees();
-      this.history = [];
+      this.init();
     }
   }
 
   get dirty(): boolean {
-    return this.history.length > 0;
+    return this.added.length > 0 || this.removed.length > 0;
   }
 
-}
-
-interface AssignmentOperation {
-  type: 'add' | 'remove';
-  userid: string;
 }
 
 /*
