@@ -31,6 +31,7 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
   @Input() step: WorkflowStep;
   userid: string;
   isVeilEnabled = false;
+  isVisible = true;
   private added: string[] = [];
   private removed: string[] = [];
   private currentAssignees: string[] = [];
@@ -83,7 +84,18 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
     }
   }
 
-  applyChanges(): void {
+  save(): void {
+    this.applyChanges()
+    .subscribe(
+      () => logger.info(`step ${this.step.name} assignee list changed`),
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  applyChanges(): Rx.Observable<any> {
+    if (!this.dirty) {
+      return Rx.Observable.of({});
+    }
     const added = this.added.map(
       userid => this.zosmfWorkflowService.assignStepToUser(this.step, userid).catch(err => this.catchError(err))
     );
@@ -92,15 +104,11 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
     );
     const observables = [...added, ...removed];
     this.showVeil();
-    Rx.Observable.forkJoin(observables)
+    return Rx.Observable.forkJoin(observables)
       .defaultIfEmpty([])
       .mergeMap(() => this.zosmfWorkflowService.updateWorkflow(this.step.workflow))
       .finally(() => this.init())
-      .finally(() => this.hideVeil())
-      .subscribe(
-        () => logger.info(`step ${this.step.name} assignee list changed`),
-        (err) => this.loggerService.zosmfError(err)
-      );
+      .finally(() => this.hideVeil());
   }
 
   catchError(err: Response): Rx.Observable<void> {
@@ -110,7 +118,7 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
 
   cancelChanges(): void {
     this.init();
-}
+  }
 
   private showVeil(): void {
     this.isVeilEnabled = true;
@@ -124,6 +132,28 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
     if (changes['step']) {
       this.init();
     }
+  }
+
+  show(): void {
+    this.init();
+    this.isVisible = true;
+  }
+
+  hide(): void {
+    this.isVisible = false;
+  }
+
+  onClose(): void {
+    this.cancel();
+  }
+
+  ok(): void {
+    this.applyChanges().subscribe(() => this.hide());
+  }
+
+  cancel(): void {
+    this.cancelChanges();
+    this.hide();
   }
 
   get dirty(): boolean {

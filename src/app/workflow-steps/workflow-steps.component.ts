@@ -25,7 +25,8 @@ import { WorkflowStep,
   } from '../shared/workflow-step';
 import { WorkflowStepAction,
    WorkflowStepActionType,
-   WorkflowStepActionID
+   WorkflowStepActionID,
+   WorkflowStepSubActionID
   } from '../shared/workflow-step-action';
 import { Workflow } from '../shared/workflow';
 import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
@@ -226,10 +227,11 @@ export class WorkflowStepsComponent implements OnInit {
       step));
   }
 
-  showAssignmentView(step: WorkflowStep) {
+  showAssignmentDialog(step: WorkflowStep) {
     this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.assignment,
-      step));
+      WorkflowStepActionID.general,
+      step,
+      WorkflowStepSubActionID.assignment));
   }
 }
 

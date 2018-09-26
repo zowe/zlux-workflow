@@ -62,8 +62,7 @@
       (stepChangeRequested)="onStepChangeRequested($event)">
   </workflow-step-wizard>
   <workflow-step-assignment
-      [hidden] = "selectedView !== 'assignment'"
-      #workflowstepwizard
-      [step]="step">
+    #workflowstepassignment
+    [step]="step">
   </workflow-step-assignment>
-  </div>
+</div>

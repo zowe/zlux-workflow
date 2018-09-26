@@ -8,7 +8,8 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from '@angular/core';
 import {
   Angular2InjectionTokens,
@@ -17,11 +18,12 @@ import { logger } from '../shared/logger';
 import { Observable } from 'rxjs/Observable';
 import { LoggerService } from '../shared/logger-service';
 import { WorkflowStep } from '../shared/workflow-step';
-import { WorkflowStepAction, WorkflowStepActionID} from '../shared/workflow-step-action';
+import { WorkflowStepAction, WorkflowStepActionID, WorkflowStepSubActionID} from '../shared/workflow-step-action';
 import { ZosmfLoginService } from '../shared/zosmf-login.service';
 import { ZosmfWorkflowService } from '../shared/zosmf-workflow-service';
 import 'rxjs/add/operator/do';
 import { WorkflowStepPluginAction } from '../shared/workflow-step-plugin-action';
+import { WorkflowStepAssignmentComponent } from '../workflow-step-assignment/workflow-step-assignment.component';
 
 
 @Component({
@@ -38,6 +40,8 @@ export class WorkflowStepContainerComponent
   implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
   @Input() step: WorkflowStep;
   @Output() stepChangeRequested = new EventEmitter<WorkflowStepAction>();
+  @ViewChild('workflowstepassignment')
+  workflowStepAssignmentComponent: WorkflowStepAssignmentComponent;
 
   selectedView: string = 'perform';
 
@@ -81,6 +85,9 @@ export class WorkflowStepContainerComponent
   processStepAction(stepAction: WorkflowStepAction): void {
     this.step = stepAction.step;
     this.selectedView = this.mapActionToView(stepAction.actionID);
+    if (stepAction.subActionID === WorkflowStepSubActionID.assignment) {
+      this.workflowStepAssignmentComponent.show();
+    }
   }
 
   onStepChangeRequested(stepAction: WorkflowStepAction): void {

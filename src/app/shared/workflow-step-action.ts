@@ -25,11 +25,16 @@ export enum WorkflowStepActionID {
   assignment
 }
 
+export enum WorkflowStepSubActionID {
+  assignment
+}
+
 export class WorkflowStepAction {
 
   constructor(readonly actionType: WorkflowStepActionType,
               readonly actionID: WorkflowStepActionID,
-              readonly step: WorkflowStep) {
+              readonly step: WorkflowStep,
+              readonly subActionID?: WorkflowStepSubActionID) {
   }
 }
 
