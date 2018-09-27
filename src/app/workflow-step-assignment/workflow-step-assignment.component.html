@@ -12,7 +12,7 @@
   header="Manage Assignees"
   (onCloseWindow)="onClose()"
   [dark]="true"
-  *ngIf="isVisible"
+  *ngIf="isVisible && step"
   >
     <div class="assignees">
       <div class="assignee-list">

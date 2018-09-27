@@ -8,14 +8,6 @@
   Copyright Contributors to the Zowe Project.
 */
 
-:host {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  overflow: auto;
-  position: relative;
-}
-
 .button {
   border-radius: 2px;
   height: 29px;

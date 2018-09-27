@@ -24,7 +24,7 @@
           <div item-icon class="icon icon-notes"></div>
           <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item (onClick)="selectView('status')">
+        <workflow-popup-menu-item (onClick)="selectView('status')" *ngIf="step.isJclStep()">
           <div item-icon class="icon icon-status"></div>
           <div item-title i18n="view|Title of Status view@@status-view">Status</div>
         </workflow-popup-menu-item>
@@ -61,8 +61,6 @@
       [step]="step"
       (stepChangeRequested)="onStepChangeRequested($event)">
   </workflow-step-wizard>
-  <workflow-step-assignment
-    #workflowstepassignment
-    [step]="step">
-  </workflow-step-assignment>
 </div>
+<workflow-step-assignment #workflowstepassignment [step]="step"></workflow-step-assignment>
+

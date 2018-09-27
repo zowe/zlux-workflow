@@ -31,7 +31,7 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
   @Input() step: WorkflowStep;
   userid: string;
   isVeilEnabled = false;
-  isVisible = true;
+  isVisible = false;
   private added: string[] = [];
   private removed: string[] = [];
   private currentAssignees: string[] = [];
@@ -51,7 +51,7 @@ export class WorkflowStepAssignmentComponent implements OnInit, OnChanges {
   }
 
   getStepAssignees(): string[] {
-    if (this.step.assignees) {
+    if (this.step && this.step.assignees) {
       return this.step.assignees.toLowerCase().split(', ');
     }
     return [];
