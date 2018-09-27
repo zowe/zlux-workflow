@@ -21,22 +21,19 @@ export enum WorkflowStepActionID {
   general,
   perform,
   status,
-  details,
-  assignment
+  details
 }
 
 export enum WorkflowStepSubActionID {
   assignment
 }
 
-export class WorkflowStepAction {
-
-  constructor(readonly actionType: WorkflowStepActionType,
-              readonly actionID: WorkflowStepActionID,
-              readonly step: WorkflowStep,
-              readonly subActionID?: WorkflowStepSubActionID) {
-  }
-}
+export interface WorkflowStepAction {
+  actionType: WorkflowStepActionType;
+  actionID: WorkflowStepActionID;
+  step: WorkflowStep;
+  subActionID?: WorkflowStepSubActionID;
+};
 
 /*
   This program and the accompanying materials are

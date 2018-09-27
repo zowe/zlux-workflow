@@ -75,8 +75,6 @@ export class WorkflowStepContainerComponent
       return 'perform';
       case WorkflowStepActionID.status:
       return 'status';
-      case WorkflowStepActionID.assignment:
-      return 'assignment';
       default:
       return 'general';
     }

@@ -168,7 +168,11 @@ export class WorkflowStepsComponent implements OnInit {
     if (
       ["Ready", "Failed", "Complete", "Submitted"].indexOf(step.state) !== -1
     ) {
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView, WorkflowStepActionID.general, step));
+      this.startStep({
+        actionType: WorkflowStepActionType.selectView,
+        actionID:  WorkflowStepActionID.general,
+        step: step
+      });
     } else if (step.state === "Assigned") {
       this.acceptStep(step);
     }
@@ -203,8 +207,11 @@ export class WorkflowStepsComponent implements OnInit {
     if (step.state === 'Assigned') {
       this.acceptAndPerformStep(step);
     } else {
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-        WorkflowStepActionID.perform, step));
+      this.startStep({
+        actionType: WorkflowStepActionType.selectView,
+        actionID:  WorkflowStepActionID.perform,
+        step: step
+      });
     }
   }
 
@@ -217,21 +224,28 @@ export class WorkflowStepsComponent implements OnInit {
   }
 
   checkStepStatus(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.status, step));
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.status,
+      step: step
+    });
   }
 
   showStepInfo(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.general,
-      step));
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.general,
+      step: step
+    });
   }
 
   showAssignmentDialog(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.general,
-      step,
-      WorkflowStepSubActionID.assignment));
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.general,
+      subActionID: WorkflowStepSubActionID.assignment,
+      step: step
+    });
   }
 }
 
