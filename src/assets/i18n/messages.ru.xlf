@@ -48,77 +48,50 @@
         <note priority="1" from="meaning">menu item</note>
       </trans-unit><trans-unit id="ok-button-label" datatype="html">
         <source>OK</source><target state="new">OK</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-notification/workflow-notification.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
-          <context context-type="linenumber">113</context>
-        </context-group>
+
+
         <note priority="1" from="description">label of OK button|</note>
         <note priority="1" from="meaning">label</note>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-notification/workflow-notification.component.ts</context><context context-type="linenumber">15</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context><context context-type="linenumber">59</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context><context context-type="linenumber">113</context></context-group></trans-unit><trans-unit id="remove-assignee-tooltip" datatype="html">
+        <source>Remove assignee</source><target state="new">Удалить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip of Remove Assignee button</note>
+        <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="general-view" datatype="html">
         <source>General</source><target state="new">Общие</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
+
         <note priority="1" from="description">Title of General view</note>
         <note priority="1" from="meaning">view</note>
-      </trans-unit><trans-unit id="perform-view" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">17</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">27</context></context-group></trans-unit><trans-unit id="perform-view" datatype="html">
         <source>Perform</source><target state="new">Выполнение</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
+
         <note priority="1" from="description">Title of Perform view</note>
         <note priority="1" from="meaning">view</note>
-      </trans-unit><trans-unit id="details-view" datatype="html">
-        <source>Details</source><target state="new">Детали</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <note priority="1" from="description">Title of Details view</note>
-        <note priority="1" from="meaning">view</note>
-      </trans-unit><trans-unit id="notes-view" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">18</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="notes-view" datatype="html">
         <source>Notes</source><target state="new">Заметки</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
+
         <note priority="1" from="description">Title of Notes view</note>
         <note priority="1" from="meaning">view</note>
-      </trans-unit><trans-unit id="status-view" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">19</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">35</context></context-group></trans-unit><trans-unit id="status-view" datatype="html">
         <source>Status</source><target state="new">Статус</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
+
         <note priority="1" from="description">Title of Status view</note>
         <note priority="1" from="meaning">view</note>
-      </trans-unit><trans-unit id="corresponding-workflow" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">20</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="corresponding-workflow" datatype="html">
         <source>Corresponding Workflow</source><target state="new">Связанный рабочий процесс</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
+
+
         <note priority="1" from="description">Workflow for the current step</note>
         <note priority="1" from="meaning">flyover text</note>
-      </trans-unit><trans-unit id="workflow-step-description" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">51</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context><context context-type="linenumber">88</context></context-group></trans-unit><trans-unit id="workflow-step-description" datatype="html">
         <source>Step Description</source><target state="new">Описание шага</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
+
         <note priority="1" from="description">Description of the workflow step</note>
         <note priority="1" from="meaning">flyover text</note>
-      </trans-unit><trans-unit id="refresh-output-tooltip" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="refresh-output-tooltip" datatype="html">
         <source>Refresh Output</source><target state="new">Обновить Output</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-status/workflow-step-status.component.ts</context>
@@ -287,23 +260,81 @@
         </context-group>
         <note priority="1" from="description">Label for a button that shows Assignments Dialog for Workflow Step</note>
         <note priority="1" from="meaning">button label</note>
+      </trans-unit><trans-unit id="perform-item-title" datatype="html">
+        <source>Perform</source><target state="new">Выполнить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to perform a Workflow Step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="general-item-title" datatype="html">
+        <source>General</source><target state="new">Общие</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that shows properties and details of Workflow step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="output-item-title" datatype="html">
+        <source>Output</source><target state="new">Output</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that shows Output of Workflow step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="accept-item-title" datatype="html">
+        <source>Accept</source><target state="new">Принять</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to accept a Workflow Step for execution</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="skip-item-title" datatype="html">
+        <source>Skip</source><target state="new">Пропустить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to skip execution of Workflow Step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="override-complete-item-title" datatype="html">
+        <source>Override Complete</source><target state="new">Завершить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to make step complete without execution</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="assignment-item-title" datatype="html">
+        <source>Assignment</source><target state="new">Назначить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that shows Assignment view for Workflow Step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit><trans-unit id="return-item-title" datatype="html">
+        <source>Return</source><target state="new">Вернуть</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to return Workflow Step that accepted for execution</note>
+        <note priority="1" from="meaning">action menu item title</note>
       </trans-unit><trans-unit id="step-status" datatype="html">
         <source>Status</source><target state="new">Статус</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
+
         <note priority="1" from="description">Step Status</note>
         <note priority="1" from="meaning">status</note>
-      </trans-unit><trans-unit id="workflow-owner" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit><trans-unit id="workflow-owner" datatype="html">
         <source>Owner</source><target state="new">Владелец</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">54</context>
-        </context-group>
+
         <note priority="1" from="description">Owner of the workflow</note>
         <note priority="1" from="meaning">userid</note>
-      </trans-unit><trans-unit id="pending-tasks-filter" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context><context context-type="linenumber">90</context></context-group></trans-unit><trans-unit id="pending-tasks-filter" datatype="html">
         <source>Pending</source><target state="new">Ожидающие</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-task-list/workflow-task-list.component.ts</context>
@@ -345,12 +376,17 @@
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="userid-label" datatype="html">
         <source>User ID</source><target state="new">Пользователь</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
+
         <note priority="1" from="description">Label for User ID text field</note>
         <note priority="1" from="meaning">label</note>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context><context context-type="linenumber">41</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/zosmf-login/zosmf-login.component.ts</context><context context-type="linenumber">25</context></context-group></trans-unit><trans-unit id="add-assignee-button-label" datatype="html">
+        <source>Add</source><target state="new">Добавить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="description">Label of the button that adds an assignee for Workflow Step</note>
+        <note priority="1" from="meaning">button label</note>
       </trans-unit><trans-unit id="userid-required-message" datatype="html">
         <source>User ID is required</source><target state="new">Не указан пользователь</target>
         <context-group purpose="location">
@@ -513,7 +549,7 @@
         <note priority="1" from="description">Tooltip for Save this page button</note>
         <note priority="1" from="meaning">tooltip</note>
       </trans-unit><trans-unit id="test-all-title" datatype="html">
-        <source>Test All</source><target state="new">Проверить&nbsp;все</target>
+        <source>Test All</source><target state="new">Проверить&#160;все</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/zosmf-server-config/zosmf-server-config.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -634,12 +670,17 @@
         <note priority="1" from="meaning">label</note>
       </trans-unit><trans-unit id="cancel-button-label" datatype="html">
         <source>Cancel</source><target state="new">Отмена</target>
+
+        <note priority="1" from="description">Label of the button that cancels changes made for assignement list and closes the dialog</note>
+        <note priority="1" from="meaning">button label</note>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context><context context-type="linenumber">66</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context><context context-type="linenumber">108</context></context-group></trans-unit><trans-unit id="assignment-dialog-header" datatype="html">
+        <source>Manage Assignees</source><target state="new">Управление назначением</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="sourcefile">src/app/workflow-step-assignment/workflow-step-assignment.component.ts</context>
+          <context context-type="linenumber">12</context>
         </context-group>
-        <note priority="1" from="description">Label of Cancel button</note>
-        <note priority="1" from="meaning">label</note>
+        <note priority="1" from="description">Header for assignment dialog</note>
+        <note priority="1" from="meaning">dialog header</note>
       </trans-unit><trans-unit id="create-workflow-header" datatype="html">
         <source>Create Workflow</source><target state="new">Создать рабочий процесс</target>
         <context-group purpose="location">
@@ -650,21 +691,15 @@
         <note priority="1" from="meaning">dialog header</note>
       </trans-unit><trans-unit id="workflow-step-title-label" datatype="html">
         <source>Title</source><target state="new">Название</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
+
         <note priority="1" from="description">Label for workflow step title</note>
         <note priority="1" from="meaning">label</note>
-      </trans-unit><trans-unit id="workflow-step-description-label" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="workflow-step-description-label" datatype="html">
         <source>Description</source><target state="new">Описание</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
+
         <note priority="1" from="description">Label for Description of the workflow step</note>
         <note priority="1" from="meaning">label</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/workflow-step-general/workflow-step-general.component.ts</context><context context-type="linenumber">19</context></context-group></trans-unit>
 
     </body>
   </file>
