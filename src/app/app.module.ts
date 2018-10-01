@@ -22,8 +22,7 @@ import {
   ZluxInputTextModule,
   ZluxCheckboxModule,
   ZluxPaginatorModule,
-  ZluxVeilModule,
-  ZluxErrorReportModule,
+  ZluxVeilModule
 } from '@zlux/widgets';
 import { LoggerService } from './shared/logger-service';
 import { GlobalVeilService } from './shared/global-veil-service';
@@ -77,7 +76,6 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     ZluxPopupWindowModule,
     ZluxPopupManagerModule,
     ZluxVeilModule,
-    ZluxErrorReportModule,
   ],
   providers: [
     LoggerService,
@@ -101,4 +99,3 @@ export class AppModule { }
   
   Copyright Contributors to the Zowe Project.
 */
-
