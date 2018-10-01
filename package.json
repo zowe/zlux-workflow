@@ -4,7 +4,7 @@
   "scripts": {
     "start": "webpack --progress --colors --watch",
     "build": "webpack --colors",
-    "i18n": "ng-xi18n -p tsconfig.i18n.json --i18nFormat=xlf  --outFile=messages.xlf",
+    "i18n": "ng-xi18n -p tsconfig.ngx-i18n.json --i18nFormat=xlf  --outFile=messages.xlf",
     "lint": "ng lint",
     "serve": "ng serve"
   },
@@ -55,4 +55,4 @@
     "webpack-shell-plugin": "^0.5.0",
     "zone.js": "~0.8.26"
   }
-} 
+}
