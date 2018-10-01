@@ -10,7 +10,7 @@
   Copyright Contributors to the Zowe Project.
 */
 
-export const logger: ZLUX.ComponentLogger = RocketMVD.logger.makeComponentLogger("workflows");
+export const logger: ZLUX.ComponentLogger = ZoweZLUX.logger.makeComponentLogger("workflows");
 
 
 /*
