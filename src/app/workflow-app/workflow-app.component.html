@@ -34,7 +34,7 @@
   ></workflow-list>
   <workflow-warnings #warnings [hidden]="activeMenuItem !== 'Warnings'"></workflow-warnings>
   <zosmf-server-config #zosmfserverconfig (configured)="onConfigured($event)" [hidden]="activeMenuItem !== 'Configuration'"></zosmf-server-config>
-    <zlux-popup-window style="position: absolute"
+    <zlux-popup-window
       i18n-header="dialog header|Header for close dialog@@close-dialog-header"
       header="Unsaved Changes"
       (onCloseWindow)="cancelCloseDialog()"
@@ -57,7 +57,7 @@
         </zlux-button>
       </zlux-popup-window-button-area>
     </zlux-popup-window>
-    <zlux-popup-window style="position: absolute"
+    <zlux-popup-window
       i18n-header="dialog header|Header for unsaved changes dialog@@unsaved-changes-dialog-header"
       header="Unsaved Changes"
       (onCloseWindow)="cancelUnsavedChangesDialog()"
