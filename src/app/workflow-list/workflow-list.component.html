@@ -122,7 +122,7 @@
 </ng-template>
 
 <ng-template #percentCompleteColumnTemplate let-data="rowData">
-  <div class="cell-container">
+  <div class="cell-container" title="{{data.percentComplete || 0}}%">
     <div class="progress cell">
       <div class="progress-bar">
         <div class="progress-bar-filled" [style.width.%]="data.percentComplete"></div>
