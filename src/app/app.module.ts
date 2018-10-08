@@ -46,6 +46,7 @@ import { ZosmfLoginComponent } from './zosmf-login/zosmf-login.component';
 import { ZosmfServerComponent } from './zosmf-server/zosmf-server.component';
 import { ZosmfServerConfigComponent } from './zosmf-server-config/zosmf-server-config.component';
 
+import { WorkflowPopupMenuService } from './workflow-popup-menu/workflow-popup-menu.service';
 import { ZosmfLoginService } from './shared/zosmf-login.service';
 import { ZosmfServerConfigService } from './shared/zosmf-server-config.service';
 import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
@@ -88,6 +89,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
   providers: [
     LoggerService,
     GlobalVeilService,
+    WorkflowPopupMenuService,
     ZosmfLoginService,
     ZosmfServerConfigService,
     ZosmfWorkflowService,

@@ -1,3 +1,4 @@
+import { WorkflowPopupMenuService } from './workflow-popup-menu.service';
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -10,8 +11,8 @@
 
 import {
     Component,
-    ElementRef,
     HostListener,
+    OnDestroy,
     Input,
     OnInit,
 } from '@angular/core';
@@ -51,21 +52,31 @@ import {
     ])
   ]
 })
-export class WorkflowPopupMenuComponent implements OnInit {
+export class WorkflowPopupMenuComponent implements OnInit, OnDestroy {
   @Input() position: 'left'| 'right' = 'left';
   isVisible = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private popupMenuService: WorkflowPopupMenuService) { }
 
   ngOnInit() {
+    this.popupMenuService.registerPopupMenu(this);
+  }
+
+  ngOnDestroy(): void {
+    this.popupMenuService.unregisterPopupMenu(this);
   }
 
   show(): void {
-    this.isVisible = true;
+    if (!this.isVisible) {
+      this.popupMenuService.hideAll();
+      this.isVisible = true;
+    }
   }
 
   hide(): void {
-    this.isVisible = false;
+    if (this.isVisible) {
+      this.isVisible = false;
+    }
   }
 
   @HostListener('mouseleave', ['$event'])
