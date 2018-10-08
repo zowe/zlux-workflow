@@ -77,14 +77,14 @@ export class WorkflowStepContainerComponent
 
   mapActionToView(actionID: WorkflowStepActionID): string {
     switch (actionID) {
-      case WorkflowStepActionID.details:
-      return 'details';
       case WorkflowStepActionID.properties:
       return 'properties';
       case WorkflowStepActionID.perform:
       return 'perform';
       case WorkflowStepActionID.status:
       return 'status';
+      case WorkflowStepActionID.notes:
+      return 'notes';
       default:
       return 'properties';
     }

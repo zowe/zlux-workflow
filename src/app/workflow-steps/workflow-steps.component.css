@@ -234,6 +234,10 @@
   background-image: url('../images/popup-menu/properties.png');
 }
 
+.icon-notes {
+  background-image: url('../images/popup-menu/notes.png');
+}
+
 .icon-return {
   background-image: url('../images/popup-menu/return.png');
 }
@@ -242,8 +246,8 @@
   background-image: url('../images/popup-menu/skip.png');
 }
 
-.icon-output {
-  background-image: url('../images/popup-menu/output.png');
+.icon-status {
+  background-image: url('../images/popup-menu/status.png');
 }
 
 /*

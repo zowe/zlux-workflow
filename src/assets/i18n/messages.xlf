@@ -154,7 +154,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">Title of Notes view</note>
         <note priority="1" from="meaning">view</note>
@@ -167,7 +167,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <note priority="1" from="description">Title of Status view</note>
         <note priority="1" from="meaning">view</note>
@@ -411,26 +411,26 @@
         <note priority="1" from="description">Label for a button that shows Assignments Dialog for Workflow Step</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit>
-      <trans-unit id="perform-item-title" datatype="html">
-        <source>Perform</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <note priority="1" from="description">Title of an action that allows the user to perform a Workflow Step</note>
-        <note priority="1" from="meaning">action menu item title</note>
-      </trans-unit>
       <trans-unit id="properties-item-title" datatype="html">
         <source>Properties</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">Title of an action that shows properties and details of Workflow step</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
-      <trans-unit id="output-item-title" datatype="html">
-        <source>Output</source>
+      <trans-unit id="perform-item-title" datatype="html">
+        <source>Perform</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="description">Title of an action that allows the user to perform a Workflow Step</note>
+        <note priority="1" from="meaning">action menu item title</note>
+      </trans-unit>
+      <trans-unit id="status-item-title" datatype="html">
+        <source>Status</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">52</context>
@@ -438,13 +438,13 @@
         <note priority="1" from="description">Title of an action that shows Output of Workflow step</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
-      <trans-unit id="accept-item-title" datatype="html">
-        <source>Accept</source>
+      <trans-unit id="notes-item-title" datatype="html">
+        <source>Notes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">56</context>
         </context-group>
-        <note priority="1" from="description">Title of an action that allows the user to accept a Workflow Step for execution</note>
+        <note priority="1" from="description">Title of an action that shows notes for Workflow step</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
       <trans-unit id="skip-item-title" datatype="html">
@@ -466,7 +466,7 @@
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
       <trans-unit id="assignment-item-title" datatype="html">
-        <source>Assignment</source>
+        <source>Assignment...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">69</context>

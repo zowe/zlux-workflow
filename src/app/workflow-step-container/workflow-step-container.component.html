@@ -30,13 +30,13 @@
           <div item-icon class="icon icon-perform"></div>
           <div item-title i18n="view|Title of Perform view@@perform-view">Perform</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item (onClick)="selectView('notes')">
-          <div item-icon class="icon icon-notes"></div>
-          <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
-        </workflow-popup-menu-item>
         <workflow-popup-menu-item (onClick)="selectView('status')" *ngIf="step.isJclStep()">
           <div item-icon class="icon icon-status"></div>
           <div item-title i18n="view|Title of Status view@@status-view">Status</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('notes')">
+          <div item-icon class="icon icon-notes"></div>
+          <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
         </workflow-popup-menu-item>
       </workflow-popup-menu>
     </workflow-caret-down-button>
@@ -58,7 +58,7 @@
 </div>
 <div *ngIf="step != null" class="step-container-body">
   <workflow-step-general
-      [hidden] = "selectedView !== 'general'"
+      [hidden] = "selectedView !== 'properties'"
       [step]="step">
   </workflow-step-general>
   <workflow-step-status

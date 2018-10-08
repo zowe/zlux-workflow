@@ -21,7 +21,7 @@ export enum WorkflowStepActionID {
   properties,
   perform,
   status,
-  details
+  notes
 }
 
 export enum WorkflowStepSubActionID {

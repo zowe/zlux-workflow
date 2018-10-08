@@ -247,6 +247,14 @@ export class WorkflowStepsComponent implements OnInit {
       step: step
     });
   }
+
+  showStepNotes(step: WorkflowStep): void {
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.notes,
+      step: step
+    });
+  }
 }
 
 /*
