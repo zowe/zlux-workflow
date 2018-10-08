@@ -27,6 +27,7 @@ import {
 import { LoggerService } from './shared/logger-service';
 import { GlobalVeilService } from './shared/global-veil-service';
 import { WorkflowAppComponent } from './workflow-app/workflow-app.component';
+import { WorkflowCaretDownButtonComponent } from './workflow-caret-down-button/workflow-caret-down-button.component';
 import { WorkflowCreateComponent } from './workflow-create/workflow-create.component';
 import { WorkflowListComponent } from './workflow-list/workflow-list.component';
 import { WorkflowNotificationComponent } from './workflow-notification/workflow-notification.component';
@@ -54,6 +55,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
 @NgModule({
   declarations: [
     WorkflowAppComponent,
+    WorkflowCaretDownButtonComponent,
     WorkflowCreateComponent,
     WorkflowListComponent,
     WorkflowNotificationComponent,
@@ -72,6 +74,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     ZosmfLoginComponent,
     ZosmfServerComponent,
     ZosmfServerConfigComponent,
+    WorkflowCaretDownButtonComponent,
   ],
   imports: [
     CommonModule,

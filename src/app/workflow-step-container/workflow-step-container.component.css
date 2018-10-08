@@ -51,16 +51,6 @@
   flex: 0 0 150px;
 }
 
-.view-selector-arrow {
-  background-image: url("../images/arrow.png");
-  background-repeat: no-repeat;
-  width: 12px;
-  height: 8px;
-  margin: 0 10px;
-  cursor: pointer;
-  position: relative;
-}
-
 .flyover {
   display: flex;
   max-width: 427px;

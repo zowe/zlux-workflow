@@ -20,7 +20,7 @@
         <ng-container *ngSwitchCase="'status'"i18n="view|Title of Status view@@status-view">Status</ng-container>
       </ng-container>
     </div>
-    <div class="view-selector-arrow" (click)="menu.show()">
+    <workflow-caret-down-button theme="light" buttonSize="18" iconSize="12" (onClick)="menu.show()">
       <workflow-popup-menu #menu position='left'>
         <workflow-popup-menu-item (onClick)="selectView('properties')">
           <div item-icon class="icon icon-properties"></div>
@@ -39,7 +39,7 @@
           <div item-title i18n="view|Title of Status view@@status-view">Status</div>
         </workflow-popup-menu-item>
       </workflow-popup-menu>
-    </div>
+    </workflow-caret-down-button>
   </div>
   <div class="step-container-spacer"></div>
   <zlux-flyover #workflowFlyover>

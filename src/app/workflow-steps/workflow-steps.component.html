@@ -37,7 +37,7 @@
       <div class="action-button" *ngSwitchCase="'Unassigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
       <div class="action-button" *ngSwitchCase="'Complete (Override)'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
     </ng-container>
-    <div class="dots-menu" (click)="menu.show()">
+    <workflow-caret-down-button theme="light" buttonSize="18" iconSize="12" (onClick)="menu.show()">
       <workflow-popup-menu #menu position='left'>
         <workflow-popup-menu-item *ngIf="['Ready', 'Failed', 'Assigned'].includes(step.state)" (onClick)="performStep(step)">
           <div item-icon class="icon icon-perform"></div>
@@ -73,7 +73,7 @@
           <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
         </workflow-popup-menu-item>
       </workflow-popup-menu>
-    </div>
+    </workflow-caret-down-button>
   </div>
 </div>
 <zlux-flyover #stepFlyover>
