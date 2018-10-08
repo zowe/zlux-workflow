@@ -44,8 +44,8 @@
           <div item-title i18n="action menu item title|Title of an action that allows the user to perform a Workflow Step@@perform-item-title">Perform</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item (onClick)="showStepInfo(step)">
-          <div item-icon class="icon icon-general"></div>
-          <div item-title i18n="action menu item title|Title of an action that shows properties and details of Workflow step@@general-item-title">General</div>
+          <div item-icon class="icon icon-properties"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows properties and details of Workflow step@@properties-item-title">Properties</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item *ngIf="step.isJclStep() && ['Complete', 'Failed', 'Submitted'].includes(step.state)" (onClick)="checkStepStatus(step)">
           <div item-icon class="icon icon-output"></div>

@@ -170,7 +170,7 @@ export class WorkflowStepsComponent implements OnInit {
     ) {
       this.startStep({
         actionType: WorkflowStepActionType.selectView,
-        actionID:  WorkflowStepActionID.general,
+        actionID:  WorkflowStepActionID.properties,
         step: step
       });
     } else if (step.state === "Assigned") {
@@ -234,7 +234,7 @@ export class WorkflowStepsComponent implements OnInit {
   showStepInfo(step: WorkflowStep) {
     this.startStep({
       actionType: WorkflowStepActionType.selectView,
-      actionID:  WorkflowStepActionID.general,
+      actionID:  WorkflowStepActionID.properties,
       step: step
     });
   }
@@ -242,7 +242,7 @@ export class WorkflowStepsComponent implements OnInit {
   showAssignmentDialog(step: WorkflowStep) {
     this.startStep({
       actionType: WorkflowStepActionType.selectView,
-      actionID:  WorkflowStepActionID.general,
+      actionID:  WorkflowStepActionID.properties,
       subActionID: WorkflowStepSubActionID.assignment,
       step: step
     });

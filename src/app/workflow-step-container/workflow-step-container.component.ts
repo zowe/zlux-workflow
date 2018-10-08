@@ -79,14 +79,14 @@ export class WorkflowStepContainerComponent
     switch (actionID) {
       case WorkflowStepActionID.details:
       return 'details';
-      case WorkflowStepActionID.general:
-      return 'general';
+      case WorkflowStepActionID.properties:
+      return 'properties';
       case WorkflowStepActionID.perform:
       return 'perform';
       case WorkflowStepActionID.status:
       return 'status';
       default:
-      return 'general';
+      return 'properties';
     }
   }
 

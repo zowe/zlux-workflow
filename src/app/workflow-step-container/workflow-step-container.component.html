@@ -14,7 +14,7 @@
     <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
     <div class="view-selector-title">
       <ng-container [ngSwitch]="selectedView">
-        <ng-container *ngSwitchCase="'general'"i18n="view|Title of General view@@general-view">General</ng-container>
+        <ng-container *ngSwitchCase="'properties'"i18n="view|Title of Properties view@@properties-view">Properties</ng-container>
         <ng-container *ngSwitchCase="'perform'"i18n="view|Title of Perform view@@perform-view">Perform</ng-container>
         <ng-container *ngSwitchCase="'notes'"i18n="view|Title of Notes view@@notes-view">Notes</ng-container>
         <ng-container *ngSwitchCase="'status'"i18n="view|Title of Status view@@status-view">Status</ng-container>
@@ -22,9 +22,9 @@
     </div>
     <div class="view-selector-arrow" (click)="menu.show()">
       <workflow-popup-menu #menu position='left'>
-        <workflow-popup-menu-item (onClick)="selectView('general')">
-          <div item-icon class="icon icon-general"></div>
-          <div item-title i18n="view|Title of General view@@general-view">General</div>
+        <workflow-popup-menu-item (onClick)="selectView('properties')">
+          <div item-icon class="icon icon-properties"></div>
+          <div item-title i18n="view|Title of Properties view@@properties-view">Properties</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item (onClick)="selectView('perform')">
           <div item-icon class="icon icon-perform"></div>
