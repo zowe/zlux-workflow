@@ -1,0 +1,137 @@
+
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/
+
+
+.top-header-hr {
+  height: 4px;
+  margin: 0;
+  background-color: #047cc0;
+  width: 100%;
+  border: none;
+  flex: none;
+}
+
+.top-hr:hover {
+  background-color: #009bef;
+}
+
+.bottom-header-dark {
+  background-color: #1a354d;
+}
+
+.bottom-header-hr {
+  margin: 0 2rem;
+  height: 1px;
+  background-color: #bdbabd;
+  border: none;
+  flex: none;
+}
+
+.bottom-header-hr-dark {
+  background-color: #516577;
+}
+
+.popup-window-header-area {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: none;
+  height: 50px;
+  color: #777677;
+}
+
+.popup-window-header-area-dark {
+  background-color: #1a354d;
+  color: #C0BFC0;
+}
+
+.popup-window-header {
+  margin-left: 2rem;
+  font-size: 21px;
+  float: left;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.close-button {
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+  padding: 0;
+  flex: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: 0.5s;
+  background: url(../../../../zlux-widgets/src/app/assets/images/close_normal.png) right top no-repeat;
+}
+
+.close-button:hover {
+  background-image: url(../../../../zlux-widgets/src/app/assets/images/close_hover.png);
+}
+
+.close-button:active {
+  background-image: url(../../../../zlux-widgets/src/app/assets/images/close_pressed.png);
+}
+
+.close-button-dark {
+  background: url(../../../../zlux-widgets/src/app/assets/images/close_normal_dark.png) right top no-repeat;
+}
+
+.close-button-dark:hover {
+  background-image: url(../../../../zlux-widgets/src/app/assets/images/close_hover_dark.png);
+}
+
+.close-button-dark:active {
+  background-image: url(../../../../zlux-widgets/src/app/assets/images/close_pressed_dark.png);
+}
+
+.popup-window-popup {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 80%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(1, 1, 1, 0.14);
+  position: absolute;
+  background-color: #f6f6f6;
+  padding: 2px;
+  margin: 1.5em auto;
+  width: 550px;
+  min-width: 200px;
+}
+
+.popup-window-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-window-button {
+  font-size: large;
+  min-width: 5em;
+  border-radius: 0.5em;
+  padding: .5em 1em;
+}
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+  
+  SPDX-License-Identifier: EPL-2.0
+  
+  Copyright Contributors to the Zowe Project.
+*/

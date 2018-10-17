@@ -38,6 +38,7 @@ import { WorkflowStepWizardComponent } from './workflow-step-wizard/workflow-ste
 import { WorkflowStepsComponent } from './workflow-steps/workflow-steps.component';
 import { WorkflowTaskListComponent } from './workflow-task-list/workflow-task-list.component';
 import { WorkflowWarningsComponent } from './workflow-warnings/workflow-warnings.component';
+import { WorkflowPopupComponent } from './workflow-popup/workflow-popup.component';
 import { ZosmfLoginComponent } from './zosmf-login/zosmf-login.component';
 import { ZosmfServerComponent } from './zosmf-server/zosmf-server.component';
 import { ZosmfServerConfigComponent } from './zosmf-server-config/zosmf-server-config.component';
@@ -60,6 +61,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     WorkflowStepsComponent,
     WorkflowTaskListComponent,
     WorkflowWarningsComponent,
+    WorkflowPopupComponent,
     ZosmfLoginComponent,
     ZosmfServerComponent,
     ZosmfServerConfigComponent,

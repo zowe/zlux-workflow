@@ -14,7 +14,8 @@ import {
   AfterContentInit,
   Component,
   Inject,
-  ViewChild
+  ViewChild,
+  HostListener,
   } from '@angular/core';
 import {
   Angular2InjectionTokens,
@@ -85,6 +86,11 @@ export class WorkflowAppComponent implements AfterContentInit {
   nextWorkflowStepIsReady: boolean = false;
   viewCreateWorkflow: boolean = false;
   activeMenuItem: WorkflowView = 'My Tasks';
+  requestedMenuItem: WorkflowView = 'My Tasks';
+  resolveClose: () => void;
+  rejectClose: () => void;
+  isOnCloseDialogVisible = false;
+  isUnsavedChangesDialogVisible = false;
 
   constructor(
     @Inject(Angular2InjectionTokens.LAUNCH_METADATA) private launchMetadata: WorkflowAppLaunchMetadata,
@@ -117,10 +123,52 @@ export class WorkflowAppComponent implements AfterContentInit {
       });
   }
 
+
   ngAfterContentInit(): void {
+    this.windowActions.registerCloseHandler(() => this.onClose())
     if (!this.configured) {
       this.showConfiguration();
     }
+  }
+
+  onClose(): Promise<void> {
+    if (this.zosmfServerConfigComponent.unsavedChanges()) {
+      this.globalVeilService.showVeil();
+      this.isOnCloseDialogVisible = true;
+      return new Promise((resolve, reject) => {
+        this.resolveClose = resolve;
+        this.rejectClose = reject;
+      });
+    } else {
+      return Promise.resolve();
+    }
+  }
+
+  saveChanges(): void {
+    this.zosmfServerConfigComponent.save();
+    this.cancelUnsavedChangesDialog();
+    this.activeMenuItem = this.requestedMenuItem;
+  }
+
+  abandonChanges(): void {
+    this.zosmfServerConfigComponent.cancel();
+    this.cancelUnsavedChangesDialog();
+    this.activeMenuItem = this.requestedMenuItem;
+  }
+
+  exit(): void {
+    this.resolveClose();
+  }
+
+  cancelCloseDialog(): void {
+    this.isOnCloseDialogVisible = false;
+    this.globalVeilService.hideVeil();
+    this.rejectClose();
+  }
+
+  cancelUnsavedChangesDialog(): void {
+    this.isUnsavedChangesDialogVisible = false;
+    this.globalVeilService.hideVeil();
   }
 
   onStepSelectedAction(stepAction: WorkflowStepAction): void {
@@ -141,12 +189,18 @@ export class WorkflowAppComponent implements AfterContentInit {
   }
 
   showMyTasks(): void {
-    this.activeMenuItem = 'My Tasks';
+    if (!this.serverConfigNotSaved('My Tasks'))
+    { 
+      this.activeMenuItem = 'My Tasks'; 
+    }
   }
 
   showWorkflows(): void {
-    this.activeMenuItem = 'Workflows';
-    this.workflowListComponent.update();
+    if (!this.serverConfigNotSaved('Workflows'))
+    {
+      this.activeMenuItem = 'Workflows';
+      this.workflowListComponent.update();
+    }
   }
 
   showConfiguration(): void {
@@ -155,8 +209,22 @@ export class WorkflowAppComponent implements AfterContentInit {
   }
 
   showWarnings(): void {
-    this.activeMenuItem = 'Warnings';
-    this.workflowWarningsComponent.update();
+    if (!this.serverConfigNotSaved('Warnings'))
+    { 
+      this.activeMenuItem = 'Warnings';
+      this.workflowWarningsComponent.update();
+    }
+  }
+
+  serverConfigNotSaved(requestedMenuItem: WorkflowView): boolean {
+    if (this.activeMenuItem == 'Configuration' && this.zosmfServerConfigComponent.unsavedChanges() == true)
+      { 
+        this.requestedMenuItem = requestedMenuItem;
+        this.isUnsavedChangesDialogVisible = true;
+        this.globalVeilService.showVeil();
+        return true;
+      }
+    return false;
   }
 
   showView(view: WorkflowView): void {
@@ -235,7 +303,6 @@ export class WorkflowAppComponent implements AfterContentInit {
     this.selectedStep = stepAction.step;
     this.workflowTaskListComponent.startStep(stepAction);
   }
-
 }
 
 

@@ -1,63 +1,45 @@
 
-<!--
+<!-- 
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-
+  
   SPDX-License-Identifier: EPL-2.0
-
+  
   Copyright Contributors to the Zowe Project.
 -->
 <div class="config-container">
   <div class="active-server">
-    <div class="active-server-label" i18n="label|Label of Active z/OSMF server|@@active-zosmf-server-label">Active z/OSMF server</div>
+    <div class="active-server-label">Active z/OSMF server</div>
     <zosmf-server #defaultzosmfserver *ngIf="config.defaultZosmfServer" bind-zosmfServer="config.defaultZosmfServer" theme="dark"></zosmf-server>
   </div>
   <div class="controls controls-top">
-    <button class="button button-plus" on-click="newServer()"
-      i18n-title="tooltip|Tooltip for Add new z/OSMF server button@@new-server-tooltip"
-      title="Add new z/OSMF server"
-    >+</button>
+    <button class="button button-plus" on-click="newServer()" title="Add new z/OSMF server">+</button>
     <div class="button-spacer"></div>
-    <button class="button button-light" on-click="reload()"
-      i18n-title="tooltip|Tooltip for Reload button@@reload-tooltip"
-      title="Reload this page"
-      i18n="title|Totle for Reload button@@reload-title"
-    >Reload</button>
+    <button class="button button-light" on-click="reload()" title="Reload this page">Reload</button>
     <div class="button-spacer"></div>
-    <button class="button button-light" on-click="save()"
-      i18n-title="tooltip|Tooltip for Save this page button@@save-tooltip"
-      title="Save this page"
-      i18n="title|Title for Save this page button@@save-title"
-     >Save</button>
+    <button class="button button-light" on-click="save()" title="Save this page">Save</button>
   </div>
   <div class="server" *ngFor="let server of config?.zosmfServers">
     <zosmf-server bind-zosmfServer="server"  bind-showControls="true" on-setDefault="setDefault(server)" on-removed="remove(server)"></zosmf-server>
   </div>
   <div class="free-space"></div>
   <div class="controls controls-bottom">
-      <zlux-button buttonType="button"
-        i18n-label="title|Title of Test All button@@test-all-title" (onClick)="test()"
-        label="Test All" (onClick)="test()"
-      ></zlux-button>
+      <zlux-button buttonType="button" label="Test All" (onClick)="test()"></zlux-button>
       <div class="free-space"></div>
-      <zlux-button buttonType="button"
-        i18n-label="title|Title of Cancel button@@cancel-title" (onClick)="test()"
-        label="Cancel" (onClick)="cancel()"></zlux-button>
-      <zlux-button buttonType="button"
-        i18n-label="title|Title of OK button@@ok-title" (onClick)="test()"
-        label="OK" (onClick)="ok()"></zlux-button>
+      <zlux-button buttonType="button" label="Cancel" (onClick)="cancel()"></zlux-button>
+      <zlux-button buttonType="button" label="OK" (onClick)="ok()"></zlux-button>
   </div>
 </div>
 <zosmf-login #zosmflogin on-loggedIn="login()" on-canceled="loginCanceled()"></zosmf-login>
-<zlux-popup-manager>
+<zlux-popup-manager *ngIf="popupEnabled">
 </zlux-popup-manager>
-<!--
+<!-- 
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-
+  
   SPDX-License-Identifier: EPL-2.0
-
+  
   Copyright Contributors to the Zowe Project.
 -->
