@@ -15,7 +15,6 @@ import {
   Component,
   Inject,
   ViewChild,
-  HostListener,
   } from '@angular/core';
 import {
   Angular2InjectionTokens,
