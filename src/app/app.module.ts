@@ -24,9 +24,11 @@ import {
   ZluxPaginatorModule,
   ZluxVeilModule
 } from '@zlux/widgets';
+import { ConfirmationService } from './shared/confirmation.service';
 import { LoggerService } from './shared/logger-service';
 import { GlobalVeilService } from './shared/global-veil-service';
 import { WorkflowAppComponent } from './workflow-app/workflow-app.component';
+import { WorkflowConfirmationComponent } from './workflow-confirmation/workflow-confirmation.component';
 import { WorkflowCreateComponent } from './workflow-create/workflow-create.component';
 import { WorkflowListComponent } from './workflow-list/workflow-list.component';
 import { WorkflowNotificationComponent } from './workflow-notification/workflow-notification.component';
@@ -54,6 +56,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
 @NgModule({
   declarations: [
     WorkflowAppComponent,
+    WorkflowConfirmationComponent,
     WorkflowCreateComponent,
     WorkflowListComponent,
     WorkflowNotificationComponent,
@@ -87,6 +90,7 @@ import { ZosmfWorkflowService } from './shared/zosmf-workflow-service';
     ZluxVeilModule,
   ],
   providers: [
+    ConfirmationService,
     LoggerService,
     GlobalVeilService,
     WorkflowPopupMenuService,

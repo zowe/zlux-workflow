@@ -1,18 +1,20 @@
 /*
-  This program and the accompanying materials are
-  made available under the terms of the Eclipse Public License v2.0 which accompanies
-  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+This program and the accompanying materials are
+made available under the terms of the Eclipse Public License v2.0 which accompanies
+this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
 
-  SPDX-License-Identifier: EPL-2.0
+SPDX-License-Identifier: EPL-2.0
 
-  Copyright Contributors to the Zowe Project.
+Copyright Contributors to the Zowe Project.
 */
 
 import {
   Component,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core';
+import { ConfirmationService } from './../shared/confirmation.service';
 
 @Component({
   selector: 'workflow-popup-menu-item',
@@ -23,13 +25,19 @@ import {
   ]
 })
 export class WorkflowPopupMenuItemComponent {
+  @Input() confirmationQuestion: string;
   @Output() onClick = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private confirmationService: ConfirmationService) { }
 
   onMouseClick(event: MouseEvent): void {
-    console.log('workflow-popup-menu-item on click');
-    this.onClick.emit();
+    if (this.confirmationQuestion) {
+      this.confirmationService.show(this.confirmationQuestion).subscribe((result: boolean) => {
+        if (result) {
+          this.onClick.emit();
+        }
+      })
+    }
   }
 
 }
