@@ -51,7 +51,7 @@
           <div item-icon class="icon icon-status"></div>
           <div item-title i18n="action menu item title|Title of an action that shows Output of Workflow step@@status-item-title">Status</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item (onClick)="showStepNotes(step)">
+        <workflow-popup-menu-item (onClick)="showStepNotes(step)" *ngIf="false"><!-- hidden until notes view is implemented -->
             <div item-icon class="icon icon-notes"></div>
             <div item-title i18n="action menu item title|Title of an action that shows notes for Workflow step@@notes-item-title">Notes</div>
         </workflow-popup-menu-item>

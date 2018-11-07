@@ -34,7 +34,7 @@
           <div item-icon class="icon icon-status"></div>
           <div item-title i18n="view|Title of Status view@@status-view">Status</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item (onClick)="selectView('notes')">
+        <workflow-popup-menu-item (onClick)="selectView('notes')" *ngIf="false"><!-- hidden until notes view is implemented -->
           <div item-icon class="icon icon-notes"></div>
           <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
         </workflow-popup-menu-item>
