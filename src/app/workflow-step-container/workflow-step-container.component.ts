@@ -14,22 +14,16 @@ import {
   Component,
   EventEmitter,
   Input,
-  Inject,
   OnChanges,
   OnInit,
   Output,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import {
-  Angular2InjectionTokens,
-  } from 'pluginlib/inject-resources';
 import { logger } from '../shared/logger';
-import { Observable } from 'rxjs/Observable';
 import { LoggerService } from '../shared/logger-service';
 import { WorkflowStep } from '../shared/workflow-step';
 import { WorkflowStepAction, WorkflowStepActionID, WorkflowStepSubActionID} from '../shared/workflow-step-action';
-import { ZosmfLoginService } from '../shared/zosmf-login.service';
 import { ZosmfWorkflowService } from '../shared/zosmf-workflow-service';
 import 'rxjs/add/operator/do';
 import { WorkflowStepPluginAction } from '../shared/workflow-step-plugin-action';
@@ -46,8 +40,7 @@ import { WorkflowStepAssignmentComponent } from '../workflow-step-assignment/wor
   providers: []
 })
 
-export class WorkflowStepContainerComponent
-  implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
+export class WorkflowStepContainerComponent implements OnChanges {
   @Input() step: WorkflowStep;
   @Output() stepChangeRequested = new EventEmitter<WorkflowStepAction>();
   @ViewChild('workflowstepassignment')
@@ -55,15 +48,10 @@ export class WorkflowStepContainerComponent
 
   selectedView: string = 'perform';
 
-  ngOnInit(): void {
-
-  }
-
-  ngAfterContentInit(): void {
-
-  }
-
-  ngAfterViewInit(): void {
+  constructor(
+    private zosmfWorkflowService: ZosmfWorkflowService,
+    private loggerService: LoggerService
+  ) {
 
   }
 
@@ -105,6 +93,41 @@ export class WorkflowStepContainerComponent
 
   selectView(view: string): void {
     this.selectedView = view;
+  }
+
+  returnStep(): void {
+    this.zosmfWorkflowService.returnStep(this.step).subscribe(
+      () => {
+        logger.info(`step ${this.step.name} returned`);
+        this.selectView('properties');
+      },
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  skipStep(): void {
+    this.zosmfWorkflowService.skipStep(this.step).subscribe(
+      () => {
+        logger.info(`step ${this.step.name} skipped`);
+        this.selectView('properties');
+      },
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  overrideCompleteStep(): void {
+    this.zosmfWorkflowService.overrideCompleteStep(this.step).subscribe(
+      () => {
+        logger.info('state of step ${step.name} changed to override complete');
+        this.selectView('properties');
+      },
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  showAssignmentDialog() {
+    this.selectView('properties');
+    this.workflowStepAssignmentComponent.show();
   }
 }
 

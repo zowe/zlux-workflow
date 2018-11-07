@@ -110,10 +110,6 @@ export class WorkflowStepsComponent implements OnInit {
     );
   }
 
-  assignStep(step: WorkflowStep): void {
-    alert('Implement me');
-  }
-
   getStepIconClass(step: WorkflowStep | undefined): object {
     if (step) {
       return {

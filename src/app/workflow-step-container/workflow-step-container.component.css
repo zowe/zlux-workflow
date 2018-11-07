@@ -103,6 +103,18 @@
   background-repeat: no-repeat;
 }
 
+.icon-accept {
+  background-image: url('../images/popup-menu/accept.png');
+}
+
+.icon-assignment {
+  background-image: url('../images/popup-menu/assignment.png');
+}
+
+.icon-override-complete {
+  background-image: url('../images/popup-menu/override-complete.png');
+}
+
 .icon-perform {
   background-image: url('../images/popup-menu/perform.png');
 }
@@ -111,13 +123,20 @@
   background-image: url('../images/popup-menu/properties.png');
 }
 
+.icon-notes {
+  background-image: url('../images/popup-menu/notes.png');
+}
+
+.icon-return {
+  background-image: url('../images/popup-menu/return.png');
+}
+
+.icon-skip {
+  background-image: url('../images/popup-menu/skip.png');
+}
 
 .icon-status {
   background-image: url('../images/popup-menu/status.png');
-}
-
-.icon-notes {
-  background-image: url('../images/popup-menu/notes.png');
 }
 
 /*

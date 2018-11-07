@@ -26,7 +26,7 @@
           <div item-icon class="icon icon-properties"></div>
           <div item-title i18n="view|Title of Properties view@@properties-view">Properties</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item (onClick)="selectView('perform')">
+        <workflow-popup-menu-item *ngIf="['Ready', 'Failed', 'Assigned'].includes(step.state)" (onClick)="selectView('perform')">
           <div item-icon class="icon icon-perform"></div>
           <div item-title i18n="view|Title of Perform view@@perform-view">Perform</div>
         </workflow-popup-menu-item>
@@ -37,6 +37,23 @@
         <workflow-popup-menu-item (onClick)="selectView('notes')" *ngIf="false"><!-- hidden until notes view is implemented -->
           <div item-icon class="icon icon-notes"></div>
           <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-separator></workflow-popup-menu-separator>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="skipStep()">
+          <div item-icon class="icon icon-skip"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to skip execution of Workflow Step@@skip-item-title">Skip</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="['Ready', 'Failed'].includes(step.state)" (onClick)="overrideCompleteStep()">
+          <div item-icon class="icon icon-override-complete"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to make step complete without execution@@override-complete-item-title">Override Complete</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="showAssignmentDialog()">
+          <div item-icon class="icon icon-assignment"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows Assignment view for Workflow Step@@assignment-item-title">Assignment...</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep()">
+          <div item-icon class="icon icon-return"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
         </workflow-popup-menu-item>
       </workflow-popup-menu>
     </div>
