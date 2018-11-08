@@ -8,7 +8,9 @@
   Copyright Contributors to the Zowe Project.
 */
 
-/* empty file */
+.question {
+  margin: 25px 15px;
+}
 
 /*
   This program and the accompanying materials are

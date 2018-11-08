@@ -9,12 +9,12 @@
 */
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConfirmationService {
-  visible: boolean = false;
+  visible: boolean;
   question: string;
   private subject: Subject<boolean>;
 

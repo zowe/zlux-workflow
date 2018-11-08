@@ -11,9 +11,12 @@
   header="Confirmation"
   i18n-header="title|Title of Confirmation dialog@@confirmation-dialog-title"
   (onCloseWindow)="confirmationService.cancel()"
+  [dark]="true"
   *ngIf="confirmationService.visible"
 >
-  {{confirmationService.question}}
+  <div class="question">
+    {{confirmationService.question}}
+  </div>
   <zlux-popup-window-button-area>
     <zlux-button
       buttonType="submit"

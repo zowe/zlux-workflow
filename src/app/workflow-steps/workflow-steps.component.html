@@ -30,12 +30,12 @@
         <div class="action-button" *ngIf="step.isSimpleStep()" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
       </ng-container>
       <div class="action-button" *ngSwitchCase="'Submitted'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
-      <div class="action-button" *ngSwitchCase="'Assigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that accepts Workflow Stepe@@accept-button-label">Accept</div>
-      <div class="action-button" *ngSwitchCase="'Not Ready'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
+      <div class="action-button" *ngSwitchCase="'Assigned'" (click)="acceptAndPerformStep(step)" i18n="button label|Label for a button that accepts and performs Workflow Step@@perform-button-label">Perform</div>
+      <div class="action-button" *ngSwitchCase="'Not Ready'" (click)="showStepInfo(step)" i18n="button label|Title of an action that shows properties and details of Workflow step@@properties-button-label">Properties</div>
       <div class="action-button" *ngSwitchCase="'In Progress'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
-      <div class="action-button" *ngSwitchCase="'Skipped'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
-      <div class="action-button" *ngSwitchCase="'Unassigned'" (click)="showStepInfo(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
-      <div class="action-button" *ngSwitchCase="'Complete (Override)'" (click)="checkStepStatus(step)" i18n="button label|Label for a button that shows Workflow Step status@@check-button-label">Check</div>
+      <div class="action-button" *ngSwitchCase="'Skipped'" (click)="showStepInfo(step)" i18n="button label||Title of an action that shows properties and details of Workflow step@@properties-button-label">Properties</div>
+      <div class="action-button" *ngSwitchCase="'Unassigned'" (click)="showAssignmentDialog(step)" i18n="button label|Label for a button that shows Assignments Dialog for Workflow Step@@assign-button-label">Assign</div>
+      <div class="action-button" *ngSwitchCase="'Complete (Override)'" (click)="showStepInfo(step)" i18n="button label|Title of an action that shows properties and details of Workflow step@@properties-button-label">Properties</div>
     </ng-container>
     <div class="dots-menu" (click)="menu.show()">
       <workflow-popup-menu #menu position='left'>
@@ -57,15 +57,15 @@
         </workflow-popup-menu-item>
         <workflow-popup-menu-separator></workflow-popup-menu-separator>
         <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="skipStep(step)"
-          confirmationQuestion="Do you want to skip step {{step.name}}?"
-          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to skip Workflow Step@@skip-confirmation-question">
+          confirmationQuestion='Do you want to skip the step "{{step.name}}"?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to skip Workflow Step@@skip-confirm-question">
           <div item-icon class="icon icon-skip"></div>
           <div item-title i18n="action menu item title|Title of an action that allows the user to skip execution of Workflow Step@@skip-item-title">Skip</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item *ngIf="['Ready', 'Failed'].includes(step.state)"
           (onClick)="overrideCompleteStep(step)"
-          confirmationQuestion="Do you want to make step {{step.name}} complete without execution?"
-          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to make Workflow Step complete without execution@@override-complete-confirmation-question">
+          confirmationQuestion='You are about to override the completion of the step "{{step.name}}", thus bypassing a portion of the workflow. This step will not be performed as part of the workflow. You must ensure that the steps are done manually. Do you want to continue?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to make Workflow Step complete without execution@@override-complete-confirm-question">
           <div item-icon class="icon icon-override-complete"></div>
           <div item-title i18n="action menu item title|Title of an action that allows the user to make step complete without execution@@override-complete-item-title">Override Complete</div>
         </workflow-popup-menu-item>
@@ -74,8 +74,8 @@
           <div item-title i18n="action menu item title|Title of an action that shows Assignment view for Workflow Step@@assignment-item-title">Assignment...</div>
         </workflow-popup-menu-item>
         <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep(step)"
-          confirmationQuestion="Do you want to return step {{step.name}}?"
-          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to return Workflow Step@@return-confirmation-question">
+          confirmationQuestion='Do you wish to "return" (remove your ownership of) the step "{{step.name}}"?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to return Workflow Step@@return-confirm-question">
           <div item-icon class="icon icon-return"></div>
           <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
         </workflow-popup-menu-item>

@@ -37,6 +37,8 @@ export class WorkflowPopupMenuItemComponent {
           this.onClick.emit();
         }
       })
+    } else {
+      this.onClick.emit();
     }
   }
 

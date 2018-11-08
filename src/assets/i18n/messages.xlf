@@ -106,7 +106,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-confirmation/workflow-confirmation.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-create/workflow-create.component.ts</context>
@@ -180,7 +180,7 @@
         <source>Skip</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -189,11 +189,24 @@
         <note priority="1" from="description">Title of an action that allows the user to skip execution of Workflow Step</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
+      <trans-unit id="skip-confirm-question" datatype="html">
+        <source>Do you want to skip the step &quot;<x id="INTERPOLATION" equiv-text="{{step.name}}"/>&quot;?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <note priority="1" from="description">Confirmation question if the user wants to skip Workflow Step</note>
+        <note priority="1" from="meaning">confirmation question</note>
+      </trans-unit>
       <trans-unit id="override-complete-item-title" datatype="html">
         <source>Override Complete</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -202,11 +215,24 @@
         <note priority="1" from="description">Title of an action that allows the user to make step complete without execution</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
+      <trans-unit id="override-complete-confirm-question" datatype="html">
+        <source>You are about to override the completion of the step &quot;<x id="INTERPOLATION" equiv-text="{{step.name}}"/>&quot;, thus bypassing a portion of the workflow. This step will not be performed as part of the workflow. You must ensure that the steps are done manually. Do you want to continue?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">Confirmation question if the user wants to make Workflow Step complete without execution</note>
+        <note priority="1" from="meaning">confirmation question</note>
+      </trans-unit>
       <trans-unit id="assignment-item-title" datatype="html">
         <source>Assignment...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -219,7 +245,7 @@
         <source>Return</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -228,11 +254,24 @@
         <note priority="1" from="description">Title of an action that allows the user to return Workflow Step that accepted for execution</note>
         <note priority="1" from="meaning">action menu item title</note>
       </trans-unit>
+      <trans-unit id="return-confirm-question" datatype="html">
+        <source>Do you wish to &quot;return&quot; (remove your ownership of) the step &quot;<x id="INTERPOLATION" equiv-text="{{step.name}}"/>&quot;?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <note priority="1" from="description">Confirmation question if the user wants to return Workflow Step</note>
+        <note priority="1" from="meaning">confirmation question</note>
+      </trans-unit>
       <trans-unit id="corresponding-workflow" datatype="html">
         <source>Corresponding Workflow</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
@@ -245,7 +284,7 @@
         <source>Step Description</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-step-container/workflow-step-container.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <note priority="1" from="description">Description of the workflow step</note>
         <note priority="1" from="meaning">flyover text</note>
@@ -409,6 +448,10 @@
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">26</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
         <note priority="1" from="description">Label for a button that starts a wizard for Workflow Step</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit>
@@ -434,6 +477,15 @@
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">35</context>
         </context-group>
+        <note priority="1" from="description">Label for a button that shows Workflow Step status</note>
+        <note priority="1" from="meaning">button label</note>
+      </trans-unit>
+      <trans-unit id="properties-button-label" datatype="html">
+        <source>Properties</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">36</context>
@@ -442,24 +494,11 @@
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">38</context>
         </context-group>
-        <note priority="1" from="description">Label for a button that shows Workflow Step status</note>
-        <note priority="1" from="meaning">button label</note>
-      </trans-unit>
-      <trans-unit id="accept-button-label" datatype="html">
-        <source>Accept</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-        <note priority="1" from="description">Label for a button that accepts Workflow Stepe</note>
+        <note priority="1" from="description">Title of an action that shows properties and details of Workflow step</note>
         <note priority="1" from="meaning">button label</note>
       </trans-unit>
       <trans-unit id="assign-button-label" datatype="html">
         <source>Assign</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -502,33 +541,6 @@
         </context-group>
         <note priority="1" from="description">Title of an action that shows notes for Workflow step</note>
         <note priority="1" from="meaning">action menu item title</note>
-      </trans-unit>
-      <trans-unit id="skip-confirmation-question" datatype="html">
-        <source>Do you want to skip step <x id="INTERPOLATION" equiv-text="{{step.name}}"/>?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">60</context>
-        </context-group>
-        <note priority="1" from="description">Confirmation question if the user wants to skip Workflow Step</note>
-        <note priority="1" from="meaning">confirmation question</note>
-      </trans-unit>
-      <trans-unit id="override-complete-confirmation-question" datatype="html">
-        <source>Do you want to make step <x id="INTERPOLATION" equiv-text="{{step.name}}"/> complete without execution?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">67</context>
-        </context-group>
-        <note priority="1" from="description">Confirmation question if the user wants to make Workflow Step complete without execution</note>
-        <note priority="1" from="meaning">confirmation question</note>
-      </trans-unit>
-      <trans-unit id="return-confirmation-question" datatype="html">
-        <source>Do you want to return step <x id="INTERPOLATION" equiv-text="{{step.name}}"/>?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/workflow-steps/workflow-steps.component.ts</context>
-          <context context-type="linenumber">77</context>
-        </context-group>
-        <note priority="1" from="description">Confirmation question if the user wants to return Workflow Step</note>
-        <note priority="1" from="meaning">confirmation question</note>
       </trans-unit>
       <trans-unit id="step-status" datatype="html">
         <source>Status</source>
@@ -858,7 +870,7 @@
         <source>Confirm</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/workflow-confirmation/workflow-confirmation.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">|label of Confirm button</note>
         <note priority="1" from="meaning">label</note>
