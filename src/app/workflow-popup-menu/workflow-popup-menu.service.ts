@@ -1,5 +1,3 @@
-
-
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -10,30 +8,27 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import { WorkflowStep } from "./workflow-step";
+import { Injectable } from '@angular/core';
+import { WorkflowPopupMenuComponent } from './workflow-popup-menu.component';
 
-export enum WorkflowStepActionType {
-  selectView,
-  modifyStep
+@Injectable()
+export class WorkflowPopupMenuService {
+  private popupMenus: WorkflowPopupMenuComponent[] = [];
+  constructor() { }
+
+  hideAll(): void {
+    this.popupMenus.forEach(menu => menu.hide());
+  }
+
+  registerPopupMenu(popupMenu: WorkflowPopupMenuComponent): void {
+    this.popupMenus.push(popupMenu);
+  }
+
+  unregisterPopupMenu(popupMenu: WorkflowPopupMenuComponent): void {
+    this.popupMenus = this.popupMenus.filter(menu => menu !== popupMenu);
+  }
+
 }
-
-export enum WorkflowStepActionID {
-  properties,
-  perform,
-  status,
-  notes
-}
-
-export enum WorkflowStepSubActionID {
-  assignment
-}
-
-export interface WorkflowStepAction {
-  actionType: WorkflowStepActionType;
-  actionID: WorkflowStepActionID;
-  step: WorkflowStep;
-  subActionID?: WorkflowStepSubActionID;
-};
 
 /*
   This program and the accompanying materials are
@@ -44,4 +39,3 @@ export interface WorkflowStepAction {
 
   Copyright Contributors to the Zowe Project.
 */
-

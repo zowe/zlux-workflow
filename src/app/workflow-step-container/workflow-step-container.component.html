@@ -1,15 +1,69 @@
+<!--
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+-->
+
 <div *ngIf="step != null" class="workflow-step-container">
   <div class="step-container-title">
     <!-- <div class="step-title">{{step.title}}</div> -->
     <div class="step-title" zluxFlyover [flyover]="workflowFlyover" position="bottom">{{step.title}}</div>
-    <select class="view-selector"
-            [(ngModel)]="selectedView">
-      <option [disabled]="isDisabled('general')" value="general" i18n="view|Title of General view@@general-view">General</option>
-      <option [disabled]="isDisabled('perform')" value="perform" i18n="view|Title of Perform view@@perform-view">Perform</option>
-      <option [disabled]="isDisabled('details')" value="details" i18n="view|Title of Details view@@details-view">Details</option>
-      <option [disabled]="isDisabled('notes')" value="notes" i18n="view|Title of Notes view@@notes-view">Notes</option>
-      <option [disabled]="isDisabled('status')" value="status" i18n="view|Title of Status view@@status-view">Status</option>
-    </select>
+    <div class="view-selector-title">
+      <ng-container [ngSwitch]="selectedView">
+        <ng-container *ngSwitchCase="'properties'"i18n="view|Title of Properties view@@properties-view">Properties</ng-container>
+        <ng-container *ngSwitchCase="'perform'"i18n="view|Title of Perform view@@perform-view">Perform</ng-container>
+        <ng-container *ngSwitchCase="'notes'"i18n="view|Title of Notes view@@notes-view">Notes</ng-container>
+        <ng-container *ngSwitchCase="'status'"i18n="view|Title of Status view@@status-view">Status</ng-container>
+      </ng-container>
+    </div>
+    <div class="dots-menu" (click)="menu.show()">
+      <workflow-popup-menu #menu position='left'>
+        <workflow-popup-menu-item (onClick)="selectView('properties')">
+          <div item-icon class="icon icon-properties"></div>
+          <div item-title i18n="view|Title of Properties view@@properties-view">Properties</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.canBePerformed()" (onClick)="selectView('perform')">
+          <div item-icon class="icon icon-perform"></div>
+          <div item-title i18n="view|Title of Perform view@@perform-view">Perform</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('status')" *ngIf="step.isJclStep() && ['Complete', 'Failed', 'Submitted'].includes(step.state)">
+          <div item-icon class="icon icon-status"></div>
+          <div item-title i18n="view|Title of Status view@@status-view">Status</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="selectView('notes')" *ngIf="false"><!-- hidden until notes view is implemented -->
+          <div item-icon class="icon icon-notes"></div>
+          <div item-title i18n="view|Title of Notes view@@notes-view">Notes</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-separator></workflow-popup-menu-separator>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="skipStep()"
+          confirmationQuestion='Do you want to skip the step "{{step.name}}"?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to skip Workflow Step@@skip-confirm-question">
+          <div item-icon class="icon icon-skip"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to skip execution of Workflow Step@@skip-item-title">Skip</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="['Ready', 'Failed'].includes(step.state)"
+          (onClick)="overrideCompleteStep()"
+          confirmationQuestion='You are about to override the completion of the step "{{step.name}}", thus bypassing a portion of the workflow. This step will not be performed as part of the workflow. You must ensure that the steps are done manually. Do you want to continue?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to make Workflow Step complete without execution@@override-complete-confirm-question">
+          <div item-icon class="icon icon-override-complete"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to make step complete without execution@@override-complete-item-title">Override Complete</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item (onClick)="showAssignmentDialog()">
+          <div item-icon class="icon icon-assignment"></div>
+          <div item-title i18n="action menu item title|Title of an action that shows Assignment view for Workflow Step@@assignment-item-title">Assignment...</div>
+        </workflow-popup-menu-item>
+        <workflow-popup-menu-item *ngIf="step.state === 'Ready'" (onClick)="returnStep()"
+          confirmationQuestion='Do you wish to "return" (remove your ownership of) the step "{{step.name}}"?'
+          i18n-confirmationQuestion="confirmation question|Confirmation question if the user wants to return Workflow Step@@return-confirm-question">
+          <div item-icon class="icon icon-return"></div>
+          <div item-title i18n="action menu item title|Title of an action that allows the user to return Workflow Step that accepted for execution@@return-item-title">Return</div>
+        </workflow-popup-menu-item>
+      </workflow-popup-menu>
+    </div>
   </div>
   <div class="step-container-spacer"></div>
   <zlux-flyover #workflowFlyover>
@@ -28,7 +82,7 @@
 </div>
 <div *ngIf="step != null" class="step-container-body">
   <workflow-step-general
-      [hidden] = "selectedView !== 'general'"
+      [hidden] = "selectedView !== 'properties'"
       [step]="step">
   </workflow-step-general>
   <workflow-step-status
@@ -41,4 +95,15 @@
       [step]="step"
       (stepChangeRequested)="onStepChangeRequested($event)">
   </workflow-step-wizard>
-  </div>
+</div>
+<workflow-step-assignment #workflowstepassignment [step]="step"></workflow-step-assignment>
+
+<!--
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+-->

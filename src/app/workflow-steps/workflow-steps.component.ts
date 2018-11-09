@@ -18,17 +18,26 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import {WorkflowStep, WorkflowStepStateFilter} from '../shared/workflow-step';
-import {WorkflowStepAction, WorkflowStepActionType, WorkflowStepActionID} from '../shared/workflow-step-action';
-import {Workflow} from '../shared/workflow';
-import {logger} from '../shared/logger';
+import { logger } from '../shared/logger';
+import { LoggerService } from './../shared/logger-service';
+import { WorkflowStep,
+   WorkflowStepStateFilter
+  } from '../shared/workflow-step';
+import { WorkflowStepAction,
+   WorkflowStepActionType,
+   WorkflowStepActionID,
+   WorkflowStepSubActionID
+  } from '../shared/workflow-step-action';
+import { Workflow } from '../shared/workflow';
+import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
 
 @Component({
   selector: "workflow-steps",
   templateUrl: "workflow-steps.component.html",
   styleUrls: [
-    "workflow-steps.component.css",
-    "../css/workflow-common-styles.css"
+    'workflow-steps.component.css',
+    '../css/workflow-common-styles.css',
+    '../css/popup-menu-icons.css'
   ],
   animations: [
     trigger("collapsed", [
@@ -61,7 +70,10 @@ export class WorkflowStepsComponent implements OnInit {
   hoveredStep: WorkflowStep;
   hoveredWorkflow: Workflow;
 
-  constructor() {}
+  constructor(
+    private zosmfWorkflowService: ZosmfWorkflowService,
+    private loggerService: LoggerService
+    ) {}
 
   ngOnInit() {}
 
@@ -71,11 +83,32 @@ export class WorkflowStepsComponent implements OnInit {
   }
 
   acceptStep(step: WorkflowStep): void {
-    alert('Implement me');
+    this.zosmfWorkflowService.acceptStep(step)
+      .subscribe(
+        () => logger.info(`step ${step.name} accepted`),
+        (err) => this.loggerService.zosmfError(err)
+      );
   }
 
-  assignStep(step: WorkflowStep): void {
-    alert('Implement me');
+  returnStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.returnStep(step).subscribe(
+      () => logger.info(`step ${step.name} returned`),
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  skipStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.skipStep(step).subscribe(
+      () => logger.info(`step ${step.name} skipped`),
+      (err) => this.loggerService.zosmfError(err)
+    );
+  }
+
+  overrideCompleteStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.overrideCompleteStep(step).subscribe(
+      () => logger.info('state of step ${step.name} changed to override complete'),
+      (err) => this.loggerService.zosmfError(err)
+    );
   }
 
   getStepIconClass(step: WorkflowStep | undefined): object {
@@ -132,7 +165,11 @@ export class WorkflowStepsComponent implements OnInit {
     if (
       ["Ready", "Failed", "Complete", "Submitted"].indexOf(step.state) !== -1
     ) {
-      this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView, WorkflowStepActionID.general, step));
+      this.startStep({
+        actionType: WorkflowStepActionType.selectView,
+        actionID:  WorkflowStepActionID.properties,
+        step: step
+      });
     } else if (step.state === "Assigned") {
       this.acceptStep(step);
     }
@@ -163,20 +200,57 @@ export class WorkflowStepsComponent implements OnInit {
     this.hoveredWorkflow = workflow;
   }
 
-  performStep(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.perform, step));
+  performStep(step: WorkflowStep): void {
+    if (step.state === 'Assigned') {
+      this.acceptAndPerformStep(step);
+    } else {
+      this.startStep({
+        actionType: WorkflowStepActionType.selectView,
+        actionID:  WorkflowStepActionID.perform,
+        step: step
+      });
+    }
+  }
+
+  acceptAndPerformStep(step: WorkflowStep): void {
+    this.zosmfWorkflowService.acceptStep(step)
+      .subscribe(
+        () => this.performStep(step),
+        (err) => this.loggerService.zosmfError(err)
+      );
   }
 
   checkStepStatus(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.status, step));
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.status,
+      step: step
+    });
   }
 
   showStepInfo(step: WorkflowStep) {
-    this.startStep(new WorkflowStepAction(WorkflowStepActionType.selectView,
-      WorkflowStepActionID.general,
-      step));
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.properties,
+      step: step
+    });
+  }
+
+  showAssignmentDialog(step: WorkflowStep) {
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.properties,
+      subActionID: WorkflowStepSubActionID.assignment,
+      step: step
+    });
+  }
+
+  showStepNotes(step: WorkflowStep): void {
+    this.startStep({
+      actionType: WorkflowStepActionType.selectView,
+      actionID:  WorkflowStepActionID.notes,
+      step: step
+    });
   }
 }
 

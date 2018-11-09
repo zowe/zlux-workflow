@@ -1,0 +1,102 @@
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+*/
+
+.button {
+  border-radius: 2px;
+  height: 29px;
+  min-width: 51px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  border: 0;
+  padding: 5px 13px;
+  color: #000;
+}
+
+.button:hover {
+  background-color: #0D5D8D;
+  color: #FFF;
+}
+
+.button-spacer {
+  width: 1px;
+  height: 19px;
+  background-color: #D9D9D9;
+  display: inline-block;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.button-remove {
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 700;
+  font-weight: 800;
+  height: 29px;
+  margin-left: 0px;
+  margin-right: 5px;
+  min-width: 19px;
+  padding: 2px 2px 2px 2px;
+  width: 29px;
+}
+
+.add-assignee-form {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 7px;
+}
+
+.assignees{
+  flex: 1 1 auto;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.assignee-list {
+  flex: 1 1 auto;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  overflow: auto;
+}
+
+.assignee {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.assignee-id {
+  width: 165px;
+  margin: 3px 7px 3px 0;
+}
+
+.userid-input {
+  margin-left: 0;
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+/*
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+*/

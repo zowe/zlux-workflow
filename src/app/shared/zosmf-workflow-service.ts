@@ -4,9 +4,9 @@
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 
@@ -72,6 +72,7 @@ export class ZosmfWorkflowService {
         let updatedSteps = updatedWorkflow.steps;
         for (let i = 0; i < steps.length; i++) {
           steps[i].state = updatedSteps[i].state;
+          steps[i].assignees = updatedSteps[i].assignees;
           steps[i].instructions = updatedSteps[i].instructions;
           steps[i].specificAction = updatedSteps[i].specificAction;
         }
@@ -314,9 +315,124 @@ export class ZosmfWorkflowService {
       .do(jobStatement => step.wizard.jobCards = jobStatement)
   }
 
+  overrideCompleteStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.OverrideComplete, comment);
+  }
+
+  skipStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Skipped, comment);
+  }
+
+  acceptStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Ready, comment);
+  }
+
+  returnStep(step: WorkflowStep, comment?: string): Observable<void> {
+    return this.changeStepState(step, StepState.Assigned, comment);
+  }
+
+  private changeStepState(step: WorkflowStep, newState: StepState, comment?: string): Observable<void> {
+    const workflow = step.workflow;
+    const jsonRequest = {
+      'workflowKey': workflow.workflowKey,
+      'workflowName': workflow.workflowName,
+      'steps': [step.name],
+      // WorkflowComment key begins with a capital W, this is not a mistake
+      // Other keys begin with a lowercase letter
+      'WorkflowComment': comment || '',
+      'workflowState': String(newState)
+    };
+    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowStateChange/`;
+    const data = JSON.stringify(jsonRequest);
+    const headers = new Headers();
+    headers.append('ZOSMF-host', this.zosmfHost);
+    headers.append('ZOSMF-port', this.zosmfPort.toString());
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.put(url, data, {headers: headers})
+      .mergeMap(() => this.updateWorkflow(step.workflow));
+    }
+
+    assignStepToUser(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, userid, 'user', comment);
+    }
+
+    assignStepToGroup(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+      return this.assignStep(step, groupid, 'group', comment);
+    }
+
+    private assignStep(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
+      const workflow = step.workflow;
+      const jsonRequest = {
+        'workflowKey': workflow.workflowKey,
+        'workflowName': workflow.workflowName,
+        'steps': [step.name],
+        // WorkflowComment key begins with a capital W, this is not a mistake
+        // Other keys begin with a lowercase letter
+        'WorkflowComment': comment || '',
+        'assignees': [
+          {
+            id: id,
+            type: type
+          }
+        ],
+        'notify': false
+      };
+      const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+      const data = JSON.stringify(jsonRequest);
+      const headers = new Headers();
+      headers.append('ZOSMF-host', this.zosmfHost);
+      headers.append('ZOSMF-port', this.zosmfPort.toString());
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.put(url, data, {headers: headers})
+        .map((res: Response) => this.checkError(res));
+  }
+
+  removeUserFromStepAssignees(step: WorkflowStep, userid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, userid, 'user', comment);
+  }
+
+  removeGroupFromStepAssignees(step: WorkflowStep, groupid: string, comment?: string): Observable<void> {
+    return this.removeStepAssignee(step, groupid, 'group', comment);
+  }
+
+  private removeStepAssignee(step: WorkflowStep, id: string, type: 'user'| 'group', comment?: string): Observable<void> {
+    const workflow = step.workflow;
+    const jsonRequest = {
+      'workflowKey': workflow.workflowKey,
+      'workflowName': workflow.workflowName,
+      'steps': [step.name],
+      // WorkflowComment key begins with a capital W, this is not a mistake
+      // Other keys begin with a lowercase letter
+      'WorkflowComment': comment || '',
+      'assignees': [
+        {
+          id: id,
+          type: type
+        }
+      ]
+    };
+    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+    const query = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
+    const headers = new Headers();
+    headers.append('ZOSMF-host', this.zosmfHost);
+    headers.append('ZOSMF-port', this.zosmfPort.toString());
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.delete(`${url}?${query}`, {headers: headers})
+      .map((res: Response) => this.checkError(res));
+  }
+
+  // checkError throws response as an error if repsonse shape looks like an error
+  private checkError(res: Response): void {
+    const json = res.json();
+    if ((json as any).errorData) {
+      throw res;
+    }
+  }
+
   getJobStatementAndSubstituteVariablesIntoTemplates(step: WorkflowStep): Observable<any> {
     return this.getJobStatement(step).mergeMap(_ => this.substituteVariablesIntoTemplates(step));
   }
+
 }
 
 interface WorkflowListJson {
@@ -361,15 +477,22 @@ interface JobStatementResponse {
   jobStatement: string;
 }
 
+// Numeric codes for z/OSMF Workflow step states
+enum StepState {
+  Ready = 1,
+  OverrideComplete = 5,
+  Assigned = 7,
+  Skipped = 8,
+}
 
 
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
   this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-  
+
   SPDX-License-Identifier: EPL-2.0
-  
+
   Copyright Contributors to the Zowe Project.
 */
 

@@ -1,5 +1,3 @@
-
-
 /*
   This program and the accompanying materials are
   made available under the terms of the Eclipse Public License v2.0 which accompanies
@@ -10,30 +8,17 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import { WorkflowStep } from "./workflow-step";
+import { Component } from '@angular/core';
 
-export enum WorkflowStepActionType {
-  selectView,
-  modifyStep
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'workflow-popup-menu-separator',
+  template: '',
+  styleUrls: [ './workflow-popup-menu-separator.component.css' ]
+})
+export class WorkflowPopupMenuSeparatorComponent {
+
 }
-
-export enum WorkflowStepActionID {
-  properties,
-  perform,
-  status,
-  notes
-}
-
-export enum WorkflowStepSubActionID {
-  assignment
-}
-
-export interface WorkflowStepAction {
-  actionType: WorkflowStepActionType;
-  actionID: WorkflowStepActionID;
-  step: WorkflowStep;
-  subActionID?: WorkflowStepSubActionID;
-};
 
 /*
   This program and the accompanying materials are
@@ -44,4 +29,3 @@ export interface WorkflowStepAction {
 
   Copyright Contributors to the Zowe Project.
 */
-

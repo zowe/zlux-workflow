@@ -1,0 +1,80 @@
+<!--
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+-->
+<zlux-popup-window
+  i18n-header="dialog header|Header for assignment dialog@@assignment-dialog-header"
+  header="Manage Assignees"
+  (onCloseWindow)="onClose()"
+  [dark]="true"
+  *ngIf="isVisible && step"
+  >
+    <div class="assignees">
+      <div class="assignee-list">
+      <div class="assignee" *ngFor="let assignee of assignees">
+        <div class="assignee-id">{{assignee}}</div>
+        <button
+          type="button"
+          class="button button-remove"
+          (click)="removeAssignee(assignee)"
+          i18n-title="tooltip|Tooltip of Remove Assignee button@@remove-assignee-tooltip"
+          title="Remove assignee">
+          &times;
+        </button>
+      </div>
+      </div>
+      <form class="add-assignee-form" #addAssigneForm="ngForm">
+        <input type="text"
+          zluxInputText
+          class="userid-input"
+          name="userid"
+          maxlength="8"
+          required
+          (keyup.enter)="addAssignee(userid)"
+          [(ngModel)]="userid"
+          i18n-placeholder="label|Label for User ID text field@@userid-label"
+          placeholder="User ID"
+        >
+        <zlux-button
+          [disabled]="!addAssigneForm.valid"
+          [callToAction]="true"
+          [lightSkin]="false"
+          i18n-label="button label|Label of the button that adds an assignee for Workflow Step@@add-assignee-button-label"
+          label="Add"
+          (onClick)="addAssignee(userid)"
+        ></zlux-button>
+      </form>
+      <zlux-veil [isEnabled]="isVeilEnabled" [enableSpinner]="true"></zlux-veil>
+    </div>
+  <zlux-popup-window-button-area>
+    <zlux-button
+      [callToAction]="true"
+      [lightSkin]="false"
+      i18n-label="button label|Label of the button that save changes made for assignement list and closes the dialog@@ok-button-label"
+      label="OK"
+      (onClick)="ok()"
+    ></zlux-button>
+    <zlux-button
+      [callToAction]="false"
+      [lightSkin]="false"
+      i18n-label="button label|Label of the button that cancels changes made for assignement list and closes the dialog@@cancel-button-label"
+      label="Cancel"
+      (onClick)="cancel()"
+    ></zlux-button>
+  </zlux-popup-window-button-area>
+</zlux-popup-window>
+
+<!--
+  This program and the accompanying materials are
+  made available under the terms of the Eclipse Public License v2.0 which accompanies
+  this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Copyright Contributors to the Zowe Project.
+-->

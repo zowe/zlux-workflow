@@ -40,7 +40,8 @@
         "GET",
         "PUT",
         "OPTIONS",
-        "HEAD"
+        "HEAD",
+        "DELETE"
       ]
     },
     {

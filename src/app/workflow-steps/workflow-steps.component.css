@@ -88,17 +88,6 @@
   width: 90px;
 }
 
-.dots-menu {
-  background-image: url('../images/dots.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  height: 100%;
-  width: 16px;
-  height: 16px;
-  margin: 0 5px;
-}
-
 .task-ready {
   background-image: url(../images/task-ready.png);
 }
@@ -218,7 +207,6 @@
   font-style: normal;
   font-weight: 400;
 }
-
 
 /*
   This program and the accompanying materials are
