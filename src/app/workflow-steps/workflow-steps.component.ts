@@ -35,8 +35,9 @@ import { ZosmfWorkflowService } from './../shared/zosmf-workflow-service';
   selector: "workflow-steps",
   templateUrl: "workflow-steps.component.html",
   styleUrls: [
-    "workflow-steps.component.css",
-    "../css/workflow-common-styles.css"
+    'workflow-steps.component.css',
+    '../css/workflow-common-styles.css',
+    '../css/popup-menu-icons.css'
   ],
   animations: [
     trigger("collapsed", [

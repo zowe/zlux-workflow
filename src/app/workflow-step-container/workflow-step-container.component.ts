@@ -34,8 +34,9 @@ import { WorkflowStepAssignmentComponent } from '../workflow-step-assignment/wor
   selector: "workflow-step-container",
   templateUrl: "./workflow-step-container.component.html",
   styleUrls: [
-    "./workflow-step-container.component.css",
-    "../css/workflow-common-styles.css"
+    './workflow-step-container.component.css',
+    '../css/workflow-common-styles.css',
+    '../css/popup-menu-icons.css'
   ],
   providers: []
 })

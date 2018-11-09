@@ -7,21 +7,36 @@
 
   Copyright Contributors to the Zowe Project.
 */
-
-.workflow-step-general {
+:host {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  align-items: stretch;
+  flex: 1 1 auto;
 }
 
-.workflow-step-general-title-area, .workflow-step-description-area {
+.workflow-step-general {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: stretch;
+  margin: 3px;
+}
+
+.workflow-step-general-title-area {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.workflow-step-description-area {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .workflow-field-label {
+  flex: 0 0 auto;
   margin-bottom: 0px;
 }
 
@@ -31,14 +46,8 @@
   margin-bottom: 10px;
 }
 
-.workflow-step-description-area {
-  width: 100%;
-  height: 100%;
-}
-
 .workflow-step-general-description {
-  width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
 }
 
 /*

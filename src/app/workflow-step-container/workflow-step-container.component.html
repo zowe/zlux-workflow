@@ -26,7 +26,7 @@
           <div item-icon class="icon icon-properties"></div>
           <div item-title i18n="view|Title of Properties view@@properties-view">Properties</div>
         </workflow-popup-menu-item>
-        <workflow-popup-menu-item *ngIf="['Ready', 'Failed', 'Assigned'].includes(step.state)" (onClick)="selectView('perform')">
+        <workflow-popup-menu-item *ngIf="step.canBePerformed()" (onClick)="selectView('perform')">
           <div item-icon class="icon icon-perform"></div>
           <div item-title i18n="view|Title of Perform view@@perform-view">Perform</div>
         </workflow-popup-menu-item>
