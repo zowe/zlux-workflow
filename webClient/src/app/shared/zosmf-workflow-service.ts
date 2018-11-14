@@ -11,7 +11,8 @@
 */
 
 import {Http, Response, Headers} from '@angular/http';
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
+import { Angular2InjectionTokens } from 'pluginlib/inject-resources';
 import * as Rx from 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {WorkflowStep} from './workflow-step';
@@ -28,13 +29,14 @@ export class ZosmfWorkflowService {
   private zosmfHost: string;
   private zosmfPort: number;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+  @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition) {
   }
 
   initialize(userid: string, host: string, port: number) {
     this.zosmfHost = host;
     this.zosmfPort = port;
-    this.baseUrl = `/ZLUX/plugins/com.rs.zosmf.workflows/services/zosmf`;
+    this.baseUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", '');
     this.userid = userid;
   }
 

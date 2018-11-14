@@ -10,8 +10,9 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Http, Headers } from '@angular/http';
+import { Angular2InjectionTokens } from 'pluginlib/inject-resources';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
@@ -19,14 +20,17 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ZosmfLoginService {
-  private readonly loginUrl = `/ZLUX/plugins/com.rs.zosmf.workflows/services/zosmf/zosmf/workflow/rest/1.0/workflows`;
+  private loginUrl: string;
   private zosmfHost: string;
   private zosmfPort: number;
   private zosmfUserid: string;
   private zosmfPassword: string;
-  private zosmfUseridKey = 'com.rs.zosmf.workflows.zosmf.userid';
+  private zosmfUseridKey: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+  @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition) {
+    this.loginUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", "/zosmf/workflow/rest/1.0/workflows");
+    this.zosmfUseridKey = this.pluginDefinition.getBasePlugin().getIdentifier() + '.zosmf.userid';
     this.zosmfUserid = localStorage.getItem(this.zosmfUseridKey);
   }
 

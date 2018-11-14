@@ -20,16 +20,18 @@ export interface ZosmfServer {
   port: number;
 }
 
+//TODO ideally  _objectType would be directly derived from the pluginDefinition
 export interface ZosmfServerConfigWithMetadata {
   _metadataVersion: "1.1",
-  _objectType: "com.rs.zosmf.workflows.zosmf.config",
+  _objectType: "org.zowe.zosmf.workflows.zosmf.config",
   config: ZosmfServerConfig;
 }
 
+//TODO is this really helpful? It assumes certain strings, such as version.
 export interface ZosmfServerConfigResponse {
   _metadataVersion: "1.1"
-  _objectType: "com.rs.config.resource"
-  resource: "com.rs.zosmf.workflows/USER/zosmf" | "com.rs.zosmf.workflows/INSTANCE/zosmf"
+  _objectType: "org.zowe.configjs.resource"
+  resource: "org.zowe.zosmf.workflows/USER/zosmf" | "org.zowe.zosmf.workflows/INSTANCE/zosmf"
   contents: ZosmfServerConfigWithMetadata
 }
 

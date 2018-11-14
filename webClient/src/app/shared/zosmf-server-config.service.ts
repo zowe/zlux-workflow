@@ -31,7 +31,7 @@ export class ZosmfServerConfigService {
 
   private readonly uri;
   private cachedConfig: ZosmfServerConfig;
-  private storageKey: string = 'com.rs.zosmf.workflows.zosmf.server.config';
+  private storageKey: string;
 
 
   constructor(
@@ -41,6 +41,7 @@ export class ZosmfServerConfigService {
   {
     popupManager.setLogger(logger);
     this.cachedConfig = this.getLocalConfig();
+    this.storageKey = this.pluginDefinition.getBasePlugin().getIdentifier()+'zosmf.server.config';
     this.uri = ZoweZLUX.uriBroker.pluginConfigForScopeUri(this.pluginDefinition.getBasePlugin(),'user', 'zosmf', 'server-config')
   }
   
@@ -75,7 +76,8 @@ export class ZosmfServerConfigService {
     serverConfig.zosmfServers = serverConfig.zosmfServers.filter(server => !!server.host && !!server.port);
     const configWithMatadata: ZosmfServerConfigWithMetadata = {
       _metadataVersion: "1.1",
-      _objectType: "com.rs.zosmf.workflows.zosmf.config",
+      //TODO typescript being very annoying with regards to this not being able to be an abstracted string
+      _objectType: "org.zowe.zosmf.workflows.zosmf.config",
       config: serverConfig
     };
     this.cachedConfig = serverConfig;

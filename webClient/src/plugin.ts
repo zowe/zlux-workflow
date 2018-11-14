@@ -11,7 +11,7 @@
 */
 
 declare let __webpack_public_path__: string;
-__webpack_public_path__ = `/ZLUX/plugins/com.rs.zosmf.workflows/web/`;
+__webpack_public_path__ = `/ZLUX/plugins/org.zowe.zosmf.workflows/web/`;
 
 export { AppModule as pluginModule } from './app/app.module';
 export { WorkflowAppComponent as pluginComponent } from './app/workflow-app/workflow-app.component';
