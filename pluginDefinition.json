@@ -1,7 +1,7 @@
 {
-  "identifier": "com.rs.zosmf.workflows",
-  "apiVersion": "1.0",
-  "pluginVersion": "1.0",
+  "identifier": "org.zowe.zosmf.workflows",
+  "apiVersion": "1.0.0",
+  "pluginVersion": "0.9.4",
   "pluginType": "application",
   "webContent": {
     "framework": "angular2",
@@ -16,8 +16,8 @@
     "defaultWindowStyle": {
       "width": 1320,
       "height": 880,
-      "x": 60,
-      "y": 10
+      "x": 0,
+      "y": 0
     }
   },
   "configurationData": {

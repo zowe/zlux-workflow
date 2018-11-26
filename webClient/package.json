@@ -1,6 +1,6 @@
 {
-  "name": "com.rs.zosmf.workflows",
-  "version": "0.0.0",
+  "name": "org.zowe.zosmf.workflows",
+  "version": "0.9.4",
   "scripts": {
     "start": "webpack --progress --colors --watch",
     "build": "webpack --colors",
@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "serve": "ng serve"
   },
-  "private": true,
+  "license": "EPL-2.0",
   "dependencies": {
     "@angular/animations": "~6.0.9",
     "@angular/common": "~6.0.9",

@@ -10,9 +10,10 @@
   Copyright Contributors to the Zowe Project.
 */
 
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import { Angular2InjectionTokens } from 'pluginlib/inject-resources';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -22,10 +23,11 @@ import {logger} from './logger';
 
 @Injectable()
 export class ZosmfTrackerService {
-  // TODO: Use MVDURI when it is ready
-  private readonly uri = `/ZLUX/plugins/com.rs.zosmf.workflows/services/zosmftracker`;
+  private uri: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+  @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition) {
+    this.uri = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmftracker", "");
   }
 
   testConnection(host: string, port: number): Promise<ServerStatus> {
