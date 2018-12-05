@@ -41,6 +41,54 @@
 </workflow-create>
 <zosmf-login #zosmflogin on-loggedIn="login()"></zosmf-login>
 <workflow-notification></workflow-notification>
+<zlux-popup-window
+      i18n-header="dialog header|Header for close dialog@@close-dialog-header"
+      header="Unsaved Configuration Changes"
+      (onCloseWindow)="cancelCloseDialog()"
+      [dark]="true"
+      [currentStyle]="{ 'width': '40em', 'height': '12em' , 'background-color': '#F6F6F6', 'font-size': 'large', 'padding': '3px'}"
+      *ngIf="isOnCloseDialogVisible">
+      <div class="content-close">Do you want to save your Configuration changes?<br>If you click “Exit”, your current changes will be discarded and the program will close.</div>
+      <zlux-popup-window-button-area>
+        <zlux-button (click)="saveChanges(); exit();"
+          i18n-label="label|Label for Save Changes and Exit button@@save-changes-and-exit-label"
+          label="Save & Exit"
+          callToAction="true">
+        </zlux-button>
+        <zlux-button (click)="exit()"
+          i18n-label="label|Label for Exit button@@exit-button-label"
+          label="Exit">
+        </zlux-button>
+        <zlux-button (click)="cancelCloseDialog()"
+          i18n-label="label|Label of Cancel Dialog button@@cancel-dialog-button-label"
+          label="Cancel">
+        </zlux-button>
+      </zlux-popup-window-button-area>
+  </zlux-popup-window>
+  <zlux-popup-window
+      i18n-header="dialog header|Header for unsaved changes dialog@@unsaved-changes-dialog-header"
+      header="Unsaved Configuration Changes"
+      (onCloseWindow)="cancelUnsavedChangesDialog()"
+      [dark]="true"
+      [currentStyle]="{ 'width': '40em', 'height': '12em' , 'background-color': '#F6F6F6', 'font-size': 'large', 'padding': '3px'}"
+      *ngIf="isUnsavedChangesDialogVisible">
+      <div class="content-unsaved-changes">Do you want to save your Configuration changes?<br>If you click “Don’t Save”, your current changes will be discarded.</div>
+      <zlux-popup-window-button-area>
+        <zlux-button (click)="saveChanges()"
+          i18n-label="label|Label of Save Changes button@@save-changes-button-label"
+          label="Save">
+        </zlux-button>
+        <zlux-button (click)="abandonChanges()"
+          i18n-label="label|Label for Abandon Changes button@@abandon-changes-label"
+          label="Don't Save"
+          callToAction="true">
+        </zlux-button>
+        <zlux-button (click)="cancelUnsavedChangesDialog()"
+          i18n-label="label|Label for Cancel button@@cancel-button-label"
+          label="Cancel">
+        </zlux-button>
+      </zlux-popup-window-button-area>
+  </zlux-popup-window>
 <zlux-veil [isEnabled]="globalVeilService.isEnabled()" [enableSpinner]="true"></zlux-veil>
 <workflow-confirmation></workflow-confirmation>
 <!--
