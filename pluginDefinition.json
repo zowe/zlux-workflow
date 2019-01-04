@@ -1,7 +1,7 @@
 {
   "identifier": "org.zowe.zosmf.workflows",
   "apiVersion": "1.0.0",
-  "pluginVersion": "0.9.4",
+  "pluginVersion": "0.9.5",
   "pluginType": "application",
   "webContent": {
     "framework": "angular2",
@@ -15,11 +15,10 @@
     "isSingleWindowApp": true,
     "defaultWindowStyle": {
       "width": 1320,
-      "height": 880,
-      "x": 0,
-      "y": 0
+      "height": 880
     }
   },
+  "license": "EPL-2.0",
   "configurationData": {
     "resources": {
       "zosmf": {
@@ -29,33 +28,22 @@
   },
   "dataServices": [
     {
-      "type": "nodeService",
+      "type": "router",
       "name": "zosmf",
-      "serviceLookupMethod": "external",
-      "fileName": "zosmf-service.js",
-      "handlerInstaller": "zosmfServiceInstaller",
+      "initializerLookupMethod": "external",
+      "filename": "zosmf-service.js",
+      "routerFactory": "zosmfServiceRouter",
       "dependenciesIncluded": true,
-      "methods": [
-        "POST",
-        "GET",
-        "PUT",
-        "OPTIONS",
-        "HEAD",
-        "DELETE"
-      ],
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
-      "type": "nodeService",
+      "type": "router",
       "name": "zosmftracker",
-      "serviceLookupMethod": "external",
-      "fileName": "zosmf-tracker-service.js",
-      "handlerInstaller": "zosmfTrackerServiceInstaller",
+      "initializerLookupMethod": "external",
+      "filename": "zosmf-tracker-service.js",
+      "routerFactory": "zosmfTrackerRouter",
       "dependenciesIncluded": true,
-      "methods": [
-        "GET"
-      ],
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }
