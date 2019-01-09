@@ -42,7 +42,8 @@
         "OPTIONS",
         "HEAD",
         "DELETE"
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "type": "nodeService",
@@ -53,7 +54,8 @@
       "dependenciesIncluded": true,
       "methods": [
         "GET"
-      ]
+      ],
+      "version": "1.0.0"
     }
   ]
 }
