@@ -29,7 +29,7 @@ export class ZosmfLoginService {
 
   constructor(private http: Http,
   @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition) {
-    this.loginUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", "/zosmf/workflow/rest/1.0/workflows");
+    this.loginUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", "workflows");
     this.zosmfUseridKey = this.pluginDefinition.getBasePlugin().getIdentifier() + '.zosmf.userid';
     this.zosmfUserid = localStorage.getItem(this.zosmfUseridKey);
   }

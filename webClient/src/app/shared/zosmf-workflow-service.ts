@@ -31,12 +31,12 @@ export class ZosmfWorkflowService {
 
   constructor(private http: Http,
   @Inject(Angular2InjectionTokens.PLUGIN_DEFINITION) private pluginDefinition: ZLUX.ContainerPluginDefinition) {
+    this.baseUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", '');
   }
 
   initialize(userid: string, host: string, port: number) {
     this.zosmfHost = host;
     this.zosmfPort = port;
-    this.baseUrl = ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), "zosmf", '');
     this.userid = userid;
   }
 
@@ -45,7 +45,7 @@ export class ZosmfWorkflowService {
     //headers.append('Authorization', this.basicAuth);
     headers.append('ZOSMF-host', this.zosmfHost);
     headers.append('ZOSMF-port', this.zosmfPort.toString());
-    const url = `${this.baseUrl}/zosmf/workflow/rest/1.0/workflows/${encodeURIComponent(workflowKey)}?returnData=steps,variables`;
+    const url = `${this.baseUrl}workflows/${encodeURIComponent(workflowKey)}?returnData=steps,variables`;
     return this.http.get(url, {headers: headers})
       .map((res: Response) => new Workflow(res.json()))
       .catch(() => Observable.of(null));
@@ -56,7 +56,7 @@ export class ZosmfWorkflowService {
     //headers.append('Authorization', this.basicAuth);
     headers.append('ZOSMF-host', this.zosmfHost);
     headers.append('ZOSMF-port', this.zosmfPort.toString());
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManagerInventory`;
+    const url = `${this.baseUrl}workflow/WorkflowManagerInventory`;
     return this.http.get(url, {headers: headers})
       .mergeMap((res: Response) =>
         Rx.Observable.forkJoin(
@@ -110,7 +110,7 @@ export class ZosmfWorkflowService {
         useDefault: false
       });
     }
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/filebuilder/`;
+    const url = `${this.baseUrl}/workflow/WorkflowManager/filebuilder/`;
     const data = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
     const headers = new Headers();
     //headers.append('Authorization', this.basicAuth);
@@ -162,7 +162,7 @@ export class ZosmfWorkflowService {
       });
     }
     logger.info(`substituteVariables: about to send request ${JSON.stringify(jsonRequest, null, 2)}`);
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/variables/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/variables/`;
     const data = JSON.stringify(jsonRequest);
     const headers = new Headers();
     //headers.append('Authorization', this.basicAuth);
@@ -177,7 +177,7 @@ export class ZosmfWorkflowService {
     this.addTimestampToWorkflowCreationAction(request);
     request.system = request.system.toUpperCase();
     this.processWorkflowCreationActionOptions(request, options);
-    const url = `${this.baseUrl}/zosmf/workflow/rest/1.0/workflows/`;
+    var url = `${this.baseUrl}workflows/`;
     const data = JSON.stringify(request);
     const headers = new Headers();
     //headers.append('Authorization', this.basicAuth);
@@ -225,7 +225,7 @@ export class ZosmfWorkflowService {
       "definitions": JSON.parse(definitions),
       "submitFile": true
     };
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/variables/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/variables/`;
     const data = JSON.stringify(jsonRequest);
     const headers = new Headers();
     //headers.append('Authorization', this.basicAuth);
@@ -245,7 +245,7 @@ export class ZosmfWorkflowService {
     if (fileIds) {
       jsonRequest['fileIds'] = fileIds;
     }
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/jcl/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/jcl/`;
     const data = "serializedObject=" + encodeURIComponent(JSON.stringify(jsonRequest));
     const headers = new Headers();
     //headers.append('Authorization', this.basicAuth);
@@ -304,7 +304,7 @@ export class ZosmfWorkflowService {
       'needGetJobcard': true,
       'templateSub': true
     };
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/filebuilder/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/filebuilder/`;
     const data = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
     const headers = new Headers();
     headers.append('ZOSMF-host', this.zosmfHost);
@@ -344,7 +344,7 @@ export class ZosmfWorkflowService {
       'WorkflowComment': comment || '',
       'workflowState': String(newState)
     };
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowStateChange/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/workflowStateChange/`;
     const data = JSON.stringify(jsonRequest);
     const headers = new Headers();
     headers.append('ZOSMF-host', this.zosmfHost);
@@ -379,7 +379,7 @@ export class ZosmfWorkflowService {
         ],
         'notify': false
       };
-      const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+      const url = `${this.baseUrl}workflow/WorkflowManager/workflowAssignment/`;
       const data = JSON.stringify(jsonRequest);
       const headers = new Headers();
       headers.append('ZOSMF-host', this.zosmfHost);
@@ -413,7 +413,7 @@ export class ZosmfWorkflowService {
         }
       ]
     };
-    const url = `${this.baseUrl}/zosmf/workflow/WorkflowManager/workflowAssignment/`;
+    const url = `${this.baseUrl}workflow/WorkflowManager/workflowAssignment/`;
     const query = 'serializedObject=' + encodeURIComponent(JSON.stringify(jsonRequest));
     const headers = new Headers();
     headers.append('ZOSMF-host', this.zosmfHost);
