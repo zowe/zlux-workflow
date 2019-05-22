@@ -40,8 +40,8 @@ export class ZosmfServerConfigService {
     private popupManager: ZluxPopupManagerService)
   {
     popupManager.setLogger(logger);
-    this.cachedConfig = this.getLocalConfig();
     this.storageKey = this.pluginDefinition.getBasePlugin().getIdentifier()+'zosmf.server.config';
+    this.cachedConfig = this.getLocalConfig();
     this.uri = ZoweZLUX.uriBroker.pluginConfigForScopeUri(this.pluginDefinition.getBasePlugin(),'user', 'zosmf', 'server-config')
   }
   
