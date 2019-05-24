@@ -1,7 +1,7 @@
 {
   "identifier": "org.zowe.zosmf.workflows",
   "apiVersion": "1.0.0",
-  "pluginVersion": "0.9.4",
+  "pluginVersion": "0.10.0",
   "pluginType": "application",
   "webContent": {
     "framework": "angular2",
@@ -15,9 +15,7 @@
     "isSingleWindowApp": true,
     "defaultWindowStyle": {
       "width": 1320,
-      "height": 880,
-      "x": 0,
-      "y": 0
+      "height": 880
     }
   },
   "configurationData": {
@@ -43,7 +41,7 @@
         "HEAD",
         "DELETE"
       ],
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "type": "nodeService",
@@ -55,7 +53,7 @@
       "methods": [
         "GET"
       ],
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }
