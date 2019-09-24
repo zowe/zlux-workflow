@@ -58,6 +58,8 @@
 package*.json text eol=lf
 # sonar scanning
 sonar-project.properties git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
+# example file
+demo/storyboard-new.xml  git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
 
 # This program and the accompanying materials are
 # made available under the terms of the Eclipse Public License v2.0 which accompanies
