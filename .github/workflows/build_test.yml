@@ -67,7 +67,7 @@ jobs:
           github-branch: ${{ github.event.inputs.BRANCH_NAME }}
 
       - name: '[Prep 6] build'
-        uses: zowe-actions/zlux-builds/zlux-plugins@main
+        uses: zowe-actions/zlux-builds/zlux-plugins@users/jstruga/testplugins
         with:
           build-zss: false
 
