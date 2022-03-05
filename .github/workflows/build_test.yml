@@ -2,7 +2,9 @@ name: Build zlux-workflow workflow
 on:
   push:
     branches:
-      - staging, master, rc 
+      - staging
+      - master
+      - rc 
   pull_request:
     types: [opened, reopened, synchronize]
 
