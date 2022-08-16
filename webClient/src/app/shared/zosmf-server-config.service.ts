@@ -82,7 +82,7 @@ export class ZosmfServerConfigService {
     };
     this.cachedConfig = serverConfig;
     localStorage.setItem(this.storageKey, JSON.stringify(serverConfig));
-    return this.http.put(this.uri, JSON.stringify(configWithMatadata)).toPromise()
+    return this.http.put(this.uri, configWithMatadata).toPromise()
     .catch(err => {
       
     let errorTitle: string = "Error";
