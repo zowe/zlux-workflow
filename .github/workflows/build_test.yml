@@ -1,10 +1,10 @@
-name: Build zlux-workflow workflow
+name: Build zlux-workflows workflow
 on:
   push:
     branches:
-      - staging
-      - master
-      - rc 
+      - v1.x/staging
+      - v1.x/master
+      - v1.x/rc
   pull_request:
     types: [opened, reopened, synchronize]
 
@@ -69,7 +69,7 @@ jobs:
           github-branch: ${{ github.event.inputs.BRANCH_NAME }}
 
       - name: '[Prep 6] build'
-        uses: zowe-actions/zlux-builds/zlux-plugins@users/jstruga/testplugins
+        uses: zowe-actions/zlux-builds/zlux-plugins@main
         with:
           build-zss: false
 
@@ -78,7 +78,7 @@ jobs:
         with:
           pax-ssh-username: ${{ secrets.SSH_MARIST_USERNAME }}
           pax-ssh-password: ${{ secrets.SSH_MARIST_RACF_PASSWORD }}
-          pax-name: zlux-workflow
+          pax-name: zlux-workflows
 
       - name: '[Prep 8] deploy '
         uses: zowe-actions/zlux-builds/deploy-pax@main 
