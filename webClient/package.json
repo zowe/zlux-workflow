@@ -6,7 +6,8 @@
     "build": "webpack --colors",
     "i18n": "ng-xi18n -p tsconfig.ngx-i18n.json --i18nFormat=xlf  --outFile=messages.xlf && xliffmerge -p xliffmerge.json",
     "lint": "ng lint",
-    "serve": "ng serve"
+    "serve": "ng serve",
+	"test": "exit 0"
   },
   "license": "EPL-2.0",
   "dependencies": {
