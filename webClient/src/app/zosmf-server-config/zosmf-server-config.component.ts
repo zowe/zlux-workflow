@@ -52,6 +52,7 @@ export class ZosmfServerConfigComponent {
   zosmfServers: QueryList<ZosmfServerComponent>;
   @Output() configured = new EventEmitter<ZosmfServer>();
   private zosmfServerCandidate: ZosmfServer;
+  private popupEnabled: boolean;
 
   constructor(
     private configService: ZosmfServerConfigService,
@@ -59,6 +60,7 @@ export class ZosmfServerConfigComponent {
     private popupManager: ZluxPopupManagerService,
   ) {
     const config = this.configService.getCachedConfig();
+    this.popupEnabled = true;
     popupManager.setLogger(logger);
     if (config) {
       this.config = config;
@@ -76,6 +78,23 @@ export class ZosmfServerConfigComponent {
 
   save(): void {
     this.configService.saveConfig(this.config);
+  }
+
+  unsavedChanges(): boolean {
+    if (this.configService.getLocalConfig() == null)
+    { return true; }
+    else if (this.configService.getLocalConfig().zosmfServers.length != this.config.zosmfServers.length)
+      { return true; }
+    else if (this.configService.getLocalConfig().defaultZosmfServer.host != this.config.defaultZosmfServer.host ||
+        this.configService.getLocalConfig().defaultZosmfServer.port != this.config.defaultZosmfServer.port)
+      { return true; }
+    for (let check = this.config.zosmfServers.length; check--;)
+    {
+      if (this.config.zosmfServers[check].host != this.configService.getLocalConfig().zosmfServers[check].host ||
+      this.config.zosmfServers[check].port != this.configService.getLocalConfig().zosmfServers[check].port)
+      { return true; }
+    }
+    return false;
   }
 
   setDefault(item: ZosmfServer) {
@@ -115,6 +134,7 @@ export class ZosmfServerConfigComponent {
         const options = {
           blocking: true
         };
+          this.popupEnabled = true;
           this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
         });
   }
@@ -142,6 +162,10 @@ export class ZosmfServerConfigComponent {
 
   loginCanceled(): void {
     this.zosmfLoginComponent.setZosmfServer(this.config.defaultZosmfServer);
+  }
+
+  togglePopup(toggle: boolean): void {
+    this.popupEnabled = toggle;
   }
 
 
